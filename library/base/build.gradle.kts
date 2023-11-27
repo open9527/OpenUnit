@@ -19,4 +19,7 @@ android {
         jvmTarget = "1.8"
     }
 }
-
+dependencies {
+    compileOnly(libs.bundles.ktx.bundles)
+    compileOnly(libs.appcompat)
+}

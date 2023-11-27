@@ -37,11 +37,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
-
-//    buildFeatures {
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
 //        compose = true
-//    }
+    }
+
 //    composeOptions {
 //        kotlinCompilerExtensionVersion = "1.4.3"
 //    }
@@ -56,5 +57,6 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.bundles.ktx.bundles)
     implementation(libs.bundles.ui.bundles)
-    implementation(project(path=":library:core"))
+    implementation(project(path = ":library:core"))
+    implementation(project(path = ":library:base"))
 }

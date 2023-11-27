@@ -11,6 +11,13 @@ android {
         compileSdk = 34
         minSdk = 24
     }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -21,6 +28,5 @@ android {
 }
 
 dependencies {
-    compileOnly(libs.core.ktx)
-//    compileOnly(libs.timber)
+    compileOnly(libs.bundles.ktx.bundles)
 }
