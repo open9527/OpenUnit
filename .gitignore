@@ -16,3 +16,4 @@ local.properties
 
 # Project exclude paths
 /build-gradle/
+/.idea/
