@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/library/base" />
             <option value="$PROJECT_DIR$/library/core" />
             <option value="$PROJECT_DIR$/library/dialog" />
+            <option value="$PROJECT_DIR$/library/permission" />
           </set>
         </option>
       </GradleProjectSettings>
