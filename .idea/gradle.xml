@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/library/base" />
             <option value="$PROJECT_DIR$/library/core" />
+            <option value="$PROJECT_DIR$/library/dialog" />
           </set>
         </option>
       </GradleProjectSettings>

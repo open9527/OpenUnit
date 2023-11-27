@@ -3,9 +3,10 @@ plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
 }
-android {
-    namespace = "com.open.library"
 
+
+android {
+    namespace = "com.open.dialog"
     compileSdk = 34
     defaultConfig {
         minSdk = 24
@@ -18,4 +19,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+}
+
+dependencies {
+    compileOnly(libs.bundles.ktx.bundles)
+    compileOnly(libs.appcompat)
+    compileOnly(project(path = ":library:core"))
 }

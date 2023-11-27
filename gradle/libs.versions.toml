@@ -18,7 +18,10 @@ viewpager2 = "1.0.0"
 
 
 #第三方
-timber = "5.0.1" #日志打印
+timber = "5.0.1"
+junit = "4.13.2"
+androidx-test-ext-junit = "1.1.5"
+espresso-core = "3.5.1" #日志打印
 
 
 
@@ -37,6 +40,9 @@ recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version
 viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewpager2" }
 
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 
 
 
