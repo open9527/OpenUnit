@@ -37,6 +37,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+
 //    buildFeatures {
 //        compose = true
 //    }
@@ -54,5 +56,5 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.bundles.ktx.bundles)
     implementation(libs.bundles.ui.bundles)
-
+    implementation(project(path=":library:core"))
 }

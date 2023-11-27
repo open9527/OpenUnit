@@ -27,3 +27,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "OpenUnit"
 include(":app")
+include(":library:core")
+include(":library:base")
