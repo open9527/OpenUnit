@@ -10,7 +10,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         LogUtils.init(true)
-        LogUtils.d("onCreate1")
     }
 }
 

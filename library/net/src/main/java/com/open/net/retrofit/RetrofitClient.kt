@@ -1,5 +1,6 @@
 package com.open.net.retrofit
 
+import com.open.net.NetConfig
 import com.open.net.factory.LiveDataCallAdapterFactory
 import com.open.net.okhttp.OkhttpClient
 import com.open.serialization.JsonClient
@@ -8,7 +9,7 @@ import retrofit2.Retrofit
 
 object RetrofitClient {
     inline fun <reified T> retrofitClient(
-        baseUrl: String,
+        baseUrl: String = NetConfig.getHostUrl(),
     ): T {
         return getRetrofitClient(baseUrl)
             .create(T::class.java)
@@ -22,7 +23,7 @@ object RetrofitClient {
                 .baseUrl(baseUrl)
                 .client(OkhttpClient.okHttpClient)
                 .addConverterFactory(JsonClient.createFactory("application/json".toMediaType()))
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
+                .addCallAdapterFactory(NetConfig.getCallAdapterFactory())
                 .build()
         }
         if (baseUrl != retrofit?.baseUrl().toString()) {

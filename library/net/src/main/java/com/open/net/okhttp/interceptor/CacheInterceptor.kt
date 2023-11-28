@@ -1,6 +1,7 @@
 package com.open.net.okhttp.interceptor
 
 import com.open.core.LogUtils
+import com.open.net.NetConfig
 import com.open.net.cache.HttpCacheManager
 import okhttp3.Interceptor
 import okhttp3.Protocol
@@ -13,7 +14,7 @@ internal class CacheInterceptor() : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        LogUtils.d( "intercept request:$request")
+        LogUtils.d(NetConfig.getDebug(), "intercept request:$request")
 
         val headers = request.headers
 
@@ -49,7 +50,7 @@ internal class CacheInterceptor() : Interceptor {
     //2.USE_CACHE_ONLY 只使用缓存
     private fun useCacheOnly(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        LogUtils.d(  "useCacheOnly request:$request")
+        LogUtils.d(NetConfig.getDebug(),  "useCacheOnly request:$request")
 
         //先读取缓存
         val cacheData = getCacheData(request)
@@ -77,7 +78,7 @@ internal class CacheInterceptor() : Interceptor {
     //3.USE_CACHE_FIRST 优先使用缓存
     private fun useCacheFirst(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        LogUtils.d(  "useCacheFirst request:$request")
+        LogUtils.d(NetConfig.getDebug(),  "useCacheFirst request:$request")
 
         //先读取缓存
         val cacheData = getCacheData(request)
@@ -97,7 +98,7 @@ internal class CacheInterceptor() : Interceptor {
     //4.USE_CACHE_AFTER_FAILURE 网络失败使用缓存
     private fun useCacheAfterFailure(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        LogUtils.d(  "useCacheAfterFailure request:$request")
+        LogUtils.d(NetConfig.getDebug(),  "useCacheAfterFailure request:$request")
         try {
             val response = chain.proceed(request)
             if (response.code != 200) {
@@ -113,7 +114,7 @@ internal class CacheInterceptor() : Interceptor {
                 .body(data.toResponseBody(responseBody.contentType()))
                 .build()
         } catch (e: Exception) {
-            LogUtils.d(  "Exception e:$e")
+            LogUtils.d(NetConfig.getDebug(),  "Exception e:$e")
             val cacheData = getCacheData(request)
             if (cacheData != null) {
                 return cacheData

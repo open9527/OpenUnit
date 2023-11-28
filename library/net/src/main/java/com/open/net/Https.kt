@@ -16,7 +16,7 @@ object Https {
 
 
      fun OkHttpClient.Builder.trustSSLCertificate() = apply {
-        hostnameVerifier(Https.UnSafeHostnameVerifier)
+        hostnameVerifier(UnSafeHostnameVerifier)
         setSSLCertificate(null)
     }
 
@@ -35,7 +35,7 @@ object Https {
         password: String? = null,
     ) = apply {
         try {
-            val trustManagerFinal: X509TrustManager = trustManager ?: Https.UnSafeTrustManager
+            val trustManagerFinal: X509TrustManager = trustManager ?: UnSafeTrustManager
 
             val keyManagers = prepareKeyManager(bksFile, password)
             val sslContext = SSLContext.getInstance("TLS")
@@ -59,13 +59,13 @@ object Https {
      * 则验证机制可以回调此接口的实现程序来确定是否应该允许此连接。策略可以是基于证书的或依赖于其他验证方案。
      * 当验证 URL 主机名使用的默认规则失败时使用这些回调。如果主机名是可接受的，则返回 true
      */
-    var UnSafeHostnameVerifier = HostnameVerifier { _, _ -> true }
+    private var UnSafeHostnameVerifier = HostnameVerifier { _, _ -> true }
 
     /**
      * 为了解决客户端不信任服务器数字证书的问题，网络上大部分的解决方案都是让客户端不对证书做任何检查，
      * 这是一种有很大安全漏洞的办法
      */
-    var UnSafeTrustManager: X509TrustManager = object : X509TrustManager {
+    private var UnSafeTrustManager: X509TrustManager = object : X509TrustManager {
         @Throws(CertificateException::class)
         override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {
         }

@@ -7,20 +7,24 @@ import org.jetbrains.annotations.NonNls
 
 object LogUtils {
     private const val MAX_TAG_LENGTH: Int = 23
-    private var debug = false
+    private var isDebug = false
     fun init(debug: Boolean) {
-        this.debug = debug
+        this.isDebug = debug
+    }
+
+    fun d(debug: Boolean, @NonNls message: String) {
+        printLog(debug, null, message)
     }
 
     fun d(tag: String, @NonNls message: String) {
-        printLog(tag, message)
+        printLog(isDebug, tag, message)
     }
 
     fun d(@NonNls message: String) {
-        printLog(null, message)
+        printLog(isDebug, null, message)
     }
 
-    private fun printLog(tag: String?, message: String) {
+    private fun printLog(debug: Boolean = isDebug, tag: String?, message: String) {
         if (debug) {
             val stackTrace = Thread.currentThread().stackTrace
             if (stackTrace.isEmpty()) {
@@ -28,8 +32,6 @@ object LogUtils {
             } else {
                 Log.d(tag ?: createStackElementTag(Exception().stackTrace[2]), message)
             }
-
-
         }
     }
 

@@ -1,6 +1,7 @@
 package com.open.net.cache
 
 import com.open.core.LogUtils
+import com.open.net.NetConfig
 import com.tencent.mmkv.MMKV
 import kotlinx.serialization.Serializable
 import okhttp3.Request
@@ -55,24 +56,24 @@ object HttpCacheManager {
 
     fun getHttpCache(request: Request): String? {
         val cacheKey: String = generateCacheKey(request)
-        LogUtils.d( "getHttpCache cacheKey: $cacheKey")
+        LogUtils.d(NetConfig.getDebug(),"getHttpCache cacheKey: $cacheKey")
         val json = httpCache.decodeString(cacheKey, null)
-        LogUtils.d("getHttpCache json: $json")
+        LogUtils.d(NetConfig.getDebug(),"getHttpCache json: $json")
         return json
     }
 
     fun saveHttpCache(request: Request, json: String?): Boolean {
         val cacheKey: String = generateCacheKey(request)
-        LogUtils.d( "saveHttpCache cacheKey: $cacheKey")
-        LogUtils.d( "saveHttpCache json: $json")
+        LogUtils.d(NetConfig.getDebug(),"saveHttpCache cacheKey: $cacheKey")
+        LogUtils.d(NetConfig.getDebug(),"saveHttpCache json: $json")
         return httpCache.encode(cacheKey, json)
     }
 
     fun cleanHttpCache(request: Request): Boolean {
         val cacheKey = generateCacheKey(request)
         val cacheData = httpCache.decodeString(cacheKey, null)
-        LogUtils.d("cleanHttpCache cacheKey: $cacheKey")
-        LogUtils.d("cleanHttpCache cacheData: $cacheData")
+        LogUtils.d(NetConfig.getDebug(),"cleanHttpCache cacheKey: $cacheKey")
+        LogUtils.d(NetConfig.getDebug(),"cleanHttpCache cacheData: $cacheData")
         if (cacheData != null) {
             httpCache.removeValueForKey(cacheKey)
         }
@@ -108,7 +109,7 @@ object HttpCacheManager {
 
     @Serializable
     private data class HttpCacheChe(
-        val id: String = "9527",
+        val id: String = "cache-id",
         val method: String?,
         val url: String = "host-url",
         val body: String?

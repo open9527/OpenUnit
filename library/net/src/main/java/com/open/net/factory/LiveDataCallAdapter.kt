@@ -1,8 +1,7 @@
 package com.open.net.factory
 
 import androidx.lifecycle.LiveData
-import com.open.net.okhttp.response.onFailureResponse
-import com.open.net.okhttp.response.onSuccessResponse
+import com.open.net.okhttp.response.BaseResponse
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Callback
@@ -19,11 +18,11 @@ class LiveDataCallAdapter<T>(private val responseType: Type) : CallAdapter<T, Li
                 if (started.compareAndSet(false, true)) {
                     call.enqueue(object : Callback<T> {
                         override fun onFailure(call: Call<T>, t: Throwable) {
-                            postValue(onFailureResponse(t))
+                            postValue(BaseResponse().onFailureResponse(t))
                         }
 
                         override fun onResponse(call: Call<T>, response: Response<T>) {
-                            postValue(onSuccessResponse(response))
+                            postValue(BaseResponse().onSuccessResponse(response))
                         }
 
                     })
