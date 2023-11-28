@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.open.imageload"
+    namespace = "com.open.image"
     compileSdk = 34
     defaultConfig {
         minSdk = 24

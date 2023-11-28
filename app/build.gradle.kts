@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.plugin.serialization)
 }
 
 android {
@@ -64,4 +65,8 @@ dependencies {
     implementation(project(path = ":library:dialog"))
     implementation(project(path = ":library:permission"))
     implementation(project(path = ":library:router"))
+    implementation(project(path = ":library:recyclerview"))
+    implementation(project(path = ":library:image"))
+    implementation(project(path = ":library:serialization"))
+    implementation(project(path = ":library:net"))
 }
