@@ -12,7 +12,6 @@ android {
     defaultConfig {
         applicationId = "com.open.unit"
         minSdk = 24
-        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -60,6 +59,8 @@ dependencies {
     implementation(libs.bundles.ktx)
     implementation(libs.bundles.ui)
     implementation(libs.bundles.coil)
+    implementation(libs.bundles.serialization)
+    implementation(libs.bundles.net)
     implementation(project(path = ":library:core"))
     implementation(project(path = ":library:base"))
     implementation(project(path = ":library:dialog"))
@@ -69,4 +70,5 @@ dependencies {
     implementation(project(path = ":library:image"))
     implementation(project(path = ":library:serialization"))
     implementation(project(path = ":library:net"))
+
 }

@@ -26,10 +26,10 @@ import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
 
 
-fun initCoil(app: Application, okHttpClient: OkHttpClient = OkHttpClient.Builder().build()) {
+fun initCoil(context: Context, okHttpClient: OkHttpClient = OkHttpClient.Builder().build()) {
     Coil.setImageLoader(
-        ImageLoader.Builder(app).memoryCache {
-            MemoryCache.Builder(app)
+        ImageLoader.Builder(context).memoryCache {
+            MemoryCache.Builder(context)
                 .maxSizePercent(0.25)
                 .build()
         }.components {
@@ -47,7 +47,7 @@ fun initCoil(app: Application, okHttpClient: OkHttpClient = OkHttpClient.Builder
             }
         }.diskCache {
             DiskCache.Builder()
-                .directory(app.cacheDir.resolve("image_cache"))
+                .directory(context.cacheDir.resolve("image_cache"))
                 .maxSizePercent(0.02)
                 .build()
         }.logger(DebugLogger())

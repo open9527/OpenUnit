@@ -36,3 +36,5 @@ include(":library:recyclerview")
 include(":library:image")
 include(":library:serialization")
 include(":library:net")
+
+include(":feature")
