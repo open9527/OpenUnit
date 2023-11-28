@@ -56,8 +56,9 @@ android {
 
 dependencies {
     implementation(libs.appcompat)
-    implementation(libs.bundles.ktx.bundles)
-    implementation(libs.bundles.ui.bundles)
+    implementation(libs.bundles.ktx)
+    implementation(libs.bundles.ui)
+    implementation(libs.bundles.coil)
     implementation(project(path = ":library:core"))
     implementation(project(path = ":library:base"))
     implementation(project(path = ":library:dialog"))

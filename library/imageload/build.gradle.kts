@@ -5,18 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.open.core"
-
+    namespace = "com.open.imageload"
+    compileSdk = 34
     defaultConfig {
-        compileSdk = 34
         minSdk = 24
     }
-
-    buildFeatures {
-        dataBinding = true
-        viewBinding = true
-    }
-
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -28,5 +21,7 @@ android {
 }
 
 dependencies {
-    compileOnly(libs.bundles.ktx)
+//    compileOnly(libs.core.ktx)
+    compileOnly(libs.bundles.coil)
+
 }

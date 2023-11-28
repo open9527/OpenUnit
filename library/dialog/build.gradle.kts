@@ -22,7 +22,7 @@ android {
 }
 
 dependencies {
-    compileOnly(libs.bundles.ktx.bundles)
+    compileOnly(libs.bundles.ktx)
     compileOnly(libs.appcompat)
     compileOnly(project(path = ":library:core"))
 }
