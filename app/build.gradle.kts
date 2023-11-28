@@ -38,6 +38,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        //noinspection DataBindingWithoutKapt
         dataBinding = true
         viewBinding = true
 //        compose = true
@@ -59,4 +60,7 @@ dependencies {
     implementation(libs.bundles.ui.bundles)
     implementation(project(path = ":library:core"))
     implementation(project(path = ":library:base"))
+    implementation(project(path = ":library:dialog"))
+    implementation(project(path = ":library:permission"))
+    implementation(project(path = ":library:router"))
 }
