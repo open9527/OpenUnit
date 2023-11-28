@@ -32,11 +32,15 @@ coil-svg = "2.3.0"
 coil-gif = "2.3.0"
 coil-video = "2.3.0"
 
-
+#序列化
+kotlin-plugin-serialization = "1.9.21"
+kotlinx-serialization-json = "1.6.0"
+retrofit2-kotlinx-serialization-converter = "1.0.0"
 
 
 
 [libraries]
+
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
@@ -53,11 +57,13 @@ material = { group = "com.google.android.material", name = "material", version.r
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewpager2" }
 
-
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil-svg" }
 coil-gif = { group = "io.coil-kt", name = "coil-gif", version.ref = "coil-gif" }
 coil-video = { group = "io.coil-kt", name = "coil-video", version.ref = "coil-video" }
+
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+retrofit2-kotlinx-serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2-kotlinx-serialization-converter" }
 
 
 
@@ -67,6 +73,9 @@ coil-video = { group = "io.coil-kt", name = "coil-video", version.ref = "coil-vi
 com-android-application = { id = "com.android.application", version.ref = "agp" }
 com-android-library = { id = "com.android.library", version.ref = "agp" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
+
+#序列化
+kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-plugin-serialization" }
 
 
 
@@ -80,4 +89,6 @@ ktx = ["core-ktx", "activity-ktx", "fragment-ktx"]
 ui = ["constraintlayout", "material", "recyclerview", "viewpager2"]
 
 coil = ["coil", "material", "coil-svg", "coil-gif", "coil-video"]
+
+serialization = ["kotlinx-serialization-json", "retrofit2-kotlinx-serialization-converter", ]
 
