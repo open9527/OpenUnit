@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- 对话框默认主题 -->
-    <style name="BaseDialogTheme" parent="Theme.AppCompat.Dialog">
+    <style name="BaseDialogTheme" parent="android:Theme.Material.Light.Dialog.NoActionBar">
         <!--    <style name="BaseDialogTheme" parent="Theme.AppCompat.DayNight.Dialog.Alert">-->
         <!-- 无边框 -->
         <item name="android:windowFrame">@null</item>
@@ -22,10 +22,10 @@
         <item name="android:windowMinWidthMajor">0dp</item>
         <item name="android:windowMinWidthMinor">0dp</item>
         <!-- 解决 ActionBar 占位导致 Dialog 无法全屏显示的问题 -->
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+<!--        <item name="windowActionBar">false</item>-->
+<!--        <item name="windowNoTitle">true</item>-->
         <!-- ActionMode 覆盖 Actionbar，不顶下来 -->
-        <item name="windowActionModeOverlay">true</item>
+<!--        <item name="windowActionModeOverlay">true</item>-->
         <item name="android:windowContentOverlay">@null</item>
         <!-- 不感知敏感的切换 -->
         <!--<item name="android:configChanges">orientation|screenSize|keyboardHidden</item>-->
