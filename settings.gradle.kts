@@ -6,6 +6,7 @@ pluginManagement {
         maven { url = uri("https://maven.aliyun.com/repository/releases") }
         maven { url = uri("https://repo.huaweicloud.com/repository/maven") }
         maven { url = uri("https://jitpack.io") }
+//        maven { url = uri("https://plugins.gradle.org/m2/") }
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -20,6 +21,7 @@ dependencyResolutionManagement {
         maven { url = uri("https://maven.aliyun.com/repository/releases") }
         maven { url = uri("https://repo.huaweicloud.com/repository/maven") }
         maven { url = uri("https://jitpack.io") }
+//        maven { url = uri("https://plugins.gradle.org/m2/") }
         google()
         mavenCentral()
     }
@@ -37,4 +39,4 @@ include(":library:image")
 include(":library:serialization")
 include(":library:net")
 
-include(":feature")
+include(":feature:pkg")

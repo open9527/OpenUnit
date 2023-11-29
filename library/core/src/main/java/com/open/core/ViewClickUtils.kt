@@ -5,7 +5,6 @@ import android.view.MotionEvent
 import android.view.View
 
 
-
 object ViewClickUtils {
     @SuppressLint("ClickableViewAccessibility")
     fun View.addClick(
@@ -52,7 +51,7 @@ object ViewClickUtils {
         scale: Float = 0.9f,
         duration: Long = 120,
         viewAlpha: Boolean = false,
-        alpha: Float = 0.5f
+        alpha: Float = 0.8f
     ) {
         this.setOnTouchListener { _, event ->
             when (event.action) {
@@ -61,13 +60,14 @@ object ViewClickUtils {
                         this.animate().scaleX(scale).scaleY(scale).setDuration(duration)
                             .start()
                     if (viewAlpha) this.alpha = alpha
-
+//                    if (viewAlpha) this.background.alpha = (alpha * 255).toInt()
                 }
 
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     if (viewScale) this.animate().scaleX(1f).scaleY(1f).setDuration(duration)
                         .start()
                     if (viewAlpha) this.alpha = 1.0f
+//                    if (viewAlpha) this.background.alpha = (1.0f * 255).toInt()
 
                 }
             }

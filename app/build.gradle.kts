@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
     alias(libs.plugins.kotlin.plugin.serialization)
 }
 
@@ -31,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         //noinspection DataBindingWithoutKapt
@@ -55,20 +56,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.appcompat)
-    implementation(libs.bundles.ktx)
-    implementation(libs.bundles.ui)
-    implementation(libs.bundles.coil)
-    implementation(libs.bundles.serialization)
-    implementation(libs.bundles.net)
-    implementation(project(path = ":library:core"))
-    implementation(project(path = ":library:base"))
-    implementation(project(path = ":library:dialog"))
-    implementation(project(path = ":library:permission"))
-    implementation(project(path = ":library:router"))
-    implementation(project(path = ":library:recyclerview"))
-    implementation(project(path = ":library:image"))
-    implementation(project(path = ":library:serialization"))
-    implementation(project(path = ":library:net"))
+    implementation(project(path = ":feature:pkg"))
 
 }
