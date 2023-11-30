@@ -50,7 +50,7 @@ internal class CacheInterceptor() : Interceptor {
     //2.USE_CACHE_ONLY 只使用缓存
     private fun useCacheOnly(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        LogUtils.d(NetConfig.getDebug(),  "useCacheOnly request:$request")
+//        LogUtils.d(NetConfig.getDebug(),  "useCacheOnly request:$request")
 
         //先读取缓存
         val cacheData = getCacheData(request)
@@ -78,7 +78,7 @@ internal class CacheInterceptor() : Interceptor {
     //3.USE_CACHE_FIRST 优先使用缓存
     private fun useCacheFirst(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        LogUtils.d(NetConfig.getDebug(),  "useCacheFirst request:$request")
+//        LogUtils.d(NetConfig.getDebug(),  "useCacheFirst request:$request")
 
         //先读取缓存
         val cacheData = getCacheData(request)
@@ -98,7 +98,7 @@ internal class CacheInterceptor() : Interceptor {
     //4.USE_CACHE_AFTER_FAILURE 网络失败使用缓存
     private fun useCacheAfterFailure(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        LogUtils.d(NetConfig.getDebug(),  "useCacheAfterFailure request:$request")
+//        LogUtils.d(NetConfig.getDebug(),  "useCacheAfterFailure request:$request")
         try {
             val response = chain.proceed(request)
             if (response.code != 200) {
@@ -150,7 +150,6 @@ internal class CacheInterceptor() : Interceptor {
     }
 
     private companion object {
-        private const val TAG: String = "CacheInterceptor"
         private const val NO_CACHE: String = "NO CACHED DATA FOR DISK"
         private const val CACHE: String = "FROM DISK CACHE"
     }

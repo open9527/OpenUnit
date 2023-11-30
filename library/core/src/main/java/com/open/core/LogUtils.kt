@@ -26,14 +26,26 @@ object LogUtils {
 
     private fun printLog(debug: Boolean = isDebug, tag: String?, message: String) {
         if (debug) {
-            val stackTrace = Thread.currentThread().stackTrace
-            if (stackTrace.isEmpty()) {
-                Log.d(tag ?: createStackElementTag(Thread.currentThread().stackTrace[4]), message)
+//            val stackTrace = Thread.currentThread().stackTrace //stackTrace[4]
+            val stackTrace = Exception().stackTrace//stackTrace[2]
+
+            var msg: String = message
+            val segmentSize = 3 * 1024
+            val length = msg.length.toLong()
+            if (length >= segmentSize) {
+                while (msg.length > segmentSize) { // 循环分段打印日志
+                    val logContent = msg.substring(0, segmentSize)
+                    msg = msg.replace(logContent, "")
+                    Log.d(tag ?: createStackElementTag(stackTrace[2]), logContent)
+                }
+                Log.d(tag ?: createStackElementTag(stackTrace[2]), msg)
             } else {
-                Log.d(tag ?: createStackElementTag(Exception().stackTrace[2]), message)
+                Log.d(tag ?: createStackElementTag(stackTrace[2]), msg)
             }
+
         }
     }
+
 
     private fun createStackElementTag(element: StackTraceElement): String {
         val tag: String = "(" + element.fileName + ":" + element.lineNumber + ")"

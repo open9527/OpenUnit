@@ -6,6 +6,7 @@ import com.open.core.ContextHolder
 import com.open.core.LogUtils
 import com.open.image.initCoil
 import com.open.net.NetConfig
+import com.open.pkg.net.factory.LiveDataCallAdapterFactory
 import com.open.router.OpenRouter
 import com.tencent.mmkv.MMKV
 
@@ -21,12 +22,18 @@ open class PkgApp : Application() {
     }
 
     private fun initialize(context: Application) {
-        LogUtils.init(true)
+        LogUtils.init(PkgConfig.isDebug())
         initCoil(context)
         MMKV.initialize(context)
-        NetConfig.initialize(true, "")
+        NetConfig.initialize(
+//            debug = PkgConfig.isDebug(),
+            debug = PkgConfig.isLog(),
+            hostUrl = PkgConfig.getHostUrl(),
+            headers = mutableMapOf("headerKey" to "headerValue"),
+//            okHttpClient = OkhttpClient.okHttpClient,
+            callAdapterFactory = LiveDataCallAdapterFactory()
+        )
         OpenRouter.init(context)
-
         LogUtils.d("initialize")
     }
 

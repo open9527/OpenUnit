@@ -1,4 +1,4 @@
-package com.open.net.factory
+package com.open.pkg.net.factory
 
 import androidx.lifecycle.LiveData
 import com.open.net.okhttp.response.BaseResponse
@@ -18,12 +18,10 @@ class LiveDataCallAdapterFactory() : Factory() {
         //获取第一个泛型类型
         val observableType = getParameterUpperBound(0, returnType as ParameterizedType)
         val rawType = getRawType(observableType)
-        if (rawType != BaseResponse.ApiResponse::class.java) {
-            throw IllegalArgumentException("LiveDataCallAdapterFactory: type must be ApiResponse")
-        }
-//        if (observableType !is ParameterizedType) {
-//            throw IllegalArgumentException("LiveDataCallAdapterFactory: resource must be parameterized")
+//        if (rawType != BaseResponse.ApiResponse::class.java) {
+//            throw IllegalArgumentException("LiveDataCallAdapterFactory: type must be ApiResponse")
 //        }
+
         return LiveDataCallAdapter<Any>(observableType)
     }
 }

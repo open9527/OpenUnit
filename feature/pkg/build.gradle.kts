@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
+    alias(libs.plugins.kotlin.plugin.serialization)
 }
 
 android {
@@ -10,15 +11,8 @@ android {
     compileSdk = 34
     defaultConfig {
         minSdk = 24
+        buildConfigField("String", "HOST_URL", "\"https://www.wanandroid.com/\"")
     }
-
-//    compileOptions {
-//        sourceCompatibility = JavaVersion.VERSION_1_8
-//        targetCompatibility = JavaVersion.VERSION_1_8
-//    }
-//    kotlinOptions {
-//        jvmTarget = "1.8"
-//    }
 
 
     compileOptions {
@@ -30,6 +24,7 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         dataBinding = true
         viewBinding = true
     }

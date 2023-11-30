@@ -21,7 +21,7 @@ object RetrofitClient {
         if (retrofit == null) {
             retrofit = Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .client(OkhttpClient.okHttpClient)
+                .client(NetConfig.getOkHttpClient() ?: OkhttpClient.okHttpClient)
                 .addConverterFactory(JsonClient.createFactory("application/json".toMediaType()))
                 .addCallAdapterFactory(NetConfig.getCallAdapterFactory())
                 .build()

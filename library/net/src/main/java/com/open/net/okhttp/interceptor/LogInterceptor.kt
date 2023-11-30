@@ -16,26 +16,14 @@ internal class LogInterceptor : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Chain): Response {
         val request: Request = chain.request()
-        val t1 = System.nanoTime()
-        LogUtils.d(
-            NetConfig.getDebug(), String.format(
-                "Sending request %s on %s%n%s",
-                request.url, chain.connection(), request.headers
-            )
-        )
         val requestBody: RequestBody? = request.body
         if (requestBody != null) {
             val buffer = Buffer()
             requestBody.writeTo(buffer)
         }
         val response: Response = chain.proceed(request)
-        val t2 = System.nanoTime()
-        LogUtils.d(
-            NetConfig.getDebug(), String.format(
-                "Received response for %s in %.1fms%n%s",
-                response.request.url, (t2 - t1) / 1e6, response.headers
-            )
-        )
+
+
         val responseBody: ResponseBody? = response.body
         var responseBodyString: String? = null
         if (responseBody != null) {
@@ -44,7 +32,15 @@ internal class LogInterceptor : Interceptor {
             val buffer: Buffer = source.buffer
             responseBodyString = buffer.clone().readString(Charset.forName("UTF-8"))
         }
-        LogUtils.d(NetConfig.getDebug(), "Response responseBodyString: $responseBodyString")
+        LogUtils.d(
+            NetConfig.getDebug(),
+            String.format(
+                "[ request ]:url:%s%n[ headers ]:%s%n[ responseBody ]:%s",
+                request.url,
+                request.headers,
+                responseBodyString
+            )
+        )
         return response
     }
 

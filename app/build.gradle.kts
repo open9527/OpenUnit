@@ -10,6 +10,8 @@ android {
     namespace = "com.open.unit"
     compileSdk = 34
 
+
+
     defaultConfig {
         applicationId = "com.open.unit"
         minSdk = 24
@@ -23,6 +25,8 @@ android {
     }
 
     buildTypes {
+
+
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -30,6 +34,7 @@ android {
                 "proguard-rules.pro"
             )
         }
+        
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
