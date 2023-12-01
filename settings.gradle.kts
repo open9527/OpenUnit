@@ -1,4 +1,4 @@
-//apply { from("flutter_settings.gradle") }
+apply { from("flutter_settings.gradle") }
 pluginManagement {
     repositories {
         maven { url = uri("https://maven.aliyun.com/repository/central") }
@@ -6,7 +6,6 @@ pluginManagement {
         maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
         maven { url = uri("https://repo.huaweicloud.com/repository/maven") }
         maven { url = uri("https://jitpack.io") }
-//        maven { url = uri("https://plugins.gradle.org/m2/") }
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -24,7 +23,6 @@ dependencyResolutionManagement {
         maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
         maven { url = uri("https://repo.huaweicloud.com/repository/maven") }
         maven { url = uri("https://jitpack.io") }
-//        maven { url = uri("https://plugins.gradle.org/m2/") }
         google()
         mavenCentral()
     }
@@ -45,5 +43,5 @@ include(":library:net")
 include(":feature:pkg")
 
 //flutter
-//include(":flutter_module")
-//project(":flutter_module").projectDir=File("../flutter_module")
+include(":flutter_module")
+project(":flutter_module").projectDir=File("../flutter_module")

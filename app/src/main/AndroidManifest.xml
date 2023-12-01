@@ -50,6 +50,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="io.flutter.embedding.android.FlutterActivity"
+            android:screenOrientation="portrait"
+            />
+
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
@@ -62,7 +62,6 @@ android {
 
 dependencies {
     implementation(project(path = ":feature:pkg"))
-//    implementation(project(path = ":flutter"))
-//    implementation(project(path = ":flutter_module"))
+    implementation(project(path = ":flutter"))
 
 }

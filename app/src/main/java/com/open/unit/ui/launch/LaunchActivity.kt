@@ -9,6 +9,7 @@ import com.open.router.OpenRouter
 import com.open.router.Postcard
 import com.open.unit.R
 import com.open.unit.databinding.ActivityLaunchBinding
+import io.flutter.embedding.android.FlutterActivity
 
 class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
@@ -31,7 +32,7 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
         }, viewAlpha = true)
 
         binding.tvStartFlutter.addClick({
-
+            startActivity(FlutterActivity.createDefaultIntent(this))
         }, viewAlpha = true)
     }
 

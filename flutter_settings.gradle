@@ -1,5 +1,8 @@
+//TODO:导入flutter 使用
 setBinding(new Binding([gradle: this, mainModuleName: 'app']))
 evaluate(new File(
         settingsDir.parentFile,
         'flutter_module/.android/include_flutter.groovy'
 ))
+
+

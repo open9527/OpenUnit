@@ -1,0 +1,29 @@
+//TODO:导入flutter使用,# PREFER_PROJECT → 工程设置了仓库优先使用工程配置的，忽略settings
+buildscript {
+    repositories {
+        maven { url = uri("https://maven.aliyun.com/repository/central") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+        maven { url = uri("https://repo.huaweicloud.com/repository/maven") }
+        maven { url = uri("https://jitpack.io") }
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url = uri("https://maven.aliyun.com/repository/central") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+        maven { url = uri("https://repo.huaweicloud.com/repository/maven") }
+        maven { url = uri("https://jitpack.io") }
+        google()
+        mavenCentral()
+
+    }
+    buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
+}
+
+
