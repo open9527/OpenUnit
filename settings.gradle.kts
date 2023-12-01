@@ -44,4 +44,4 @@ include(":feature:pkg")
 
 //flutter
 include(":flutter_module")
-project(":flutter_module").projectDir=File("../flutter_module")
+project(":flutter_module").projectDir=File("../OpenUnit/flutter_module")
