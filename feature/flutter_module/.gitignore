@@ -49,4 +49,6 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 /test/widget_test.dart
-/analysis_options.yaml
+.analysis_options.yaml
+.metadata
+pubspec.lock
