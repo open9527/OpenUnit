@@ -40,11 +40,9 @@ include(":library:image")
 include(":library:serialization")
 include(":library:net")
 
+//native
 include(":feature:pkg")
 
 //flutter
-//include(":flutter_module")
-//project(":flutter_module").projectDir=File("../OpenUnit/flutter_module")
-
 include(":flutter_module")
 project(":flutter_module").projectDir=File("../OpenUnit/feature/flutter_module")

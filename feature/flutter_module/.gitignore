@@ -48,3 +48,5 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+/test/widget_test.dart
+/analysis_options.yaml
