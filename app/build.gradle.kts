@@ -62,5 +62,7 @@ android {
 
 dependencies {
     implementation(project(path = ":feature:pkg"))
+//    implementation(project(path = ":flutter"))
+//    implementation(project(path = ":flutter_module"))
 
 }

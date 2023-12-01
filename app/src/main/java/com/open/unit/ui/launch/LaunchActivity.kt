@@ -29,6 +29,10 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
                 })
             )
         }, viewAlpha = true)
+
+        binding.tvStartFlutter.addClick({
+
+        }, viewAlpha = true)
     }
 
 

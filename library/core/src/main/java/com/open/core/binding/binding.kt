@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RestrictTo
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ComponentActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -21,7 +22,10 @@ inline fun <reified T : ViewBinding> ComponentActivity.binding(owner: LifecycleO
     binding(T::class.java, owner) {
         findViewById<ViewGroup>(android.R.id.content).getChildAt(0)
     }
-
+inline fun <reified T : ViewBinding> AppCompatActivity.binding(owner: LifecycleOwner? = null) =
+    binding(T::class.java, owner) {
+        findViewById<ViewGroup>(android.R.id.content).getChildAt(0)
+    }
 inline fun <reified T : ViewBinding> Fragment.binding(owner: LifecycleOwner? = null) =
     binding(T::class.java, owner, this::requireView)
 

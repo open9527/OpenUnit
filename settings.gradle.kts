@@ -1,3 +1,4 @@
+//apply { from("flutter_settings.gradle") }
 pluginManagement {
     repositories {
         maven { url = uri("https://maven.aliyun.com/repository/central") }
@@ -16,7 +17,7 @@ dependencyResolutionManagement {
 //    # FAIL_ON_PROJECT_REPOS → 工程或工程的插件设置了仓库，构建直接报错抛异常
 //    # PREFER_PROJECT → 工程设置了仓库优先使用工程配置的，忽略settings
 //    # PREFER_SETTINGS → 通过工程单独设置或插件设置的仓库，都会被忽略
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
     repositories {
         maven { url = uri("https://maven.aliyun.com/repository/central") }
         maven { url = uri("https://maven.aliyun.com/repository/public") }
@@ -42,3 +43,7 @@ include(":library:serialization")
 include(":library:net")
 
 include(":feature:pkg")
+
+//flutter
+//include(":flutter_module")
+//project(":flutter_module").projectDir=File("../flutter_module")
