@@ -2,7 +2,7 @@
 setBinding(new Binding([gradle: this, mainModuleName: 'app']))
 evaluate(new File(
         settingsDir.parentFile,
-        'OpenUnit/flutter_module/.android/include_flutter.groovy'
+        'OpenUnit/feature/flutter_module/.android/include_flutter.groovy'
 ))
 
 
