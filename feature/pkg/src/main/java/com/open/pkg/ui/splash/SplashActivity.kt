@@ -1,6 +1,6 @@
 package com.open.pkg.ui.splash
 
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.open.base.BaseActivity
 import com.open.core.CountDown
@@ -14,10 +14,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class SplashActivity : BaseActivity(R.layout.activity_splash) {
     private val binding: ActivitySplashBinding by binding(this)
+//    private val viewModel: SplashViewModel by applicationViewModels()
+    private val viewModel:SplashViewModel by viewModels()
 
-    private val viewModel by lazy {
-        ViewModelProvider(this)[SplashViewModel::class.java]
-    }
     override fun initView() {
         binding.vm = viewModel
     }

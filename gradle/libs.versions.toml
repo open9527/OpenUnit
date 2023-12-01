@@ -13,6 +13,12 @@ junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
 
+#compose
+activity-compose = "1.8.1"
+constraintlayout-compose = "1.0.1"
+compose-bom = "2023.03.00"
+
+
 appcompat = "1.6.1"
 core-ktx = "1.12.0"
 activity-ktx = "1.8.1"
@@ -23,8 +29,6 @@ constraintlayout = "2.1.4"
 material = "1.10.0"
 recyclerview = "1.3.0"
 viewpager2 = "1.0.0"
-
-
 
 #第三方
 
@@ -50,13 +54,31 @@ mmkv = "1.3.2"
 #refresh
 refresh = "2.1.0"
 
+#banner
+banner = "3.5.12"
 
+#media3-exoplayer
+media3 = "1.2.0"
 
 [libraries]
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+
+
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintlayout-compose" }
+
+
 
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
@@ -90,6 +112,15 @@ refresh-header-classics = { group = "io.github.scwang90", name = "refresh-header
 refresh-header-material = { group = "io.github.scwang90", name = "refresh-header-material", version.ref = "refresh" }
 refresh-footer-classics = { group = "io.github.scwang90", name = "refresh-footer-classics", version.ref = "refresh" }
 
+banner = { group = "com.github.zhpanvip", name = "bannerviewpager", version.ref = "banner" }
+
+media3-ui = { group = "androidx.media3", name = "media3-ui", version.ref = "media3" }
+media3-session = { group = "androidx.media3", name = "media3-session", version.ref = "media3" }
+media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3" }
+media3-exoplayer-dash = { group = "androidx.media3", name = "media3-exoplayer-dash", version.ref = "media3" }
+media3-exoplayer-hls = { group = "androidx.media3", name = "media3-exoplayer-hls", version.ref = "media3" }
+media3-exoplayer-rtsp = { group = "androidx.media3", name = "media3-exoplayer-rtsp", version.ref = "media3" }
+
 
 
 
@@ -111,6 +142,11 @@ kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization"
 
 junit-test = ["junit", "androidx-test-ext-junit", "espresso-core"]
 
+compose-test = ["compose-ui-test-manifest", "compose-ui-test-junit4"]
+
+compose = ["activity-compose", "compose-ui", "compose-ui-graphics",
+    "compose-ui-tooling", "compose-ui-tooling-preview", "compose-material3", "constraintlayout-compose"]
+
 ktx = ["core-ktx", "activity-ktx", "fragment-ktx"]
 
 ui = ["constraintlayout", "material", "recyclerview", "viewpager2"]
@@ -122,4 +158,7 @@ serialization = ["kotlinx-serialization-json", "retrofit2-kotlinx-serialization-
 net = ["okhttp", "okhttp-logging-interceptor", "retrofit", "mmkv"]
 
 refresh = ["refresh", "refresh-header-classics", "refresh-header-material", "refresh-footer-classics"]
+
+exoplayer = ["media3-ui", "media3-session", "media3-exoplayer", "media3-exoplayer-dash", "media3-exoplayer-hls",
+    "media3-exoplayer-rtsp"]
 

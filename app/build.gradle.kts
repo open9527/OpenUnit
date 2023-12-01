@@ -47,12 +47,12 @@ android {
         //noinspection DataBindingWithoutKapt
         dataBinding = true
         viewBinding = true
-//        compose = true
+        compose = true
     }
 
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = "1.4.3"
-//    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.3"
+    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -62,6 +62,7 @@ android {
 
 dependencies {
     implementation(project(path = ":feature:pkg"))
+    implementation(project(path = ":feature:compose"))
     implementation(project(path = ":flutter"))
 
 }

@@ -16,7 +16,8 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
     private val binding: ActivityLaunchBinding by binding(this)
 
     init {
-        OpenRouter.register(ACTION_PATH, CLASS_PATH)
+        OpenRouter.register(NATIVE_ACTION_PATH, NATIVE_CLASS_PATH)
+        OpenRouter.register(COMPOSE_ACTION_PATH, COMPOSE_CLASS_PATH)
     }
 
     override fun initView() {
@@ -24,7 +25,7 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
         binding.tvStartPkg.addClick({
             OpenRouter.navigation(
                 it.context,
-                Postcard(ACTION_PATH, Bundle().apply {
+                Postcard(NATIVE_ACTION_PATH, Bundle().apply {
                     putString("key", "value")
                 })
             )
@@ -32,6 +33,15 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
         binding.tvStartFlutter.addClick({
             startActivity(EngineManager.getEngineIntent(EngineManager.HOME_PAGE_ENGINE_ID, this))
+        }, viewAlpha = true)
+
+        binding.tvStartCompose.addClick({
+            OpenRouter.navigation(
+                it.context,
+                Postcard(COMPOSE_ACTION_PATH, Bundle().apply {
+                    putString("key", "value")
+                })
+            )
         }, viewAlpha = true)
     }
 
@@ -43,7 +53,10 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
     }
 
     companion object {
-        private const val ACTION_PATH = "pkg://splash-activity"
-        private const val CLASS_PATH = "com.open.pkg.ui.splash.SplashActivity"
+        private const val NATIVE_ACTION_PATH = "pkg://splash-activity"
+        private const val NATIVE_CLASS_PATH = "com.open.pkg.ui.splash.SplashActivity"
+
+        private const val COMPOSE_ACTION_PATH = "pkg://compose-activity"
+        private const val COMPOSE_CLASS_PATH = "com.open.compose.ui.ComposeActivity"
     }
 }

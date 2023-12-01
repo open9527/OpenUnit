@@ -43,6 +43,10 @@ include(":library:net")
 //native
 include(":feature:pkg")
 
+//compose
+include(":feature:compose")
+
 //flutter
 include(":flutter_module")
 project(":flutter_module").projectDir=File("../OpenUnit/feature/flutter_module")
+

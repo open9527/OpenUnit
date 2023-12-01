@@ -3,8 +3,9 @@ plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
 }
+
 android {
-    namespace = "com.open.library"
+    namespace = "com.open.compose"
 
     compileSdk = 34
     defaultConfig {
@@ -18,4 +19,18 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.3"
+    }
+}
+
+dependencies {
+//    compileOnly(libs.appcompat)
+//    compileOnly(libs.bundles.ktx)
+    api(platform(libs.compose.bom))
+    api(libs.bundles.compose)
+
 }

@@ -28,6 +28,9 @@ android {
         dataBinding = true
         viewBinding = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.3"
+    }
 }
 
 dependencies {
@@ -38,6 +41,8 @@ dependencies {
     api(libs.bundles.serialization)
     api(libs.bundles.net)
     api(libs.bundles.refresh)
+    api(libs.banner)
+    api(libs.bundles.exoplayer)
     api(project(path = ":library:core"))
     api(project(path = ":library:base"))
     api(project(path = ":library:dialog"))
