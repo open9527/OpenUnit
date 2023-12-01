@@ -1,9 +1,8 @@
 pluginManagement {
     repositories {
+        maven { url = uri("https://maven.aliyun.com/repository/central") }
         maven { url = uri("https://maven.aliyun.com/repository/public") }
-        maven { url = uri("https://maven.aliyun.com/repository/google") }
-        maven { url = uri("https://maven.aliyun.com/repository/jcenter") }
-        maven { url = uri("https://maven.aliyun.com/repository/releases") }
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
         maven { url = uri("https://repo.huaweicloud.com/repository/maven") }
         maven { url = uri("https://jitpack.io") }
 //        maven { url = uri("https://plugins.gradle.org/m2/") }
@@ -13,12 +12,15 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
+//    # 三种模式解释
+//    # FAIL_ON_PROJECT_REPOS → 工程或工程的插件设置了仓库，构建直接报错抛异常
+//    # PREFER_PROJECT → 工程设置了仓库优先使用工程配置的，忽略settings
+//    # PREFER_SETTINGS → 通过工程单独设置或插件设置的仓库，都会被忽略
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        maven { url = uri("https://maven.aliyun.com/repository/central") }
         maven { url = uri("https://maven.aliyun.com/repository/public") }
-        maven { url = uri("https://maven.aliyun.com/repository/google") }
-        maven { url = uri("https://maven.aliyun.com/repository/jcenter") }
-        maven { url = uri("https://maven.aliyun.com/repository/releases") }
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
         maven { url = uri("https://repo.huaweicloud.com/repository/maven") }
         maven { url = uri("https://jitpack.io") }
 //        maven { url = uri("https://plugins.gradle.org/m2/") }
