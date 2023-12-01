@@ -14,7 +14,7 @@ data class ArticleVo(
 )
 
 @Serializable
-data class ListData(
+data class ArticleListData(
     val curPage: Int,
     val pageCount: Int,
     val size: Int,

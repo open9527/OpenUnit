@@ -39,5 +39,6 @@ android {
 }
 
 dependencies {
+    compileOnly(libs.appcompat)
     compileOnly(libs.bundles.ktx)
 }

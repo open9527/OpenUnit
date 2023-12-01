@@ -3,11 +3,24 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.open.pkg.ui.splash.SplashViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_count"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@{vm.valueCount}"
+            android:gravity="center"
+            android:textColor="@android:color/darker_gray" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

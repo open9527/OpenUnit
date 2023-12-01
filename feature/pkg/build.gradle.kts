@@ -37,6 +37,7 @@ dependencies {
     api(libs.bundles.coil)
     api(libs.bundles.serialization)
     api(libs.bundles.net)
+    api(libs.bundles.refresh)
     api(project(path = ":library:core"))
     api(project(path = ":library:base"))
     api(project(path = ":library:dialog"))
