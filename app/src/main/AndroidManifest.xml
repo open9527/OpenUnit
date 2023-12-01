@@ -53,7 +53,7 @@
         <activity
             android:name="io.flutter.embedding.android.FlutterActivity"
             android:screenOrientation="portrait"
-            />
+            tools:ignore="LockedOrientationActivity" />
 
     </application>
 

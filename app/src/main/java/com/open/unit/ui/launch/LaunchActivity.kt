@@ -9,7 +9,7 @@ import com.open.router.OpenRouter
 import com.open.router.Postcard
 import com.open.unit.R
 import com.open.unit.databinding.ActivityLaunchBinding
-import io.flutter.embedding.android.FlutterActivity
+import com.open.unit.utils.EngineManager
 
 class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
@@ -20,7 +20,6 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
     }
 
     override fun initView() {
-
         binding.click = ClickProxy()
         binding.tvStartPkg.addClick({
             OpenRouter.navigation(
@@ -32,7 +31,7 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
         }, viewAlpha = true)
 
         binding.tvStartFlutter.addClick({
-            startActivity(FlutterActivity.createDefaultIntent(this))
+            startActivity(EngineManager.getEngineIntent(EngineManager.HOME_PAGE_ENGINE_ID, this))
         }, viewAlpha = true)
     }
 
