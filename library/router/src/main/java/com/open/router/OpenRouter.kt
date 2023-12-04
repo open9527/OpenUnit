@@ -26,7 +26,11 @@ object OpenRouter {
     }
 
 
-
+    fun navigation(ctx: Context?, postcard: Postcard, intent: Intent): Any? {
+        val context = ctx ?: application
+        RouterDelegate.completion(application, postcard)
+        return context.startActivity(intent)
+    }
 
     fun navigation(ctx: Context?, postcard: Postcard, requestCode: Int = -1): Any? {
         val context = ctx ?: application

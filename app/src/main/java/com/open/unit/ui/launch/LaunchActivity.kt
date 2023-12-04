@@ -18,6 +18,7 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
     init {
         OpenRouter.register(NATIVE_ACTION_PATH, NATIVE_CLASS_PATH)
         OpenRouter.register(COMPOSE_ACTION_PATH, COMPOSE_CLASS_PATH)
+        OpenRouter.register(FLUTTER_ACTION_PATH, FLUTTER_CLASS_PATH)
     }
 
     override fun initView() {
@@ -32,7 +33,13 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
         }, viewAlpha = true)
 
         binding.tvStartFlutter.addClick({
-            startActivity(EngineManager.getEngineIntent(EngineManager.HOME_PAGE_ENGINE_ID, this))
+            OpenRouter.navigation(
+                it.context,
+                Postcard(FLUTTER_ACTION_PATH, Bundle().apply {
+                    putString("key", "value")
+                }), EngineManager.getEngineIntent(EngineManager.HOME_PAGE_ENGINE_ID, this)
+            )
+
         }, viewAlpha = true)
 
         binding.tvStartCompose.addClick({
@@ -56,7 +63,10 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
         private const val NATIVE_ACTION_PATH = "pkg://splash-activity"
         private const val NATIVE_CLASS_PATH = "com.open.pkg.ui.splash.SplashActivity"
 
-        private const val COMPOSE_ACTION_PATH = "pkg://compose-activity"
+        private const val COMPOSE_ACTION_PATH = "compose://compose-activity"
         private const val COMPOSE_CLASS_PATH = "com.open.compose.ui.ComposeActivity"
+
+        private const val FLUTTER_ACTION_PATH = "flutter://flutter-activity"
+        private const val FLUTTER_CLASS_PATH = "io.flutter.embedding.android.FlutterActivity"
     }
 }
