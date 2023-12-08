@@ -1,4 +1,4 @@
-package com.open.pkg.ui.article
+package com.open.pkg.ui.article.cell
 
 import android.content.Context
 import androidx.databinding.DataBindingUtil
@@ -41,12 +41,12 @@ class ArticleBannerCell(
         mBannerPager.apply {
             adapter = bannerAdapter
             setScrollDuration(2000)
-            setIndicatorSlideMode(IndicatorSlideMode.SCALE)
+            setIndicatorSlideMode(IndicatorSlideMode.SMOOTH)
             setRevealWidth(BannerUtils.dp2px(16f), BannerUtils.dp2px(16f))
             setPageStyle(
                 PageStyle.MULTI_PAGE_SCALE, 0.85f
             )
-            setIndicatorSliderColor(getColor(R.color.gray), getColor(R.color.purple_200))
+            setIndicatorSliderColor(getColor(R.color.gray), getColor(R.color.pink))
             registerLifecycleObserver(lifecycleOwner.lifecycle)
         }.create()
         mBannerPager.refreshData(bannerList)

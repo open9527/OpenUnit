@@ -9,8 +9,12 @@ import okhttp3.RequestBody
 @Serializable
 data class ArticleVo(
     val title: String,
+    val author: String,
+    val shareUser: String,
+    val niceDate: String,
     val link: String,
     val superChapterName: String,
+    val chapterName: String,
 )
 
 @Serializable

@@ -14,7 +14,7 @@ internal class CacheInterceptor() : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        LogUtils.d(NetConfig.getDebug(), "intercept request:$request")
+//        LogUtils.d(NetConfig.getDebug(), "intercept request:$request")
 
         val headers = request.headers
 

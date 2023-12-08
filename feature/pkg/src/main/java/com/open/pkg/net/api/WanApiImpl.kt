@@ -55,7 +55,7 @@ object WanApiImpl {
     ): LiveData<BaseResponse.ApiResponse<ProjectListData>> {
         return RetrofitClient.retrofitClient<WanApi>().requestProjectList(
             HttpCacheManager.HttpCacheType.USE_CACHE_AFTER_FAILURE.name,
-            page
+            page, id
         )
     }
 }

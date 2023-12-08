@@ -39,7 +39,7 @@ tabContentEnd	设置标签内容的末尾边距
             android:layout_width="match_parent"
             android:layout_height="@dimen/tab_bottom_height"
             android:background="@color/purple_500"
-            app:tabTextColor="@color/white_80"
+            app:tabTextColor="@color/white80"
             app:tabSelectedTextColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:tabIndicatorHeight="@dimen/view_0px"

@@ -31,12 +31,12 @@ object OkhttpClient {
             .retryOnConnectionFailure(true)
             .trustSSLCertificate()
             .addInterceptor(HeaderInterceptor(NetConfig.getHeaders()))
-            .addInterceptor(LogInterceptor())
-//            .addInterceptor(HttpLoggingInterceptor { message ->
-//                LogUtils.d(NetConfig.getDebug(), message)
-//            }.apply {
-//                level = HttpLoggingInterceptor.Level.BODY
-//            })
+//            .addInterceptor(LogInterceptor())
+            .addInterceptor(HttpLoggingInterceptor { message ->
+                LogUtils.d(NetConfig.getDebug(), message)
+            }.apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            })
             .addInterceptor(CacheInterceptor())
             .proxy(Proxy.NO_PROXY)
             .build()

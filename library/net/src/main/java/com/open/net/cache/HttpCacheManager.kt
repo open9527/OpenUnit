@@ -56,24 +56,18 @@ object HttpCacheManager {
 
     fun getHttpCache(request: Request): String? {
         val cacheKey: String = generateCacheKey(request)
-        LogUtils.d(NetConfig.getDebug(),"getHttpCache cacheKey: $cacheKey")
         val json = httpCache.decodeString(cacheKey, null)
-        LogUtils.d(NetConfig.getDebug(),"getHttpCache json: $json")
         return json
     }
 
     fun saveHttpCache(request: Request, json: String?): Boolean {
         val cacheKey: String = generateCacheKey(request)
-        LogUtils.d(NetConfig.getDebug(),"saveHttpCache cacheKey: $cacheKey")
-        LogUtils.d(NetConfig.getDebug(),"saveHttpCache json: $json")
         return httpCache.encode(cacheKey, json)
     }
 
     fun cleanHttpCache(request: Request): Boolean {
         val cacheKey = generateCacheKey(request)
         val cacheData = httpCache.decodeString(cacheKey, null)
-        LogUtils.d(NetConfig.getDebug(),"cleanHttpCache cacheKey: $cacheKey")
-        LogUtils.d(NetConfig.getDebug(),"cleanHttpCache cacheData: $cacheData")
         if (cacheData != null) {
             httpCache.removeValueForKey(cacheKey)
         }

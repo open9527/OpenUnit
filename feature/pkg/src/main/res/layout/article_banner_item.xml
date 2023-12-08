@@ -28,7 +28,7 @@
             android:shadowDx="0"
             android:shadowDy="1"
             android:shadowRadius="3.0"
-            android:textColor="@color/white"
+            android:textColor="@color/primary_color"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent" />
 
