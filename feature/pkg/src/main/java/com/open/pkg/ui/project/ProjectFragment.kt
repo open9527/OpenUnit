@@ -48,7 +48,10 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment) {
                     projectClassificationList.add(projectClassificationVo)
                 }
                 pageAdapter.setFragmentList(fragmentList)
-                binding.viewPager.adapter = pageAdapter
+                binding.viewPager.apply {
+                    adapter = pageAdapter
+                    offscreenPageLimit = 5
+                }
                 TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
                     tab.text = projectClassificationList[position].name
                 }.attach()
