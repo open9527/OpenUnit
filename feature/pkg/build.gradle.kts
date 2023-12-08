@@ -12,6 +12,7 @@ android {
     defaultConfig {
         minSdk = 24
         buildConfigField("String", "HOST_URL", "\"https://www.wanandroid.com/\"")
+        buildConfigField("String", "ROUTER_HOST_URL", "\"pkg://\"")
     }
 
 
@@ -52,4 +53,8 @@ dependencies {
     api(project(path = ":library:image"))
     api(project(path = ":library:serialization"))
     api(project(path = ":library:net"))
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
 }

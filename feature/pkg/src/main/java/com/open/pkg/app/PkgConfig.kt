@@ -9,4 +9,6 @@ object PkgConfig {
     fun isLog(): Boolean = true
     fun getHostUrl(): String = BuildConfig.HOST_URL
 
+    fun getRouterHostUrl(): String = BuildConfig.ROUTER_HOST_URL
+
 }

@@ -10,6 +10,6 @@ class App : PkgApp() {
     }
 
     private fun initFlutter() {
-        EngineManager.registerEngine(EngineManager.HOME_PAGE_ENGINE_ID, this)
+        EngineManager.registerEngine(EngineManager.FLUTTER_PAGE_ENGINE_ID, this)
     }
 }

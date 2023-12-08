@@ -7,6 +7,8 @@ import com.open.core.LogUtils
 import com.open.image.initCoil
 import com.open.net.NetConfig
 import com.open.pkg.net.factory.LiveDataCallAdapterFactory
+import com.open.pkg.ui.main.MainActivity
+import com.open.pkg.ui.splash.SplashActivity
 import com.open.router.OpenRouter
 import com.tencent.mmkv.MMKV
 
@@ -29,12 +31,11 @@ open class PkgApp : Application() {
 //            debug = PkgConfig.isDebug(),
             debug = PkgConfig.isLog(),
             hostUrl = PkgConfig.getHostUrl(),
-            headers = mutableMapOf("headerKey" to "headerValue"),
-//            okHttpClient = OkhttpClient.okHttpClient,
+            headers = mutableMapOf("xxxKey" to "xxxValue"),
             callAdapterFactory = LiveDataCallAdapterFactory()
         )
         OpenRouter.init(context)
-        LogUtils.d("initialize")
+        RouterConfig.addList(cla = listOf(SplashActivity::class.java, MainActivity::class.java))
     }
 
 }

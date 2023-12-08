@@ -10,7 +10,7 @@ import com.zhpan.bannerview.BannerViewPager;
 import com.zhpan.bannerview.BaseBannerAdapter;
 import com.zhpan.bannerview.BaseViewHolder;
 
-public class BannerView<T> extends BannerViewPager<T> {
+public class BannerView extends BannerViewPager {
     public BannerView(Context context) {
         this(context, null, -1);
     }

@@ -1,5 +1,6 @@
 package com.open.recyclerview.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -83,17 +84,14 @@ open class BaseAdapter<T : BaseCell>(
 }
 
 
+ inline fun <reified T : BaseCell> diffCallback(): DiffUtil.ItemCallback<T> =
+    object : DiffUtil.ItemCallback<T>() {
+        override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
+            return oldItem == newItem
+        }
 
-
-
-//inline fun <reified T : BaseCell> diffCallback(): DiffUtil.ItemCallback<T> =
-//    object : DiffUtil.ItemCallback<T>() {
-//        override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
-//            return oldItem == newItem
-//        }
-//
-//        @SuppressLint("DiffUtilEquals")
-//        override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
-//            return oldItem == newItem
-//        }
-//    }
+        @SuppressLint("DiffUtilEquals")
+        override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
+            return oldItem == newItem
+        }
+    }

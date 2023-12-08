@@ -10,8 +10,6 @@ android {
     namespace = "com.open.unit"
     compileSdk = 34
 
-
-
     defaultConfig {
         applicationId = "com.open.unit"
         minSdk = 24
@@ -26,7 +24,6 @@ android {
 
     buildTypes {
 
-
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -34,7 +31,7 @@ android {
                 "proguard-rules.pro"
             )
         }
-        
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -44,7 +41,6 @@ android {
         jvmTarget = "17"
     }
     buildFeatures {
-        //noinspection DataBindingWithoutKapt
         dataBinding = true
         viewBinding = true
         compose = true
@@ -56,8 +52,24 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+//            excludes += "**/flutter_assets"
+//            excludes += "**/flutter_assets/**"
+        }
+
+        jniLibs {
+//            excludes += "**/libflutter.so"
+        }
+
+    }
+    splits {
+        abi {
+            this.isEnable = true
+            this.isUniversalApk = false
+            reset()
+            this.include("arm64-v8a") // "armeabi-v7a","x86", "x86_64"
         }
     }
+
 }
 
 dependencies {

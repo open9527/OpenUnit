@@ -8,7 +8,7 @@ import io.flutter.embedding.engine.FlutterEngineCache
 import io.flutter.embedding.engine.dart.DartExecutor
 
 object EngineManager {
-    const val HOME_PAGE_ENGINE_ID = "home_page_engine_id"
+    const val FLUTTER_PAGE_ENGINE_ID = "flutter_page_engine_id"
 
     fun registerEngine(engineId: String, context: Context) {
         val flutterEngine = FlutterEngine(context)

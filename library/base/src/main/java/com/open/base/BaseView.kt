@@ -6,4 +6,5 @@ interface BaseView {
     fun initView()
 
     fun initData()
+
 }

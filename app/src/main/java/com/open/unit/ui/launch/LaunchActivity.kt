@@ -37,7 +37,7 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
                 it.context,
                 Postcard(FLUTTER_ACTION_PATH, Bundle().apply {
                     putString("key", "value")
-                }), EngineManager.getEngineIntent(EngineManager.HOME_PAGE_ENGINE_ID, this)
+                }), EngineManager.getEngineIntent(EngineManager.FLUTTER_PAGE_ENGINE_ID, this)
             )
 
         }, viewAlpha = true)

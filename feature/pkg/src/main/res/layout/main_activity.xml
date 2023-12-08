@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_0px"
+            app:layout_constraintBottom_toTopOf="@+id/tab_layout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--
+
+tabMode	设置 Tab 的模式，可选值为 "fixed"（固定模式）、 "scrollable"（可滚动模式）、"auto"（自动模式,会根据屏幕宽度和Tab个数自动选择固定模式或者可滚动模式）,可滚动模式下Tab可以像列表一样滚动
+tabGravity	设置 Tab 的对齐方式，可选值为 "fill"（填充方式）、"center"（居中方式）、"start"（起始对齐方式）
+tabIndicatorColor	设置指示器（下划线）的颜色
+tabIndicatorHeight	设置指示器的高度
+tabBackground	设置标签的背景
+tabTextColor	设置标签的文本颜色
+tabTextAppearance	设置标签的文本样式
+tabSelectedTextColor	设置选中标签的文本颜色
+tabRippleColor	设置标签的点击效果颜色
+tabIconTint	设置标签图标的着色颜色
+tabIconSize	设置标签图标的尺寸
+tabContentStart	设置标签内容的起始边距
+tabContentEnd	设置标签内容的末尾边距
+        -->
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_bottom_height"
+            android:background="@color/purple_500"
+            app:tabTextColor="@color/white_80"
+            app:tabSelectedTextColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:tabIndicatorHeight="@dimen/view_0px"
+            app:tabRippleColor="@color/purple_700"
+            app:tabUnboundedRipple="@android:color/transparent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
