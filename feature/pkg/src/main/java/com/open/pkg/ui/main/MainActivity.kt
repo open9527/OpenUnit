@@ -23,13 +23,16 @@ class MainActivity : BaseActivity(R.layout.main_activity) {
         listOf(ArticleFragment(), ProjectFragment(), MineFragment())
     }
 
-    private val adapter by lazy {
+    private val pageAdapter by lazy {
         MainFragmentPagerAdapter(supportFragmentManager, lifecycle)
     }
 
     override fun initView() {
-        adapter.setFragmentList(fragmentList)
-        binding.viewPager.adapter = adapter
+        pageAdapter.setFragmentList(fragmentList)
+        binding.viewPager.apply {
+            isUserInputEnabled = false
+            adapter = pageAdapter
+        }
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = titles[position]
         }.attach()

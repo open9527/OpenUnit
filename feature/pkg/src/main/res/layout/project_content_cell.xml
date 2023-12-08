@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cell"
+            type="com.open.pkg.ui.project.content.cell.ProjectContentCell" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        bindShapeDrawableRadius="@{6}"
+        bindShapeDrawableSolidColor="@{@color/primary_color}"
+        bindShapeDrawableStrokeColor="@{@color/line_color}"
+        bindShapeDrawableStrokeWidth="@{1}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/view_horizontal_margin"
+        android:layout_marginVertical="@dimen/view_vertical_margin"
+        android:padding="@dimen/view_vertical_padding"
+        tools:background="@color/window_background_color">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_avatar"
+            bindShapeDrawableRadius="@{6}"
+            bindShapeDrawableSolidColor="@{@color/window_background_color}"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/view_vertical_margin"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{cell.valueAuthor}"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/desc_text_size"
+            app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+            app:layout_constraintTop_toTopOf="@+id/iv_avatar"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            tools:text="author" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{cell.valueDate}"
+            android:textColor="@color/text_hint_color"
+            android:textSize="@dimen/desc_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+            app:layout_constraintStart_toStartOf="@+id/tv_author"
+            app:layout_constraintTop_toBottomOf="@+id/tv_author"
+            tools:text="date" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_vertical_margin"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:text="@{cell.valueContent}"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/content_text_size"
+
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_chapter_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_vertical_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{cell.valueChapterName}"
+            android:textColor="@color/text_hint_color"
+            android:textSize="@dimen/desc_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

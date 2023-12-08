@@ -26,7 +26,9 @@ data class ProjectVo(
     val projectLink: String,
     val envelopePic: String,
     val niceDate: String,
-    val niceShareDate: String,
     val author: String,
+    val shareUser: String,
+    val superChapterName: String,
+    val chapterName: String,
 )
 

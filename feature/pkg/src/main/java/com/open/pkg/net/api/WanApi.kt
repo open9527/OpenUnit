@@ -11,6 +11,7 @@ import com.open.pkg.net.vo.ProjectListData
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface WanApi {
     companion object {
@@ -18,10 +19,10 @@ interface WanApi {
         private const val HOTKEY = "hotkey/json"
         private const val BANNER = "banner/json"
         private const val ARTICLE_LIST = "article/list/{page}/json"
-        private const val SEARCH_ARTICLE_LIST = "article/query/{page}/json?k={keyword}"
+        private const val SEARCH_ARTICLE_LIST = "article/query/{page}/json"
 
         private const val PROJECT = "project/tree/json"
-        private const val PROJECT_LIST = "project/list/{page}/json?cid={id}"
+        private const val PROJECT_LIST = "project/list/{page}/json"
     }
 
     @GET(HOTKEY)
@@ -34,7 +35,7 @@ interface WanApi {
     fun requestSearchArticleList(
         @Header(HttpCacheManager.HTTP_CACHE_HEADER) cache: String = HttpCacheManager.HttpCacheType.NO_CACHE.name,
         @Path("page") page: Int = 0,
-        @Path("keyword") keyword: String = "",
+        @Query("k") keyword: String = "",
     ): LiveData<BaseResponse.ApiResponse<ArticleListData>>
 
     @GET(BANNER)
@@ -58,7 +59,7 @@ interface WanApi {
     fun requestProjectList(
         @Header(HttpCacheManager.HTTP_CACHE_HEADER) cache: String = HttpCacheManager.HttpCacheType.NO_CACHE.name,
         @Path("page") page: Int = 0,
-        @Path("id") id: Int = 0,
+        @Query("cid") id: Int = 0,
     ): LiveData<BaseResponse.ApiResponse<ProjectListData>>
 
 }
