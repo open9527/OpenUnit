@@ -1,7 +1,6 @@
 package com.open.image
 
 
-import android.app.Application
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

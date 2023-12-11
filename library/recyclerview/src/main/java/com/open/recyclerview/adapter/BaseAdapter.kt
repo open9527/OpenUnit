@@ -44,7 +44,7 @@ open class BaseAdapter<T : BaseCell>(
     }
 
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-        Log.d("BaseAdapter", "onStateChanged === $event")
+//        Log.d("BaseAdapter", "onStateChanged === $event")
         when (event) {
             Lifecycle.Event.ON_RESUME -> {
             }

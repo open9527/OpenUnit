@@ -48,7 +48,6 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
     }
 
     override fun initView() {
-        rvAdapter.addLifecycleOwner(viewLifecycleOwner)
         binding.rvList.apply {
             layoutManager = WrapContentLinearLayoutManager(context)
 //            addItemDecoration(DividerDecoration().inset(20.0f))

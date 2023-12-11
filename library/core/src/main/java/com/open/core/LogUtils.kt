@@ -1,8 +1,11 @@
 package com.open.core
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.util.Log
 import org.jetbrains.annotations.NonNls
+import java.text.SimpleDateFormat
+import java.util.Date
 
 
 object LogUtils {
@@ -55,4 +58,20 @@ object LogUtils {
         }
         return tag.substring(0, MAX_TAG_LENGTH)
     }
+
+    @SuppressLint("SimpleDateFormat")
+     fun createAppInfo(): String =
+        """
+            #################### APP INFO ####################
+            *********************************************************
+            App Start Time     : ${SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date())}
+            Device Manufacturer: ${Build.MANUFACTURER}
+            Device Model       : ${Build.MODEL}
+            Android Version    : ${Build.VERSION.RELEASE}
+            Android SDK        : ${Build.VERSION.SDK_INT}
+            App PackageName    : ${AppUtils.getAppPackageName()}
+            App VersionName    : ${AppUtils.getAppVersionName()}
+            App VersionCode    : ${AppUtils.getAppVersionCode()}
+            *********************************************************
+            """.trimIndent()
 }

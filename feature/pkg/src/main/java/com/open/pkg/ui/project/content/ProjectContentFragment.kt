@@ -51,7 +51,6 @@ class ProjectContentFragment : BaseFragment(R.layout.project_content_fragment) {
     }
 
     override fun initView() {
-        rvAdapter.addLifecycleOwner(viewLifecycleOwner)
         binding.rvList.apply {
             layoutManager = WrapContentLinearLayoutManager(context)
             adapter = rvAdapter

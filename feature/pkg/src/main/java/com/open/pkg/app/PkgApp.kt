@@ -2,6 +2,8 @@ package com.open.pkg.app
 
 import android.app.Application
 import android.content.Context
+import com.open.core.ActivityLifecycle
+import com.open.core.AppLifecycle
 import com.open.core.ContextHolder
 import com.open.core.LogUtils
 import com.open.image.initCoil
@@ -25,6 +27,8 @@ open class PkgApp : Application() {
 
     private fun initialize(context: Application) {
         LogUtils.init(PkgConfig.isDebug())
+        AppLifecycle.initialize(PkgConfig.isDebug())
+        ActivityLifecycle.initialize(PkgConfig.isDebug(), context)
         initCoil(context)
         MMKV.initialize(context)
         NetConfig.initialize(
