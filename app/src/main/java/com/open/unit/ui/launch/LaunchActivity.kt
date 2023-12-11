@@ -1,23 +1,17 @@
 package com.open.unit.ui.launch
 
-import android.content.ComponentName
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import com.open.base.BaseActivity
-import com.open.core.LogUtils
 import com.open.core.ViewClickUtils.addClick
 import com.open.core.binding.binding
-import com.open.net.cache.HttpCacheManager
 import com.open.router.OpenRouter
 import com.open.router.Postcard
 import com.open.unit.R
 import com.open.unit.databinding.ActivityLaunchBinding
 import com.open.unit.utils.EngineManager
+import com.open.unit.utils.LauncherIcon
 import com.tencent.mmkv.MMKV
-import okhttp3.Request
-import java.lang.Compiler.enable
 
 
 open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
@@ -72,48 +66,12 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
 
     private fun changeIcon(change: Boolean) {
-//        val intent = Intent(this, LaunchActivity::class.java)
-        val pm = packageManager
         if (change) {
-            dataCache.encode(ICON_CHANGE_KEY, false)
-            pm.setComponentEnabledSetting(
-                ComponentName(
-                    baseContext,
-                    "com.open.unit.ui.launch.LaunchNewActivity"
-                ),
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                PackageManager.DONT_KILL_APP
-            )
-
-            pm.setComponentEnabledSetting(
-                ComponentName(
-                    baseContext,
-                    "com.open.unit.ui.launch.LaunchActivity"
-                ),
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                PackageManager.DONT_KILL_APP
-            )
-            LogUtils.d("换LaunchNewActivity的图标")
+            LauncherIcon.switchIcon(LaunchNewActivity::class.java, LaunchActivity::class.java)
         } else {
-            dataCache.encode(ICON_CHANGE_KEY, true)
-            pm.setComponentEnabledSetting(
-                ComponentName(
-                    baseContext,
-                    "com.open.unit.ui.launch.LaunchActivity"
-                ),
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                PackageManager.DONT_KILL_APP
-            )
-            pm.setComponentEnabledSetting(
-                ComponentName(
-                    baseContext,
-                    "com.open.unit.ui.launch.LaunchNewActivity"
-                ),
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                PackageManager.DONT_KILL_APP
-            )
-            LogUtils.d("换LaunchActivity的图标")
+            LauncherIcon.switchIcon(LaunchActivity::class.java, LaunchNewActivity::class.java)
         }
+        dataCache.encode(ICON_CHANGE_KEY, !change)
     }
 
 
