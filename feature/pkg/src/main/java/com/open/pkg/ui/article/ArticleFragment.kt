@@ -102,7 +102,6 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
     private fun requestArticleList() {
         LogUtils.d("requestArticleList page=${page}")
         WanApiImpl.requestArticleList(page).observe(viewLifecycleOwner) { articleListResponse ->
-//            LogUtils.d("ArticleList:${JsonClient.toJson(articleListResponse)}")
             if (articleListResponse.isSuccessful) {
                 articleListResponse.data?.list?.forEach { articleVo ->
                     cellList.add(ArticleContentCell(articleVo))

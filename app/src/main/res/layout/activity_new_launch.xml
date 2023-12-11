@@ -5,9 +5,7 @@
 
     <data>
 
-        <variable
-            name="click"
-            type="com.open.unit.ui.launch.LaunchActivity.ClickProxy" />
+
 
     </data>
 

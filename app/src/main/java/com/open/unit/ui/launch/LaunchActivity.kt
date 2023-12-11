@@ -1,17 +1,26 @@
 package com.open.unit.ui.launch
 
+import android.content.ComponentName
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import com.open.base.BaseActivity
+import com.open.core.LogUtils
 import com.open.core.ViewClickUtils.addClick
 import com.open.core.binding.binding
+import com.open.net.cache.HttpCacheManager
 import com.open.router.OpenRouter
 import com.open.router.Postcard
 import com.open.unit.R
 import com.open.unit.databinding.ActivityLaunchBinding
 import com.open.unit.utils.EngineManager
+import com.tencent.mmkv.MMKV
+import okhttp3.Request
+import java.lang.Compiler.enable
 
-class LaunchActivity : BaseActivity(R.layout.activity_launch) {
+
+open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
     private val binding: ActivityLaunchBinding by binding(this)
 
@@ -20,6 +29,11 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
         OpenRouter.register(COMPOSE_ACTION_PATH, COMPOSE_CLASS_PATH)
         OpenRouter.register(FLUTTER_ACTION_PATH, FLUTTER_CLASS_PATH)
     }
+
+    private val dataCache: MMKV by lazy {
+        MMKV.mmkvWithID(ICON_CHANGE)
+    }
+
 
     override fun initView() {
         binding.click = ClickProxy()
@@ -50,6 +64,56 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
                 })
             )
         }, viewAlpha = true)
+
+        binding.tvChangeIcon.addClick({
+            changeIcon(dataCache.decodeBool(ICON_CHANGE_KEY, true))
+        }, viewAlpha = true)
+    }
+
+
+    private fun changeIcon(change: Boolean) {
+//        val intent = Intent(this, LaunchActivity::class.java)
+        val pm = packageManager
+        if (change) {
+            dataCache.encode(ICON_CHANGE_KEY, false)
+            pm.setComponentEnabledSetting(
+                ComponentName(
+                    baseContext,
+                    "com.open.unit.ui.launch.LaunchNewActivity"
+                ),
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                PackageManager.DONT_KILL_APP
+            )
+
+            pm.setComponentEnabledSetting(
+                ComponentName(
+                    baseContext,
+                    "com.open.unit.ui.launch.LaunchActivity"
+                ),
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP
+            )
+            LogUtils.d("换LaunchNewActivity的图标")
+        } else {
+            dataCache.encode(ICON_CHANGE_KEY, true)
+            pm.setComponentEnabledSetting(
+                ComponentName(
+                    baseContext,
+                    "com.open.unit.ui.launch.LaunchActivity"
+                ),
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                PackageManager.DONT_KILL_APP
+            )
+            pm.setComponentEnabledSetting(
+                ComponentName(
+                    baseContext,
+                    "com.open.unit.ui.launch.LaunchNewActivity"
+                ),
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP
+            )
+            LogUtils.d("换LaunchActivity的图标")
+        }
     }
 
 
@@ -68,5 +132,8 @@ class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
         private const val FLUTTER_ACTION_PATH = "flutter://flutter-activity"
         private const val FLUTTER_CLASS_PATH = "io.flutter.embedding.android.FlutterActivity"
+
+        private const val ICON_CHANGE = "icon_change"
+        private const val ICON_CHANGE_KEY = "icon_change_key"
     }
 }
