@@ -1,5 +1,6 @@
 package com.open.pkg.ui.project
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
@@ -44,7 +45,7 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment) {
             LogUtils.d("projectResponse:${JsonClient.toJson(projectResponse)}")
             if (projectResponse.isSuccessful) {
                 projectResponse.data?.forEach { projectClassificationVo ->
-                    fragmentList.add(ProjectContentFragment())
+                    fragmentList.add(ProjectContentFragment.newInstance(projectClassificationVo))
                     projectClassificationList.add(projectClassificationVo)
                 }
                 pageAdapter.setFragmentList(fragmentList)
@@ -58,4 +59,6 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment) {
             }
         }
     }
+
+
 }

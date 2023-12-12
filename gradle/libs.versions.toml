@@ -43,6 +43,12 @@ kotlin-plugin-serialization = "1.5.0"
 kotlinx-serialization-json = "1.6.0"
 retrofit2-kotlinx-serialization-converter = "1.0.0"
 
+
+
+gson="2.9.0"
+#parcelize
+kotlin-plugin-parcelize = "1.9.21"
+
 #网络请求
 okhttp = "4.11.0"
 okhttp-logging-interceptor = "4.10.0"
@@ -111,6 +117,8 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 
 mmkv = { group = "com.tencent", name = "mmkv-static", version.ref = "mmkv" }
 
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+
 refresh = { group = "io.github.scwang90", name = "refresh-layout-kernel", version.ref = "refresh" }
 refresh-header-classics = { group = "io.github.scwang90", name = "refresh-header-classics", version.ref = "refresh" }
 refresh-header-material = { group = "io.github.scwang90", name = "refresh-header-material", version.ref = "refresh" }
@@ -142,6 +150,9 @@ org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "o
 
 #序列化
 kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-plugin-serialization" }
+
+#parcelize
+kotlin-plugin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin-plugin-parcelize" }
 
 
 

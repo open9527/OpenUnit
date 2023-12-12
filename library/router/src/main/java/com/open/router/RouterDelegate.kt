@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 
 object RouterDelegate {
     private const val TAG: String = "RouterDelegate"
-    private val routes = HashMap<String, RouteMeta>()
-    private val providers = HashMap<Class<*>, IProvider>()
+
+    //    private val routes = HashMap<String, RouteMeta>()
+    private val routes = mutableMapOf<String, RouteMeta>()
+    private val providers = mutableMapOf<Class<*>, IProvider>()
 
 
     fun add(path: String, clazzName: String) {
@@ -20,11 +22,18 @@ object RouterDelegate {
             else -> RouteType.UNKNOWN
         }
         routes[path] = RouteMeta(clazz, type)
-
     }
 
     fun remove(path: String) {
         routes.remove(path)
+    }
+
+    fun getRoutes(): String {
+        val paths: StringBuilder = StringBuilder("routes:")
+        routes.forEach {
+            paths.append("[${it.key} ${it.value}]")
+        }
+        return paths.toString()
     }
 
     @Suppress("UNCHECKED_CAST")

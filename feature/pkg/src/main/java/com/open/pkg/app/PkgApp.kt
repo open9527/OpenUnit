@@ -10,7 +10,7 @@ import com.open.image.initCoil
 import com.open.net.NetConfig
 import com.open.pkg.net.factory.LiveDataCallAdapterFactory
 import com.open.pkg.ui.main.MainActivity
-import com.open.pkg.ui.splash.SplashActivity
+import com.open.pkg.ui.web.WebActivity
 import com.open.router.OpenRouter
 import com.tencent.mmkv.MMKV
 
@@ -39,7 +39,7 @@ open class PkgApp : Application() {
             callAdapterFactory = LiveDataCallAdapterFactory()
         )
         OpenRouter.init(context)
-        RouterConfig.addList(cla = listOf(SplashActivity::class.java, MainActivity::class.java))
+        PkgRouter.addList(cla = listOf(MainActivity::class.java, WebActivity::class.java))
     }
 
 }

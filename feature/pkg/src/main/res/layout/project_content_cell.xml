@@ -34,7 +34,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_author"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/view_0px"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/view_vertical_margin"
             android:ellipsize="end"
@@ -46,11 +46,12 @@
             app:layout_constraintStart_toEndOf="@+id/iv_avatar"
             app:layout_constraintTop_toTopOf="@+id/iv_avatar"
             app:layout_constraintVertical_chainStyle="spread_inside"
+            app:layout_constraintWidth_percent="0.5"
             tools:text="author" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_date"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/view_0px"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
@@ -60,25 +61,43 @@
             app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
             app:layout_constraintStart_toStartOf="@+id/tv_author"
             app:layout_constraintTop_toBottomOf="@+id/tv_author"
+            app:layout_constraintWidth_percent="0.5"
             tools:text="date" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="@dimen/view_0px"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_vertical_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{cell.valueTitle}"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/title_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
+            app:layout_constraintWidth_percent="0.7"
+            tools:text="title" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_content"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/view_0px"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/view_vertical_margin"
             android:ellipsize="end"
-            android:maxLines="4"
+            android:maxLines="5"
             android:text="@{cell.valueContent}"
-            android:textColor="@color/text_color"
+            android:textColor="@color/text_hint_color"
             android:textSize="@dimen/content_text_size"
-
-            app:layout_constraintTop_toBottomOf="@+id/iv_avatar" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:layout_constraintWidth_percent="0.7"
+            tools:text="content" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_chapter_name"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/view_0px"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/view_vertical_margin"
             android:ellipsize="end"
@@ -88,7 +107,23 @@
             android:textSize="@dimen/desc_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_content" />
+            app:layout_constraintWidth_percent="0.7" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_pic"
+            bindImageViewLoadRound="@{true}"
+            bindImageViewLoadRoundRadius="@{6}"
+            bindImageViewLoadUrl="@{cell.valuePic}"
+            bindShapeDrawableRadius="@{6}"
+            bindShapeDrawableSolidColor="@{@color/window_background_color}"
+            android:layout_width="@dimen/view_0px"
+            android:layout_height="@dimen/view_0px"
+            android:layout_marginStart="@dimen/view_horizontal_margin"
+            app:layout_constraintDimensionRatio="9:16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

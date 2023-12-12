@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
     alias(libs.plugins.kotlin.plugin.serialization)
+//    alias(libs.plugins.kotlin.plugin.parcelize)
 }
 
 android {
@@ -53,8 +54,4 @@ dependencies {
     api(project(path = ":library:image"))
     api(project(path = ":library:serialization"))
     api(project(path = ":library:net"))
-    implementation(libs.lifecycle.livedata.ktx)
-    implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.ui.ktx)
 }

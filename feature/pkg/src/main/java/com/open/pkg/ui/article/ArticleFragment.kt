@@ -39,6 +39,9 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
         return fragment
     }
 
+
+
+
     private val rvAdapter by lazy {
         BaseAdapter(diffCallback(), ItemAnimation.create().apply {
             duration(300)

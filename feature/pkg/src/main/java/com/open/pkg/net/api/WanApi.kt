@@ -59,7 +59,7 @@ interface WanApi {
     fun requestProjectList(
         @Header(HttpCacheManager.HTTP_CACHE_HEADER) cache: String = HttpCacheManager.HttpCacheType.NO_CACHE.name,
         @Path("page") page: Int = 0,
-        @Query("cid") id: Int = 0,
+        @Query("cid") id: String? = "",
     ): LiveData<BaseResponse.ApiResponse<ProjectListData>>
 
 }

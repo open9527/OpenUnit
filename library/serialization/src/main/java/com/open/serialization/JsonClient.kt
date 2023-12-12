@@ -12,6 +12,9 @@ object JsonClient {
         Json {
             ignoreUnknownKeys = true
             isLenient = true
+            coerceInputValues = true
+            allowStructuredMapKeys = true
+            prettyPrint=true
 
         }
     }

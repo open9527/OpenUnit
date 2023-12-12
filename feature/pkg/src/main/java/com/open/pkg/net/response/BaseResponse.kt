@@ -1,6 +1,5 @@
 package com.open.pkg.net.response
 
-import com.open.serialization.DynamicLookupSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import retrofit2.Response

@@ -4,6 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
+//@Parcelize
 data class ProjectClassificationVo(
     val id: String,
     val name: String,

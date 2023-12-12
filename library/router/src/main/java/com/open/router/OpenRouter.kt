@@ -35,7 +35,6 @@ object OpenRouter {
     fun navigation(ctx: Context?, postcard: Postcard, requestCode: Int = -1): Any? {
         val context = ctx ?: application
         RouterDelegate.completion(application, postcard)
-//        logInfo()
         return when (postcard.type) {
             RouteType.ACTIVITY -> {
                 val intent = Intent(context, postcard.destination).putExtras(postcard.bundle)

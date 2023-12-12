@@ -6,6 +6,8 @@
 
 
     <dimen name="view_0px">0px</dimen>
+    <dimen name="view_1px">1px</dimen>
+    <dimen name="view_line">1dp</dimen>
 
     <dimen name="view_vertical_margin">6dp</dimen>
     <dimen name="view_horizontal_margin">6dp</dimen>
@@ -14,6 +16,8 @@
     <dimen name="view_horizontal_padding">10dp</dimen>
 
     <dimen name="tab_bottom_height">60dp</dimen>
+    <dimen name="progress_bar_height">2dp</dimen>
+
     <dimen name="avatar_size">30dp</dimen>
 
     <dimen name="title_text_size">16sp</dimen>
