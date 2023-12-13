@@ -12,9 +12,9 @@ import androidx.activity.viewModels
 import com.open.base.BaseActivity
 import com.open.core.ViewClickUtils.addClick
 import com.open.core.binding.binding
-import com.open.core.toast
 import com.open.pkg.R
 import com.open.pkg.databinding.WebActivityBinding
+import com.open.pkg.ui.web.dialog.WebMenuDialog
 
 class WebActivity : BaseActivity(R.layout.web_activity) {
 
@@ -47,7 +47,7 @@ class WebActivity : BaseActivity(R.layout.web_activity) {
         })
 
         binding.tvMore.addClick({
-            toast("more")
+            WebMenuDialog.build().showDialog(this)
         })
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {

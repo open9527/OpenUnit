@@ -8,8 +8,8 @@ import androidx.annotation.RequiresApi
 
 object ScreenUtils {
 
-    @RequiresApi(Build.VERSION_CODES.R)
-    fun getScreenWidth(context: Context): Int {
+@RequiresApi(Build.VERSION_CODES.R)
+fun getScreenWidth(context: Context): Int {
         val windowManager = context.getSystemService(WindowManager::class.java)
         val windowMetrics: WindowMetrics = windowManager.currentWindowMetrics
         val windowBounds = windowMetrics.bounds

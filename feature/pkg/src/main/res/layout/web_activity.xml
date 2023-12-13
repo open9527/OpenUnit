@@ -29,61 +29,71 @@
             android:progress="@{vm.valueProgress}"
             android:progressDrawable="@drawable/web_progress_bar"
             android:visibility="@{vm.valueProgressBar}"
-            app:layout_constraintBottom_toTopOf="@+id/tv_back" />
+            app:layout_constraintBottom_toTopOf="@+id/cl_menu" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_back"
-            android:layout_width="@dimen/view_0px"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_menu"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/tab_bottom_height"
-            android:text="@string/web_back"
-            android:gravity="center"
-            android:textColor="@color/text_hint_color"
-            android:textSize="@dimen/content_text_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_next"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:background="@color/accent_color"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_back"
+                android:layout_width="@dimen/view_0px"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/web_back"
+                android:textColor="@color/white"
+                android:textSize="@dimen/content_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_next"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_next"
-            android:layout_width="@dimen/view_0px"
-            android:layout_height="@dimen/tab_bottom_height"
-            android:text="@string/web_next"
-            android:gravity="center"
-            android:textColor="@color/text_hint_color"
-            android:textSize="@dimen/content_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_back"
-            app:layout_constraintStart_toEndOf="@+id/tv_back"
-            app:layout_constraintEnd_toStartOf="@+id/tv_refresh"
-            app:layout_constraintTop_toTopOf="@+id/tv_back" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_next"
+                android:layout_width="@dimen/view_0px"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/web_next"
+                android:textColor="@color/white"
+                android:textSize="@dimen/content_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_back"
+                app:layout_constraintEnd_toStartOf="@+id/tv_refresh"
+                app:layout_constraintStart_toEndOf="@+id/tv_back"
+                app:layout_constraintTop_toTopOf="@+id/tv_back" />
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_refresh"
-            android:layout_width="@dimen/view_0px"
-            android:layout_height="@dimen/tab_bottom_height"
-            android:text="@string/web_refresh"
-            android:gravity="center"
-            android:textColor="@color/text_hint_color"
-            android:textSize="@dimen/content_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_back"
-            app:layout_constraintStart_toEndOf="@+id/tv_next"
-            app:layout_constraintEnd_toStartOf="@+id/tv_more"
-            app:layout_constraintTop_toTopOf="@+id/tv_back" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_refresh"
+                android:layout_width="@dimen/view_0px"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/web_refresh"
+                android:textColor="@color/white"
+                android:textSize="@dimen/content_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_back"
+                app:layout_constraintEnd_toStartOf="@+id/tv_more"
+                app:layout_constraintStart_toEndOf="@+id/tv_next"
+                app:layout_constraintTop_toTopOf="@+id/tv_back" />
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_more"
-            android:layout_width="@dimen/view_0px"
-            android:layout_height="@dimen/tab_bottom_height"
-            android:text="@string/web_more"
-            android:gravity="center"
-            android:textColor="@color/text_hint_color"
-            android:textSize="@dimen/content_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_refresh"
-            app:layout_constraintTop_toTopOf="@+id/tv_back" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_more"
+                android:layout_width="@dimen/view_0px"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/web_more"
+                android:textColor="@color/white"
+                android:textSize="@dimen/content_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_refresh"
+                app:layout_constraintTop_toTopOf="@+id/tv_back" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

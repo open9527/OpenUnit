@@ -2,10 +2,11 @@
 
     <!-- 对话框默认主题 -->
     <style name="BaseDialogTheme" parent="android:Theme.Material.Light.Dialog.NoActionBar">
-        <!--    <style name="BaseDialogTheme" parent="Theme.AppCompat.DayNight.Dialog.Alert">-->
+        <!--            <style name="BaseDialogTheme" parent="android:Theme.AppCompat.DayNight.Dialog.Alert">-->
         <!-- 无边框 -->
         <item name="android:windowFrame">@null</item>
-        <!-- 浮在 Activity 之上 -->
+        <!-- 是否浮现在activity之上 (false会导致xml android:layout_height="wrap_content" 失效,键盘弹起必须true)-->
+        <!--true 会导致dialog全屏时 重复计算到statusBar高度-->
         <item name="android:windowIsFloating">true</item>
         <!-- 半透明 -->
         <item name="android:windowIsTranslucent">true</item>
@@ -18,14 +19,17 @@
         <!-- 动画效果 -->
         <item name="android:windowEnterAnimation">@anim/window_scale_in</item>
         <item name="android:windowExitAnimation">@anim/window_scale_out</item>
-        <!-- Base.Theme.AppCompat.Light.Dialog.Alert 特有的属性，用于指定默认宽度，这里需要禁用 -->
-        <item name="android:windowMinWidthMajor">0dp</item>
-        <item name="android:windowMinWidthMinor">0dp</item>
+
+        <!--android:Theme.Material.Light.Dialog.NoActionBar 特有的属性，用于指定默认宽度，这里需要撑满 -->
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+
+
         <!-- 解决 ActionBar 占位导致 Dialog 无法全屏显示的问题 -->
-<!--        <item name="windowActionBar">false</item>-->
-<!--        <item name="windowNoTitle">true</item>-->
+        <!--        <item name="windowActionBar">false</item>-->
+        <!--        <item name="windowNoTitle">true</item>-->
         <!-- ActionMode 覆盖 Actionbar，不顶下来 -->
-<!--        <item name="windowActionModeOverlay">true</item>-->
+        <!--        <item name="windowActionModeOverlay">true</item>-->
         <item name="android:windowContentOverlay">@null</item>
         <!-- 不感知敏感的切换 -->
         <!--<item name="android:configChanges">orientation|screenSize|keyboardHidden</item>-->
@@ -44,21 +48,21 @@
     <!--    </style>-->
 
 
-
     <style name="FullDialog" parent="BaseDialogTheme">
         <item name="android:windowIsFloating">false</item>
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowIsTranslucent">false</item>
 
         <!--设置透明状态栏，适用于SDK19（4.4）及以上版本-->
-        <item name="android:windowTranslucentStatus" >true</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <!-- 如果你不需要自定义状态栏颜色，下面两个可不要 -->
-        <item name="android:windowDrawsSystemBarBackgrounds" >true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!--隐藏状态栏内容和高度，适用于SDK19（4.4）及以上版本-->
         <item name="android:windowFullscreen">true</item>
         <!-- 对于28及以上的版本，需要指定该属性，否则对于异形屏的手机，无法让布局铺满异性区域 -->
-        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges
+        </item>
 
         <!-- 透明导航栏 -->
         <item name="android:windowTranslucentNavigation">true</item>

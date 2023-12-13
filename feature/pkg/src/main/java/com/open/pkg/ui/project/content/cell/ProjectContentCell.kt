@@ -43,9 +43,7 @@ class ProjectContentCell(projectVo: ProjectVo) : BaseCell {
         valueChapterName.set("${projectVo.superChapterName}·${projectVo.chapterName}")
     }
 
-    override fun getItemType(): Int {
-        return R.layout.project_content_cell
-    }
+    override fun getItemType() = R.layout.project_content_cell
 
     override fun bindViewHolder(holder: BaseViewHolder) {
         DataBindingUtil.bind<ProjectContentCellBinding>(holder.itemView)?.let {
