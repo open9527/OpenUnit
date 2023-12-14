@@ -20,7 +20,7 @@ class MainActivity : BaseActivity(R.layout.main_activity) {
         listOf("文章", "项目", "我的")
     }
     private val fragmentList by lazy {
-        listOf(ArticleFragment(), ProjectFragment(), MineFragment())
+        listOf(ArticleFragment.newInstance("文章"), ProjectFragment.newInstance("项目"), MineFragment.newInstance("我的"))
     }
 
     private val pageAdapter by lazy {

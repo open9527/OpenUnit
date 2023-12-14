@@ -1,12 +1,9 @@
 package com.open.pkg.ui.web
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.view.View
-import android.webkit.WebChromeClient
-import android.webkit.WebResourceRequest
-import android.webkit.WebResourceResponse
 import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import com.open.base.BaseActivity
@@ -14,6 +11,7 @@ import com.open.core.ViewClickUtils.addClick
 import com.open.core.binding.binding
 import com.open.pkg.R
 import com.open.pkg.databinding.WebActivityBinding
+import com.open.pkg.ui.view.BrowserView
 import com.open.pkg.ui.web.dialog.WebMenuDialog
 
 class WebActivity : BaseActivity(R.layout.web_activity) {
@@ -63,56 +61,89 @@ class WebActivity : BaseActivity(R.layout.web_activity) {
 
 
     @SuppressLint("SetJavaScriptEnabled")
-    private fun initWebView(webView: WebView, webUrl: String) {
-        webView.settings.userAgentString =
-            webView.settings.userAgentString.toString()
-        webView.settings.allowFileAccess = true
-        webView.loadUrl(webUrl)
-        webView.settings.javaScriptEnabled = true
-        webView.settings.builtInZoomControls = true
-
-
-        webView.webViewClient = object : WebViewClient() {
-            override fun shouldInterceptRequest(
-                view: WebView,
-                request: WebResourceRequest
-            ): WebResourceResponse? {
-                return super.shouldInterceptRequest(view, request)
+    private fun initWebView(webView: BrowserView, webUrl: String) {
+        webView.apply {
+            settings.apply {
+                webView.settings.userAgentString.toString()
+                builtInZoomControls = true
             }
-
-            override fun shouldOverrideUrlLoading(
-                view: WebView?,
-                request: WebResourceRequest?
-            ): Boolean {
-                return super.shouldOverrideUrlLoading(view, request)
-            }
-
-            override fun onPageFinished(view: WebView, url: String) {
-                viewModel.valueProgressBar.set(View.GONE)
-            }
-
-            override fun onReceivedError(
-                view: WebView,
-                errorCode: Int,
-                description: String,
-                failingUrl: String
-            ) {
-                // 页面加载失败
-            }
-        }
-        webView.webChromeClient = object : WebChromeClient() {
-            override fun onProgressChanged(view: WebView?, newProgress: Int) {
-                super.onProgressChanged(view, newProgress)
-                if (newProgress == 100) {
-                    viewModel.valueProgressBar.set(View.GONE)
-                } else {
-                    viewModel.valueProgressBar.set(View.VISIBLE)
-                    viewModel.valueProgress.set(newProgress)
-                }
-
-            }
+            setBrowserViewClient(AppBrowserViewClient())
+            setBrowserChromeClient(AppBrowserChromeClient(webView))
+            setLifecycleOwner(this@WebActivity)
+            loadUrl(webUrl)
         }
     }
+
+
+    private inner class AppBrowserViewClient : BrowserView.BrowserViewClient() {
+//
+//        override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
+//            LogUtils.d("shouldOverrideUrlLoading requestUrl= ${request.url}")
+//            return super.shouldOverrideUrlLoading(view, request)
+//        }
+//
+//        override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+//            LogUtils.d("shouldOverrideUrlLoading url= $url")
+//            return super.shouldOverrideUrlLoading(view, url)
+//        }
+
+
+        /**
+         * 网页加载错误时回调，这个方法会在 onPageFinished 之前调用
+         */
+        override fun onReceivedError(
+            view: WebView,
+            errorCode: Int,
+            description: String,
+            failingUrl: String
+        ) {
+            // 处理要用延迟, 因为加载出错之后会先调用 onReceivedError 再调用 onPageFinished
+
+        }
+
+        /**
+         * 开始加载网页
+         */
+        override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
+            viewModel.valueProgressBar.set(View.VISIBLE)
+        }
+
+        /**
+         * 完成加载网页
+         */
+        override fun onPageFinished(view: WebView, url: String) {
+            viewModel.valueProgressBar.set(View.GONE)
+        }
+    }
+
+    private inner class AppBrowserChromeClient constructor(view: BrowserView) :
+        BrowserView.BrowserChromeClient(view) {
+
+        /**
+         * 收到网页标题
+         */
+        override fun onReceivedTitle(view: WebView, title: String?) {
+            if (title == null) {
+                return
+            }
+            setTitle(title)
+        }
+
+        override fun onReceivedIcon(view: WebView, icon: Bitmap?) {
+            if (icon == null) {
+                return
+            }
+//            setRightIcon(BitmapDrawable(resources, icon))
+        }
+
+        /**
+         * 收到加载进度变化
+         */
+        override fun onProgressChanged(view: WebView, newProgress: Int) {
+            viewModel.valueProgress.set(newProgress)
+        }
+    }
+
 
     companion object {
         const val WEB_URL = "web_url"

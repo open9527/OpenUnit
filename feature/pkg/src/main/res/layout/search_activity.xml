@@ -4,6 +4,10 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.open.pkg.ui.search.SearchViewModel" />
+
     </data>
 
     <LinearLayout
@@ -19,12 +23,23 @@
             bindShapeDrawableStrokeWidth="@{1}"
             android:layout_width="match_parent"
             android:layout_height="@dimen/top_search_height"
-            android:layout_margin="@dimen/view_horizontal_margin">
+            android:layout_margin="@dimen/view_vertical_margin">
 
-            <TextSwitcher
-                android:id="@+id/text_switcher"
+            <com.open.pkg.ui.view.ClearEditText
+                android:id="@+id/et_search"
                 android:layout_width="@dimen/view_0px"
                 android:layout_height="@dimen/view_0px"
+                android:background="@color/transparent"
+                android:ellipsize="end"
+                android:hint="@string/search_hint_text"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/view_horizontal_padding"
+                android:text="@{vm.valueKeyword}"
+                android:textColor="@color/text_hint_color"
+                android:textCursorDrawable="@drawable/edit_text_cursor_bg"
+                android:textSize="@dimen/content_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +52,8 @@
             android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srlEnableAutoLoadMore="true">
+            app:srlEnableAutoLoadMore="true"
+            app:srlEnableScrollContentWhenLoaded="true">
 
             <com.scwang.smart.refresh.header.MaterialHeader
                 android:layout_width="match_parent"
@@ -54,6 +70,5 @@
                 android:layout_height="wrap_content" />
 
         </com.scwang.smart.refresh.layout.SmartRefreshLayout>
-
     </LinearLayout>
 </layout>

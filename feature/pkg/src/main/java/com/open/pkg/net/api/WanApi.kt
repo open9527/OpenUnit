@@ -8,8 +8,14 @@ import com.open.pkg.net.vo.BannerVo
 import com.open.pkg.net.vo.HotKeyVo
 import com.open.pkg.net.vo.ProjectClassificationVo
 import com.open.pkg.net.vo.ProjectListData
+import okhttp3.RequestBody
+import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FieldMap
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -31,11 +37,12 @@ interface WanApi {
     ): LiveData<BaseResponse.ApiResponse<List<HotKeyVo>>>
 
 
-    @GET(SEARCH_ARTICLE_LIST)
+    @POST(SEARCH_ARTICLE_LIST)
+    @FormUrlEncoded
     fun requestSearchArticleList(
         @Header(HttpCacheManager.HTTP_CACHE_HEADER) cache: String = HttpCacheManager.HttpCacheType.NO_CACHE.name,
         @Path("page") page: Int = 0,
-        @Query("k") keyword: String = "",
+        @Field("k") keyword: String = "",
     ): LiveData<BaseResponse.ApiResponse<ArticleListData>>
 
     @GET(BANNER)

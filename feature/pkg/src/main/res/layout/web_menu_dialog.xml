@@ -11,9 +11,13 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        bindShapeDrawableRadius="@{6}"
+        bindShapeDrawableSolidColor="@{@color/primary_color}"
+        bindShapeDrawableStrokeColor="@{@color/primary_color}"
+        bindShapeDrawableStrokeWidth="@{1}"
         android:layout_width="match_parent"
-        android:background="@color/primary_color"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/primary_color">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_list"

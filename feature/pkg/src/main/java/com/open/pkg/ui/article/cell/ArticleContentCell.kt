@@ -1,6 +1,7 @@
 package com.open.pkg.ui.article.cell
 
 import android.os.Bundle
+import android.text.Html
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableField
@@ -15,7 +16,7 @@ import com.open.recyclerview.adapter.BaseCell
 import com.open.recyclerview.adapter.BaseViewHolder
 
 class ArticleContentCell(articleVo: ArticleVo) : BaseCell {
-    val valueLink = ObservableField<String>()
+    private val valueLink = ObservableField<String>()
     val valueContent = ObservableField<String>()
     val valueAuthor = ObservableField<String>()
     val valueDate = ObservableField<String>()
@@ -24,7 +25,7 @@ class ArticleContentCell(articleVo: ArticleVo) : BaseCell {
 
     init {
         valueLink.set(articleVo.link)
-        valueContent.set(articleVo.title)
+        valueContent.set(Html.fromHtml(articleVo.title, Html.FROM_HTML_MODE_LEGACY).toString())
         if (articleVo.author.isEmpty()) {
             valueAuthor.set(articleVo.shareUser)
         } else {

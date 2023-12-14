@@ -59,6 +59,16 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment) {
             }
         }
     }
-
+    companion object {
+        private const val TAG: String = "ProjectFragment"
+        private const val BUNDLE_KEY: String = "BUNDLE_KEY_PROJECT_FRAGMENT"
+        fun newInstance(string: String): ProjectFragment {
+            val bundle = Bundle()
+            bundle.putString(BUNDLE_KEY, string)
+            val fragment = ProjectFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
 
 }

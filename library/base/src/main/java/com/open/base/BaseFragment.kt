@@ -12,12 +12,13 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
+
     }
 
     override fun onResume() {
         super.onResume()
         if (!initialized && !isHidden) {
+            initView()
             initData()
             initialized = true
         }

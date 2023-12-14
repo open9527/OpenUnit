@@ -76,7 +76,7 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
         PkgRouter.navigation(
             this,
             Bundle().apply {
-                putInt(BUNDLE_TOTAL_KEY, 5)
+                putInt(BUNDLE_TOTAL_KEY, 1)
             },
             "page://splash_activity?authorization=true&target=http%3a%2f%2fwww.baidu.com%3fq%3dabc"
         )

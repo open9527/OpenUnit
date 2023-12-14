@@ -24,7 +24,7 @@ object WanApiImpl {
     ): LiveData<BaseResponse.ApiResponse<ArticleListData>> {
         return RetrofitClient.retrofitClient<WanApi>().requestSearchArticleList(
             HttpCacheManager.HttpCacheType.USE_CACHE_AFTER_FAILURE.name,
-            page
+            page,keyword
         )
     }
 

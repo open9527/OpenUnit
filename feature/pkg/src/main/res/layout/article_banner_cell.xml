@@ -12,7 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginVertical="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/view_vertical_margin"
         android:layout_height="wrap_content">
 
         <com.zhpan.bannerview.BannerViewPager

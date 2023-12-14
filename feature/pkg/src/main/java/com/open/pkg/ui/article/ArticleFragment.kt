@@ -1,18 +1,21 @@
 package com.open.pkg.ui.article
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.open.base.BaseFragment
 import com.open.core.LogUtils
 import com.open.core.applicationViewModels
 import com.open.core.binding.binding
 import com.open.pkg.R
+import com.open.pkg.app.PkgRouter
 import com.open.pkg.databinding.ArticleFragmentBinding
 import com.open.pkg.net.api.WanApiImpl
 import com.open.pkg.ui.article.cell.ArticleBannerCell
 import com.open.pkg.ui.article.cell.ArticleContentCell
 import com.open.pkg.ui.main.MainViewModel
+import com.open.pkg.ui.search.SearchActivity
+import com.open.pkg.ui.view.TextSwitchBanner
 import com.open.recyclerview.adapter.BaseAdapter
 import com.open.recyclerview.adapter.BaseCell
 import com.open.recyclerview.adapter.diffCallback
@@ -32,30 +35,20 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
 
     private var page: Int = 0
     private var cellList: MutableList<BaseCell> = mutableListOf()
-    fun newInstance(): Fragment {
-        val args = Bundle()
-        val fragment = ArticleFragment()
-        fragment.arguments = args
-        return fragment
-    }
-
-
 
 
     private val rvAdapter by lazy {
         BaseAdapter(diffCallback(), ItemAnimation.create().apply {
             duration(300)
             enabled(true)
-            animation(animationType = ItemAnimation.FADE_IN)
+            firstOnly(false)
+            animation(animationType = ItemAnimation.SCALE_IN)
         })
     }
 
     override fun initView() {
         binding.rvList.apply {
             layoutManager = WrapContentLinearLayoutManager(context)
-//            addItemDecoration(DividerDecoration().inset(20.0f))
-//            addItemDecoration(DividerDecoration().stroke(20.0f))
-//            addItemDecoration(DividerDecoration().dash(20.0f))
             adapter = rvAdapter
         }
 
@@ -73,6 +66,7 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
                 }
             })
         }
+
     }
 
     override fun initData() {
@@ -84,9 +78,30 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
         if (0 == page) {
             cellList.clear()
             requestBanner()
+            requestHotKey()
         }
         requestArticleList()
     }
+
+    private fun initTextSwitchBanner(list: List<String>) {
+        TextSwitchBanner.with(requireContext())
+            .bindTextSwitcher(binding.textSwitcher)
+            .setTextList(list)
+            .addListener(object : TextSwitchBanner.ITextSwitchBannerListener {
+                override fun onClick(view: View, string: String, index: Int) {
+                    PkgRouter.navigation(
+                        requireContext(),
+                        Bundle().apply {
+                            putString(SearchActivity.BUNDLE_KEY, string)
+                        },
+                        SearchActivity::class.java
+                    )
+
+                }
+            })
+            .addLifecycleOwner(viewLifecycleOwner)
+    }
+
 
     private fun requestBanner() {
         WanApiImpl.requestBanner().observe(viewLifecycleOwner) { bannerResponse ->
@@ -105,6 +120,9 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
         LogUtils.d("requestArticleList page=${page}")
         WanApiImpl.requestArticleList(page).observe(viewLifecycleOwner) { articleListResponse ->
             if (articleListResponse.isSuccessful) {
+                if (page > 0 && articleListResponse.data?.list?.size == 0) {
+                    binding.refresh.finishLoadMoreWithNoMoreData()
+                }
                 articleListResponse.data?.list?.forEach { articleVo ->
                     cellList.add(ArticleContentCell(articleVo))
                 }
@@ -113,4 +131,32 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
         }
     }
 
+
+    private fun requestHotKey() {
+        WanApiImpl.requestHotKey().observe(viewLifecycleOwner) { hotKeyResponse ->
+//            LogUtils.d("HotKey:${JsonClient.toJson(requestHotKey)}")
+            if (hotKeyResponse.isSuccessful) {
+                hotKeyResponse.data?.let { hotKeyList ->
+                    val list = mutableListOf<String>()
+                    hotKeyList.forEach {
+                        list.add(it.name)
+                    }
+                    initTextSwitchBanner(list)
+                }
+            }
+
+        }
+    }
+
+    companion object {
+        private const val TAG: String = "ArticleFragment"
+        private const val BUNDLE_KEY: String = "BUNDLE_KEY_ARTICLE_FRAGMENT"
+        fun newInstance(string: String): ArticleFragment {
+            val bundle = Bundle()
+            bundle.putString(BUNDLE_KEY, string)
+            val fragment = ArticleFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
 }

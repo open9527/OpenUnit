@@ -16,7 +16,8 @@
     <dimen name="view_horizontal_padding">10dp</dimen>
 
     <dimen name="tab_bottom_height">60dp</dimen>
-    <dimen name="progress_bar_height">2dp</dimen>
+    <dimen name="top_search_height">40dp</dimen>
+    <dimen name="progress_bar_height">4dp</dimen>
 
     <dimen name="avatar_size">30dp</dimen>
 

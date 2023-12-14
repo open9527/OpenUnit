@@ -1,5 +1,6 @@
 package com.open.pkg.app
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -15,6 +16,10 @@ import java.util.Locale
 object PkgRouter {
     private const val PKG_HOST = "page://"
     fun getPkgHost(): String = PKG_HOST
+
+    fun initialize(context: Application){
+        OpenRouter.init(context)
+    }
     fun addList(host: String = PKG_HOST, cla: List<Class<*>>) {
         cla.forEach {
             add(host, it)
