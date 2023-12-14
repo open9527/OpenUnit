@@ -1,13 +1,13 @@
 package com.open.pkg.ui.search
 
 import android.annotation.SuppressLint
-import android.view.KeyEvent
 import android.view.MotionEvent
+import android.view.View
+import android.view.Window
 import android.view.inputmethod.EditorInfo
-import android.widget.TextView
-import android.widget.TextView.OnEditorActionListener
 import androidx.activity.viewModels
 import com.open.base.BaseActivity
+import com.open.core.HandlerAction
 import com.open.core.KeyboardAction
 import com.open.core.LogUtils
 import com.open.core.binding.binding
@@ -26,7 +26,7 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
 
-class SearchActivity : BaseActivity(R.layout.search_activity), KeyboardAction {
+open class SearchActivity : BaseActivity(R.layout.search_activity), KeyboardAction, HandlerAction {
 
     private val binding: SearchActivityBinding by binding(this)
 
@@ -45,8 +45,19 @@ class SearchActivity : BaseActivity(R.layout.search_activity), KeyboardAction {
         })
     }
 
+    override fun finish() {
+        super.finish()
+        hideKeyboard(currentFocus)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        removeCallbacks()
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun initView() {
+        initSoftKeyboard()
         binding.vm = viewModel
         binding.rvList.apply {
             layoutManager = WrapContentLinearLayoutManager(context)
@@ -83,6 +94,9 @@ class SearchActivity : BaseActivity(R.layout.search_activity), KeyboardAction {
                 }
             })
         }
+        postDelayed({
+            hideKeyboard(binding.etSearch)
+        }, 80)
 
     }
 
@@ -123,6 +137,15 @@ class SearchActivity : BaseActivity(R.layout.search_activity), KeyboardAction {
 
                 }
             }
+    }
+
+
+    private fun initSoftKeyboard() {
+        findViewById<View>(Window.ID_ANDROID_CONTENT)?.let {
+            it.setOnClickListener {
+                hideKeyboard(currentFocus)
+            }
+        }
     }
 
     companion object {
