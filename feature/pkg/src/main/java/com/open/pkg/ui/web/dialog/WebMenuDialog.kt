@@ -9,6 +9,7 @@ import com.open.core.binding.binding
 import com.open.dialog.BaseDialogFragment
 import com.open.pkg.R
 import com.open.pkg.databinding.WebMenuDialogBinding
+import com.open.pkg.ui.view.TextSwitchBanner
 import com.open.recyclerview.adapter.BaseAdapter
 import com.open.recyclerview.adapter.BaseCell
 import com.open.recyclerview.adapter.diffCallback
@@ -20,6 +21,8 @@ class WebMenuDialog : BaseDialogFragment() {
     private val binding: WebMenuDialogBinding by binding(this)
 
     private val valueCells = ObservableField<List<BaseCell>>()
+
+    private val valueListener = ObservableField<(String) -> Unit>()
 
 
     private val rvAdapter by lazy {
@@ -59,26 +62,26 @@ class WebMenuDialog : BaseDialogFragment() {
 
     private fun initData() {
         val menuTitles: MutableList<String> = mutableListOf(
-            "上一级",
-            "下一级",
             "分享",
             "刷新",
             "夜间模式",
-            "浏览器",
+            "浏览器打开",
+            "投诉",
             "复制链接",
+            "听全文",
             "退出"
         )
         val cells = mutableListOf<BaseCell>()
         menuTitles.forEach {
-            cells.add(WebMenuCell(it))
+            cells.add(WebMenuCell(it, valueListener.get()))
         }
         valueCells.set(cells)
     }
 
-    fun with(): WebMenuDialog {
-        return newInstance()
+    fun addListener(listener: (string: String) -> Unit): WebMenuDialog {
+        valueListener.set(listener)
+        return this
     }
-
 
     fun showDialog(context: Context): WebMenuDialog {
         show(context)
@@ -90,7 +93,7 @@ class WebMenuDialog : BaseDialogFragment() {
             return WebMenuDialog()
         }
 
-        fun build(): WebMenuDialog {
+        fun with(): WebMenuDialog {
             return newInstance()
         }
     }

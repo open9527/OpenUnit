@@ -13,13 +13,14 @@
             android:label="@string/title_activity_main" />
 
         <activity
-            android:name="com.open.pkg.ui.web.WebActivity"
+            android:name=".ui.web.WebActivity"
             android:exported="false"
             android:label="@string/title_activity_web" />
-        <activity android:name="com.open.pkg.ui.search.SearchActivity"
+
+        <activity
+            android:name=".ui.search.SearchActivity"
             android:exported="false"
-            android:label="@string/title_activity_web"
-            />
+            android:label="@string/title_activity_search" />
     </application>
 
 </manifest>

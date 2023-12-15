@@ -4,13 +4,12 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableField
 import com.open.core.ViewClickUtils.addClick
-import com.open.core.toast
 import com.open.pkg.R
 import com.open.pkg.databinding.WebMenuCellBinding
 import com.open.recyclerview.adapter.BaseCell
 import com.open.recyclerview.adapter.BaseViewHolder
 
-class WebMenuCell(title: String) : BaseCell {
+class WebMenuCell(title: String, private val listener: ((String) -> Unit)? = null) : BaseCell {
     val valueTitle = ObservableField<String>()
 
     init {
@@ -27,8 +26,11 @@ class WebMenuCell(title: String) : BaseCell {
     }
 
     private fun onClick(view: View) {
+
         view.addClick({
-            it.context.toast("待开发!")
+            listener?.let {
+                valueTitle.get()?.let { it1 -> it(it1) }
+            }
         }, viewAlpha = true)
 
     }

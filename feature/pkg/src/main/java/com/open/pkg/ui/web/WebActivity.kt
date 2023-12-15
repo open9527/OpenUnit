@@ -1,15 +1,22 @@
 package com.open.pkg.ui.web
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.view.View
 import android.webkit.WebView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
+import androidx.webkit.WebSettingsCompat
+import androidx.webkit.WebViewFeature
 import com.open.base.BaseActivity
 import com.open.core.ViewClickUtils.addClick
 import com.open.core.binding.binding
+import com.open.core.copyToClipboard
+import com.open.core.toast
 import com.open.pkg.R
+import com.open.pkg.app.PkgShare
 import com.open.pkg.databinding.WebActivityBinding
 import com.open.pkg.ui.view.BrowserView
 import com.open.pkg.ui.web.dialog.WebMenuDialog
@@ -20,6 +27,7 @@ class WebActivity : BaseActivity(R.layout.web_activity) {
 
     private val viewModel: WebViewModel by viewModels()
 
+    @SuppressLint("WrongConstant")
     override fun initView() {
         binding.vm = viewModel
         intent.extras?.let { bundle ->
@@ -45,7 +53,82 @@ class WebActivity : BaseActivity(R.layout.web_activity) {
         })
 
         binding.tvMore.addClick({
-            WebMenuDialog.build().showDialog(this)
+            WebMenuDialog.with().apply {
+                addListener { string ->
+                    when (string) {
+                        "投诉" -> {
+
+                        }
+
+                        "听全文" -> {
+
+                        }
+
+                        "字体调整" -> {
+
+                        }
+
+                        "分享" -> {
+//                            PkgShare.shareText(
+//                                this@WebActivity,
+//                                "分享链接:${binding.webView.originalUrl}"
+//                            )
+                            PkgShare.shareThirdPartyText(
+                                this@WebActivity, PkgShare.SharePackage.PACKAGE_WECHAT,
+                                "${binding.webView.originalUrl}"
+                            )
+                        }
+
+                        "刷新" -> {
+                            binding.webView.reload()
+                        }
+
+                        "夜间模式" -> {
+                            if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+                                if (WebSettingsCompat.FORCE_DARK_ON == WebSettingsCompat.getForceDark(
+                                        binding.webView.settings
+                                    )
+                                ) {
+                                    WebSettingsCompat.setForceDark(
+                                        binding.webView.settings,
+                                        WebSettingsCompat.FORCE_DARK_OFF
+                                    )
+                                } else {
+                                    WebSettingsCompat.setForceDark(
+                                        binding.webView.settings,
+                                        WebSettingsCompat.FORCE_DARK_ON
+                                    )
+                                }
+                            }
+                        }
+
+                        "浏览器打开" -> {
+                            val intent = Intent(Intent.ACTION_VIEW)
+                            intent.addCategory(Intent.CATEGORY_DEFAULT)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            intent.data = Uri.parse(binding.webView.originalUrl)
+                            this@WebActivity.startActivity(intent)
+
+                        }
+
+                        "复制链接" -> {
+                            binding.webView.originalUrl?.copyToClipboard()
+                            this@WebActivity.toast("$string 成功")
+                        }
+
+                        "退出" -> {
+                            finish()
+                        }
+
+                        else -> {
+
+                        }
+                    }
+                    dismiss()
+                }
+                showDialog(this@WebActivity)
+            }
+
         })
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {

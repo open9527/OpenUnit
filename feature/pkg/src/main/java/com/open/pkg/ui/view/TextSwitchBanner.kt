@@ -5,14 +5,13 @@ import android.graphics.Color
 import android.text.TextUtils
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
 import android.widget.TextSwitcher
 import android.widget.TextView
 import android.widget.ViewSwitcher
 import androidx.annotation.AnimRes
+import androidx.databinding.ObservableField
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
@@ -27,7 +26,7 @@ class TextSwitchBanner(val context: Context) :
     private val delayTime = 2000L
     private lateinit var textSwitcher: TextSwitcher
     private var textList: List<String> = listOf()
-    private var iTextSwitchBannerListener: ITextSwitchBannerListener? = null
+    private var iListener = ObservableField<((View, String, Int) -> Unit?)>()
 
     override fun makeView(): View {
         return defaultTextView(context)
@@ -62,9 +61,11 @@ class TextSwitchBanner(val context: Context) :
         textSwitcher.setFactory(this)
         textSwitcher.setText("")
         textSwitcher.addClick({
-            iTextSwitchBannerListener?.let {
-                it.onClick(textSwitcher, textList[index], index)
+            iListener.get()?.let {
+                it(textSwitcher, textList[index], index)
             }
+
+
         }, viewScale = false)
         textSwitcher.inAnimation = AnimationUtils.loadAnimation(
             context,
@@ -92,6 +93,7 @@ class TextSwitchBanner(val context: Context) :
         )
         return this
     }
+
     fun setOutAnimation(@AnimRes id: Int): TextSwitchBanner {
         textSwitcher.outAnimation = AnimationUtils.loadAnimation(
             context,
@@ -100,9 +102,8 @@ class TextSwitchBanner(val context: Context) :
         return this
     }
 
-
-    fun addListener(iTextSwitchBannerListener: ITextSwitchBannerListener): TextSwitchBanner {
-        this.iTextSwitchBannerListener = iTextSwitchBannerListener
+    fun addListener(listener: (view: View, string: String, index: Int) -> Unit?): TextSwitchBanner {
+        iListener.set(listener)
         return this
     }
 
@@ -150,9 +151,6 @@ class TextSwitchBanner(val context: Context) :
         return textView
     }
 
-    interface ITextSwitchBannerListener {
-        fun onClick(view: View, string: String, index: Int)
-    }
 
     companion object {
         private fun newInstance(context: Context): TextSwitchBanner {

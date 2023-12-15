@@ -37,6 +37,7 @@ android {
 
 dependencies {
     api(libs.appcompat)
+    api(libs.webkit)
     api(libs.bundles.ktx)
     api(libs.bundles.ui)
     api(libs.bundles.coil)
@@ -54,4 +55,5 @@ dependencies {
     api(project(path = ":library:image"))
     api(project(path = ":library:serialization"))
     api(project(path = ":library:net"))
+
 }

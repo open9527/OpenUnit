@@ -87,18 +87,15 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
         TextSwitchBanner.with(requireContext())
             .bindTextSwitcher(binding.textSwitcher)
             .setTextList(list)
-            .addListener(object : TextSwitchBanner.ITextSwitchBannerListener {
-                override fun onClick(view: View, string: String, index: Int) {
-                    PkgRouter.navigation(
-                        requireContext(),
-                        Bundle().apply {
-                            putString(SearchActivity.BUNDLE_KEY, string)
-                        },
-                        SearchActivity::class.java
-                    )
-
-                }
-            })
+            .addListener { _, string, _ ->
+                PkgRouter.navigation(
+                    requireContext(),
+                    Bundle().apply {
+                        putString(SearchActivity.BUNDLE_KEY, string)
+                    },
+                    SearchActivity::class.java
+                )
+            }
             .addLifecycleOwner(viewLifecycleOwner)
     }
 
