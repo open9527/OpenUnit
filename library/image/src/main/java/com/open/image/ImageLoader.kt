@@ -50,9 +50,9 @@ fun initCoil(context: Context, okHttpClient: OkHttpClient = OkHttpClient.Builder
                 .maxSizePercent(0.02)
                 .build()
         }.logger(DebugLogger())
-            .fallback(ColorDrawable(Color.GRAY))
+//            .fallback(ColorDrawable(Color.GRAY))
             .crossfade(true)
-            .error(ColorDrawable(Color.GRAY))
+//            .error(ColorDrawable(Color.GRAY))
             .build()
     )
 }

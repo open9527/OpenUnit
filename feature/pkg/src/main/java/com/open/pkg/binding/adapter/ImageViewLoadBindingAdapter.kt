@@ -8,6 +8,7 @@ import coil.load
 import coil.transform.CircleCropTransformation
 import coil.transform.RoundedCornersTransformation
 import coil.transform.Transformation
+import com.open.core.SizeUtils
 
 
 object ImageViewLoadBindingAdapter {
@@ -39,24 +40,23 @@ object ImageViewLoadBindingAdapter {
     ) {
         imageView?.load(data) {
             if (width != null && height != null) {
-                size(width, height)
+                size(SizeUtils.dp2px(imageView.context,width.toFloat()).toInt(), SizeUtils.dp2px(imageView.context,height.toFloat()).toInt())
             }
-            if (placeholderRes != null) {
-                placeholder(placeholderRes)
-                fallback(placeholderRes)
-                error(placeholderRes)
+            placeholderRes?.let {
+                placeholder(it)
+                fallback(it)
+                error(it)
             }
-            if (placeholderDrawable != null) {
-                placeholder(placeholderDrawable)
-                fallback(placeholderDrawable)
-                error(placeholderDrawable)
-
+            placeholderDrawable?.let {
+                placeholder(it)
+                fallback(it)
+                error(it)
             }
             if (hasCircle) {
                 transformations(CircleCropTransformation())
             }
             if (hasRound) {
-                transformations(RoundedCornersTransformation(roundRadius))
+                transformations(RoundedCornersTransformation(SizeUtils.dp2px(imageView.context,roundRadius)))
             }
 
             if (transformation != null) {

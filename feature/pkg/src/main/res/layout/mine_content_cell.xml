@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cell"
+            type="com.open.pkg.ui.mine.cell.MineContentCell" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_bottom_height">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="@dimen/view_0px"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/view_space"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{cell.valueTitle}"
+            android:textColor="@color/text_hint_color"
+            android:textSize="@dimen/content_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.4"
+            tools:text="title" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_into"
+            bindShapeDrawableSolidColor="@{@color/window_background_color}"
+            android:layout_width="@dimen/mine_into_size"
+            android:layout_height="@dimen/mine_into_size"
+            android:layout_marginEnd="@dimen/view_space"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.1" />
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_line"
+            android:layout_marginHorizontal="@dimen/view_space"
+            android:background="@color/line_color"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

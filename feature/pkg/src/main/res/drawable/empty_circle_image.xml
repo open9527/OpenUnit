@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:width="200dp"
+        android:height="200dp"
+        android:gravity="center">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/window_background_color" />
+            <corners android:radius="200dp" />
+        </shape>
+    </item>
+    <!--    <item-->
+    <!--        android:width="200dp"-->
+    <!--        android:height="200dp"-->
+    <!--        android:bottom="10dp"-->
+    <!--        android:end="10dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:left="10dp"-->
+    <!--        android:top="10dp"-->
+    <!--        tools:ignore="UnusedAttribute">-->
+    <!--        <bitmap-->
+    <!--            android:src="@mipmap/app_empty_bg" />-->
+    <!--    </item>-->
+
+</layer-list>

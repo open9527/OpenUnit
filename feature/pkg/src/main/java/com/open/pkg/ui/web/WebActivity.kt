@@ -69,13 +69,9 @@ class WebActivity : BaseActivity(R.layout.web_activity) {
                         }
 
                         "分享" -> {
-//                            PkgShare.shareText(
-//                                this@WebActivity,
-//                                "分享链接:${binding.webView.originalUrl}"
-//                            )
-                            PkgShare.shareThirdPartyText(
-                                this@WebActivity, PkgShare.SharePackage.PACKAGE_WECHAT,
-                                "${binding.webView.originalUrl}"
+                            PkgShare.shareText(
+                                this@WebActivity,
+                                "分享链接:${binding.webView.originalUrl}"
                             )
                         }
 

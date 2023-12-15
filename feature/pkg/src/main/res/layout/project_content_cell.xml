@@ -27,8 +27,8 @@
             android:id="@+id/iv_avatar"
             bindShapeDrawableRadius="@{6}"
             bindShapeDrawableSolidColor="@{@color/window_background_color}"
-            android:layout_width="@dimen/avatar_size"
-            android:layout_height="@dimen/avatar_size"
+            android:layout_width="@dimen/article_avatar_size"
+            android:layout_height="@dimen/article_avatar_size"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

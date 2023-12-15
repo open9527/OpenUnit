@@ -9,49 +9,6 @@ import androidx.annotation.StringDef
 object PkgShare {
     private const val PKG_SHARE_TITLE = "\n ---来自OpenUnit的分享---"
 
-
-    @Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD, AnnotationTarget.FUNCTION)
-    @MustBeDocumented
-    @StringDef(
-        ShareType.SHARE_TYPE_ALL,
-        ShareType.SHARE_TYPE_TEXT,
-        ShareType.SHARE_TYPE_IMAGE,
-        ShareType.SHARE_TYPE_VIDEO,
-        ShareType.SHARE_TYPE_AUDIO
-
-    )
-    @Retention(AnnotationRetention.SOURCE)
-    annotation class ShareType {
-        companion object {
-            const val SHARE_TYPE_ALL = "*/*"
-            const val SHARE_TYPE_TEXT = "text/plain"
-            const val SHARE_TYPE_IMAGE = "image/*"
-            const val SHARE_TYPE_VIDEO = "video/*"
-            const val SHARE_TYPE_AUDIO = "audio/*"
-        }
-    }
-
-
-    @Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD, AnnotationTarget.FUNCTION)
-    @MustBeDocumented
-    @StringDef(
-        SharePackage.PACKAGE_WECHAT,
-        SharePackage.PACKAGE_QQ,
-        SharePackage.PACKAGE_TIM,
-        SharePackage.PACKAGE_WEIBO
-
-    )
-    @Retention(AnnotationRetention.SOURCE)
-    annotation class SharePackage {
-        companion object {
-            const val PACKAGE_WECHAT = "com.tencent.mm"
-            const val PACKAGE_QQ = "com.tencent.mobileqq"
-            const val PACKAGE_TIM = "com.tencent.tim"
-            const val PACKAGE_WEIBO = "com.sina.weibo"
-        }
-    }
-
-
     fun shareText(context: Context, text: String) {
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.type = ShareType.SHARE_TYPE_TEXT
@@ -116,4 +73,45 @@ object PkgShare {
         context.startActivity(Intent.createChooser(shareIntent, PKG_SHARE_TITLE))
     }
 
+
+    @Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD, AnnotationTarget.FUNCTION)
+    @MustBeDocumented
+    @StringDef(
+        ShareType.SHARE_TYPE_ALL,
+        ShareType.SHARE_TYPE_TEXT,
+        ShareType.SHARE_TYPE_IMAGE,
+        ShareType.SHARE_TYPE_VIDEO,
+        ShareType.SHARE_TYPE_AUDIO
+
+    )
+    @Retention(AnnotationRetention.SOURCE)
+    annotation class ShareType {
+        companion object {
+            const val SHARE_TYPE_ALL = "*/*"
+            const val SHARE_TYPE_TEXT = "text/plain"
+            const val SHARE_TYPE_IMAGE = "image/*"
+            const val SHARE_TYPE_VIDEO = "video/*"
+            const val SHARE_TYPE_AUDIO = "audio/*"
+        }
+    }
+
+
+    @Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD, AnnotationTarget.FUNCTION)
+    @MustBeDocumented
+    @StringDef(
+        SharePackage.PACKAGE_WECHAT,
+        SharePackage.PACKAGE_QQ,
+        SharePackage.PACKAGE_TIM,
+        SharePackage.PACKAGE_WEIBO
+
+    )
+    @Retention(AnnotationRetention.SOURCE)
+    annotation class SharePackage {
+        companion object {
+            const val PACKAGE_WECHAT = "com.tencent.mm"
+            const val PACKAGE_QQ = "com.tencent.mobileqq"
+            const val PACKAGE_TIM = "com.tencent.tim"
+            const val PACKAGE_WEIBO = "com.sina.weibo"
+        }
+    }
 }

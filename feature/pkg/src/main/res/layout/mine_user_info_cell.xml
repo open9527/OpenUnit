@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cell"
+            type="com.open.pkg.ui.mine.cell.MineUserInfoCell" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--
+   bindShapeDrawableRadius="@{150}"
+            bindShapeDrawableSolidColor="@{@color/accent_color}"
+        -->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_avatar"
+            bindImageViewLoadCircle="@{true}"
+            bindImageViewLoadPlaceholderRes="@{cell.valueAvatarPlaceholderRes}"
+            bindImageViewLoadUrl="@{cell.valueAvatar}"
+            android:layout_width="@dimen/mine_avatar_size"
+            android:layout_height="@dimen/mine_avatar_size"
+            android:layout_marginTop="@dimen/view_space"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_name"
+            android:layout_width="@dimen/view_0px"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/view_vertical_margin"
+            android:layout_marginStart="@dimen/view_vertical_margin"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{cell.valueName}"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/title_text_size"
+            app:layout_constraintEnd_toEndOf="@+id/iv_avatar"
+            app:layout_constraintStart_toStartOf="@+id/iv_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
+            tools:text="name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
