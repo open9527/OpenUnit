@@ -16,6 +16,9 @@
     <dimen name="view_horizontal_padding">10dp</dimen>
 
     <dimen name="view_space">16dp</dimen>
+    <dimen name="compound_space">24dp</dimen>
+    <dimen name="rv_album_padding">2dp</dimen>
+    <dimen name="fa_btn_space">50dp</dimen>
 
     <dimen name="tab_bottom_height">60dp</dimen>
     <dimen name="top_search_height">40dp</dimen>

@@ -8,6 +8,8 @@ import com.open.core.LogUtils
 import com.open.core.ViewClickUtils.addClick
 import com.open.core.binding.binding
 import com.open.pkg.app.PkgRouter
+import com.open.pkg.ui.main.MainActivity
+import com.open.pkg.ui.media.AlbumActivity
 import com.open.pkg.ui.splash.SplashActivity
 import com.open.router.RouterDelegate
 import com.open.unit.R
@@ -29,6 +31,7 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
 
     override fun initView() {
+
         binding.click = ClickProxy()
         binding.tvStartPkg.addClick({
 
@@ -67,9 +70,31 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
         binding.tvTest.addClick({
 //            switch(dataCache.decodeBool(ICON_CHANGE_KEY, true))
-            navigationSplashActivity()
+//            navigationSplashActivity()
+//            navigationAlbumActivity()
+            navigationMainActivity()
             LogUtils.d(RouterDelegate.getRoutes())
         }, viewAlpha = true)
+    }
+
+    private fun navigationMainActivity() {
+        PkgRouter.navigation(
+            this,
+            Bundle().apply {
+                putInt(BUNDLE_TOTAL_KEY, 1)
+            },
+          MainActivity::class.java
+        )
+    }
+
+    private fun navigationAlbumActivity() {
+        PkgRouter.navigation(
+            this,
+            Bundle().apply {
+                putString(AlbumActivity.QUERY_TYPE, AlbumActivity.QUERY_IMAGE)
+            },
+            AlbumActivity::class.java
+        )
     }
 
     private fun navigationSplashActivity() {

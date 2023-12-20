@@ -1,13 +1,13 @@
 package com.open.pkg.ui.mine
 
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.open.base.BaseFragment
 import com.open.core.applicationViewModels
 import com.open.core.binding.binding
 import com.open.pkg.R
 import com.open.pkg.databinding.MineFragmentBinding
-import com.open.pkg.ui.article.ArticleFragment
 import com.open.pkg.ui.main.MainViewModel
 import com.open.pkg.ui.mine.cell.MineContentCell
 import com.open.pkg.ui.mine.cell.MineUserInfoCell
@@ -27,6 +27,7 @@ class MineFragment : BaseFragment(R.layout.mine_fragment) {
 
 
     private var cellList: MutableList<BaseCell> = mutableListOf()
+    private lateinit var mineUserInfoCell: MineUserInfoCell
 
 
     private val rvAdapter by lazy {
@@ -38,6 +39,17 @@ class MineFragment : BaseFragment(R.layout.mine_fragment) {
         })
     }
 
+    private val startActivityForResultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == ALBUM_RESULT_CODE) {
+                val data = result.data?.extras?.getString(ALBUM_RESULT_URI, "")
+                data?.let {
+                    mineUserInfoCell.valueAvatar.set(it)
+                }
+            }
+        }
+
+
     override fun initView() {
         binding.rvList.apply {
             layoutManager = WrapContentLinearLayoutManager(context)
@@ -46,7 +58,8 @@ class MineFragment : BaseFragment(R.layout.mine_fragment) {
     }
 
     override fun initData() {
-        cellList.add(0, MineUserInfoCell())
+        mineUserInfoCell = MineUserInfoCell(startActivityForResultLauncher)
+        cellList.add(0, mineUserInfoCell)
         mutableListOf("我的积分", "我的收藏", "我的分享", "系统设置").forEach {
             cellList.add(MineContentCell(it))
         }
@@ -56,7 +69,9 @@ class MineFragment : BaseFragment(R.layout.mine_fragment) {
 
     companion object {
         private const val TAG: String = "MineFragment"
-        private const val BUNDLE_KEY: String = "BUNDLE_KEY_MINE_FRAGMENT"
+        private const val BUNDLE_KEY: String = "bundle_key_mine_fragment"
+        const val ALBUM_RESULT_CODE = 9527001
+        const val ALBUM_RESULT_URI: String = "album_result_uri"
         fun newInstance(string: String): MineFragment {
             val bundle = Bundle()
             bundle.putString(BUNDLE_KEY, string)

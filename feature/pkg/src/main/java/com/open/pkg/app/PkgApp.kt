@@ -10,6 +10,7 @@ import com.open.image.initCoil
 import com.open.net.NetConfig
 import com.open.pkg.net.factory.LiveDataCallAdapterFactory
 import com.open.pkg.ui.main.MainActivity
+import com.open.pkg.ui.media.AlbumActivity
 import com.open.pkg.ui.search.SearchActivity
 import com.open.pkg.ui.web.WebActivity
 import com.open.router.OpenRouter
@@ -45,7 +46,8 @@ open class PkgApp : Application() {
                 cla = listOf(
                     MainActivity::class.java,
                     SearchActivity::class.java,
-                    WebActivity::class.java
+                    WebActivity::class.java,
+                    AlbumActivity::class.java,
                 )
             )
         }

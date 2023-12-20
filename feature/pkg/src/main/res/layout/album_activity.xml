@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlEnablePureScrollMode="true">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never" />
+
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+
+        <com.open.pkg.ui.view.FloatActionButton
+            android:id="@+id/fa_btn"
+            bindShapeDrawableRadius="@{50}"
+            bindShapeDrawableSolidColor="@{@color/accent_color}"
+            android:layout_width="@dimen/fa_btn_space"
+            android:layout_height="@dimen/fa_btn_space"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/camera_ic" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

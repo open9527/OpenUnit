@@ -1,10 +1,11 @@
 package com.open.pkg.app
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import androidx.activity.result.ActivityResultLauncher
 import com.open.core.LogUtils
 import com.open.router.OpenRouter
 import com.open.router.Postcard
@@ -17,13 +18,26 @@ object PkgRouter {
     private const val PKG_HOST = "page://"
     fun getPkgHost(): String = PKG_HOST
 
-    fun initialize(context: Application){
+    fun initialize(context: Application) {
         OpenRouter.init(context)
     }
+
     fun addList(host: String = PKG_HOST, cla: List<Class<*>>) {
         cla.forEach {
             add(host, it)
         }
+    }
+
+    fun navigation(
+        ctx: Context?,
+        bundle: Bundle = Bundle(),
+        cls: Class<*>,
+        launcher: ActivityResultLauncher<Intent>
+    ) {
+        OpenRouter.navigation(
+            ctx,
+            Postcard(getRouterPath(clazz = cls), bundle), launcher
+        )
     }
 
     fun navigation(ctx: Context?, bundle: Bundle = Bundle(), cls: Class<*>, intent: Intent) {
@@ -54,7 +68,15 @@ object PkgRouter {
         )
     }
 
-    fun bundleToMap(bundle:Bundle) = bundle.toMap()
+    fun navigationResult(ctx: Context?, resultCode: Int, data: Intent) {
+        if (ctx is Activity) {
+            ctx.setResult(resultCode, data)
+        } else {
+            LogUtils.d("navigationResult ctx is not Activity")
+        }
+    }
+
+    fun bundleToMap(bundle: Bundle) = bundle.toMap()
 
 
     private fun getRouterPath(host: String = PKG_HOST, clazz: Class<*>): String =
@@ -123,7 +145,6 @@ object PkgRouter {
         }
         return map
     }
-
 
 
 }

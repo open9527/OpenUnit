@@ -21,6 +21,10 @@
             android:name=".ui.search.SearchActivity"
             android:exported="false"
             android:label="@string/title_activity_search" />
+        <activity android:name="com.open.pkg.ui.media.AlbumActivity"
+            android:exported="false"
+            android:label="@string/title_activity_album"
+            />
     </application>
 
 </manifest>

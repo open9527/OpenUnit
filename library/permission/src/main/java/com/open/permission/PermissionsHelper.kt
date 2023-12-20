@@ -64,7 +64,7 @@ fun PermissionManager.requestStorage(callback: PermissionsCallback) {
     else
         arrayOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            //Manifest.permission.WRITE_EXTERNAL_STORAGE,
         )
     requestPermissions(permissions, callback)
 }
@@ -83,7 +83,7 @@ fun PermissionManager.requestMediaImages(callback: PermissionsCallback) {
     else
         arrayOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//            Manifest.permission.WRITE_EXTERNAL_STORAGE,
         )
     requestPermissions(permissions, callback)
 }
@@ -102,7 +102,7 @@ fun PermissionManager.requestMediaVideo(callback: PermissionsCallback) {
     else
         arrayOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//            Manifest.permission.WRITE_EXTERNAL_STORAGE,
         )
     requestPermissions(permissions, callback)
 }
@@ -121,7 +121,7 @@ fun PermissionManager.requestMediaAudio(callback: PermissionsCallback) {
     else
         arrayOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//            Manifest.permission.WRITE_EXTERNAL_STORAGE,
         )
     requestPermissions(permissions, callback)
 }

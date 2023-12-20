@@ -24,4 +24,8 @@
     <external-path
         name="external"
         path="." />
+    <!--自定义路径,拍照地址-->
+<!--    <files-path-->
+<!--        name="images"-->
+<!--        path="camera_cache/" />-->
 </paths>
