@@ -18,7 +18,7 @@ object MediaUtils {
     private const val CAMERA_CACHE = "camera_cache"
     private const val SUFFIX_IMAGE = ".jpg"
     private const val SUFFIX_VIDEO = ".mp4"
-    private const val SUFFIX_AUDIO = ".mp3"
+    private const val SUFFIX_AUDIO = ".m4a"
 
 
     fun createTempPictureUri(
@@ -55,9 +55,28 @@ object MediaUtils {
     }
 
 
+    fun createTempAudioUri(
+        storageDir: File? = ContextHolder.get().getExternalFilesDir(
+            Environment.DIRECTORY_MUSIC
+        )
+    ): Pair<Uri, File> {
+        val audioFileName: String = "AUD_" + createTimeTemp() + "_"
+
+//        创建指定文件夹 需要在file_paths 中定义
+//        val storageDir = File(ContextHolder.get().filesDir, CAMERA_CACHE)
+//        if (!storageDir.exists()) {
+//            storageDir.mkdirs()
+//        }
+
+        val file = File.createTempFile(audioFileName, SUFFIX_AUDIO, storageDir)
+        return Pair(UriUtils.fileToUri(ContextHolder.get(), file), file)
+    }
+
+
     // 更新图片文件到系统相册
     //MediaStore.Images.Media.EXTERNAL_CONTENT_URI
     //MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+//    MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
     suspend fun updateFileToGallery(
         context: Context,
         file: File,

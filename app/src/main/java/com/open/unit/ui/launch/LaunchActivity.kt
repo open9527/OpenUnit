@@ -10,6 +10,7 @@ import com.open.core.binding.binding
 import com.open.pkg.app.PkgRouter
 import com.open.pkg.ui.main.MainActivity
 import com.open.pkg.ui.media.AlbumActivity
+import com.open.pkg.ui.media.RecorderActivity
 import com.open.pkg.ui.splash.SplashActivity
 import com.open.router.RouterDelegate
 import com.open.unit.R
@@ -72,7 +73,8 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 //            switch(dataCache.decodeBool(ICON_CHANGE_KEY, true))
 //            navigationSplashActivity()
 //            navigationAlbumActivity()
-            navigationMainActivity()
+            navigationRecorderActivity()
+//            navigationMainActivity()
             LogUtils.d(RouterDelegate.getRoutes())
         }, viewAlpha = true)
     }
@@ -84,6 +86,14 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
                 putInt(BUNDLE_TOTAL_KEY, 1)
             },
           MainActivity::class.java
+        )
+    }
+   private fun navigationRecorderActivity() {
+        PkgRouter.navigation(
+            this,
+            Bundle().apply {
+            },
+            RecorderActivity::class.java
         )
     }
 

@@ -25,6 +25,10 @@
             android:exported="false"
             android:label="@string/title_activity_album"
             />
+        <activity android:name="com.open.pkg.ui.media.RecorderActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recorder"
+            />
     </application>
 
 </manifest>

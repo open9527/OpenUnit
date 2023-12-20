@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="HardcodedText">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_start_recorder"
+                bindShapeDrawableOrientation="@{6}"
+                bindShapeDrawableRadius="@{10}"
+                bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
+                bindShapeDrawableSolidEndColor="@{@color/purple_700}"
+                bindShapeDrawableSolidStartColor="@{@color/purple_200}"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="START_RECORDER"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@color/purple_200" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_pause_recorder"
+                bindShapeDrawableOrientation="@{6}"
+                bindShapeDrawableRadius="@{10}"
+                bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
+                bindShapeDrawableSolidEndColor="@{@color/purple_700}"
+                bindShapeDrawableSolidStartColor="@{@color/purple_200}"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="PAUSE_RECORDER"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_start_recorder"
+                tools:background="@color/purple_200" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_resume_recorder"
+                bindShapeDrawableOrientation="@{6}"
+                bindShapeDrawableRadius="@{10}"
+                bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
+                bindShapeDrawableSolidEndColor="@{@color/purple_700}"
+                bindShapeDrawableSolidStartColor="@{@color/purple_200}"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="RESUME_RECORDER"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pause_recorder"
+                tools:background="@color/purple_200" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_stop_recorder"
+                bindShapeDrawableOrientation="@{6}"
+                bindShapeDrawableRadius="@{10}"
+                bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
+                bindShapeDrawableSolidEndColor="@{@color/purple_700}"
+                bindShapeDrawableSolidStartColor="@{@color/purple_200}"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="STOP_RECORDER"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_resume_recorder"
+                tools:background="@color/purple_200" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_start"
+                bindShapeDrawableOrientation="@{6}"
+                bindShapeDrawableRadius="@{10}"
+                bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
+                bindShapeDrawableSolidEndColor="@{@color/purple_700}"
+                bindShapeDrawableSolidStartColor="@{@color/purple_200}"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="START"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_stop_recorder"
+                tools:background="@color/purple_200" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_pause"
+                bindShapeDrawableOrientation="@{6}"
+                bindShapeDrawableRadius="@{10}"
+                bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
+                bindShapeDrawableSolidEndColor="@{@color/purple_700}"
+                bindShapeDrawableSolidStartColor="@{@color/purple_200}"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="PAUSE"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_start"
+                tools:background="@color/purple_200" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_stop"
+                bindShapeDrawableOrientation="@{6}"
+                bindShapeDrawableRadius="@{10}"
+                bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
+                bindShapeDrawableSolidEndColor="@{@color/purple_700}"
+                bindShapeDrawableSolidStartColor="@{@color/purple_200}"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="STOP"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pause"
+                tools:background="@color/purple_200" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_text"
+                bindShapeDrawableOrientation="@{6}"
+                bindShapeDrawableRadius="@{10}"
+                bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
+                bindShapeDrawableSolidEndColor="@{@color/purple_700}"
+                bindShapeDrawableSolidStartColor="@{@color/purple_200}"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="描述信息:"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_stop"
+                tools:background="@color/purple_200" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

@@ -15,5 +15,6 @@
     <string name="search_hint_text">请输入搜索关键字</string>
 
     <string name="title_activity_album">album</string>
+    <string name="title_activity_recorder">recorder</string>
 
 </resources>
