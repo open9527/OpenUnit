@@ -40,19 +40,20 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
 
-        <!-- android:clickable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"-->
+
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/cb_check"
-            android:layout_margin="@dimen/view_horizontal_padding"
             android:layout_width="@dimen/compound_space"
             android:layout_height="@dimen/compound_space"
+            android:layout_margin="@dimen/view_horizontal_padding"
             android:background="@null"
-            android:checked="@{cell.valueSelect}"
             android:button="@null"
-            app:buttonCompat="@drawable/checkbox_selector"
             android:buttonTint="@color/accent_color"
+            android:checked="@{cell.valueSelect}"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            app:buttonCompat="@drawable/checkbox_selector"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

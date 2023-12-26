@@ -50,8 +50,8 @@ class AlbumActivity : BaseActivity(R.layout.album_activity) {
         BaseAdapter(diffCallback(), ItemAnimation.create().apply {
             duration(300)
             enabled(true)
-            firstOnly(false)
-            animation(animationType = ItemAnimation.LEFT_SLIDE_IN)
+            firstOnly(true)
+            animation(animationType = ItemAnimation.FADE_IN)
         })
     }
 
@@ -163,16 +163,15 @@ class AlbumActivity : BaseActivity(R.layout.album_activity) {
             LogUtils.d("mediaResult: ${JsonClient.toJson(it)}")
             it?.forEach { mediaBean ->
                 cellList.add(AlbumImageCell(mediaBean) { string ->
-                    LogUtils.d("onClick${string}")
                     PkgRouter.navigationResult(this, MineFragment.ALBUM_RESULT_CODE,
                         Intent().apply {
                             putExtra(MineFragment.ALBUM_RESULT_URI, string)
                         })
-                    LogUtils.d("onClick${string}")
                     finish()
                 })
             }
             rvAdapter.submitList(cellList)
+
         }
 
     }

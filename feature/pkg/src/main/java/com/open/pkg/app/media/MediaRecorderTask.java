@@ -107,13 +107,13 @@ public class MediaRecorderTask {
     public void stop() {
         try {
             mAllTime += System.currentTimeMillis() - mStartTime;
-            mRecorder.stop(); // [7]停止录
+            if (mRecorder != null) mRecorder.stop(); // [7]停止录
             isRecording = false;
-            mRecorder.release();
+            if (mRecorder != null) mRecorder.release();
             mRecorder = null;
         } catch (RuntimeException e) {
-            mRecorder.reset();//[8] You can reuse the object by going back
-            mRecorder.release(); //[9] Now the object cannot be reused
+            if (mRecorder != null)mRecorder.reset();//[8] You can reuse the object by going back
+            if (mRecorder != null)mRecorder.release(); //[9] Now the object cannot be reused
             mRecorder = null;
             isRecording = false;
             if (mFile.exists())

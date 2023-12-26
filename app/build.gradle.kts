@@ -22,6 +22,22 @@ android {
         }
     }
 
+    flavorDimensions += "version"
+    productFlavors {
+        create("dev") {
+            dimension = "version"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+        }
+        create("prod") {
+            dimension = "version"
+            applicationIdSuffix = ""
+            versionNameSuffix = ""
+        }
+    }
+
+
+
     buildTypes {
 
         release {

@@ -17,6 +17,7 @@ import coil.disk.DiskCache
 import coil.imageLoader
 import coil.load
 import coil.memory.MemoryCache
+import coil.request.CachePolicy
 import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
 import coil.transform.RoundedCornersTransformation
@@ -27,29 +28,32 @@ import okhttp3.OkHttpClient
 
 fun initCoil(context: Context, okHttpClient: OkHttpClient = OkHttpClient.Builder().build()) {
     Coil.setImageLoader(
-        ImageLoader.Builder(context).memoryCache {
-            MemoryCache.Builder(context)
-                .maxSizePercent(0.25)
-                .build()
-        }.components {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                add(ImageDecoderDecoder.Factory())
-            } else {
-                add(GifDecoder.Factory())
-            }
-            add(SvgDecoder.Factory())
-            add(VideoFrameDecoder.Factory())
+        ImageLoader.Builder(context)
+            .components {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    add(ImageDecoderDecoder.Factory())
+                } else {
+                    add(GifDecoder.Factory())
+                }
+                add(SvgDecoder.Factory())
+                add(VideoFrameDecoder.Factory())
 
-        }.okHttpClient {
-            okHttpClient.apply {
-                Dispatcher().apply { maxRequestsPerHost = maxRequests }
+            }.memoryCache {
+                MemoryCache.Builder(context)
+                    .maxSizePercent(0.25)
+                    .build()
             }
-        }.diskCache {
-            DiskCache.Builder()
-                .directory(context.cacheDir.resolve("image_cache"))
-                .maxSizePercent(0.02)
-                .build()
-        }.logger(DebugLogger())
+            .diskCache {
+                DiskCache.Builder()
+                    .directory(context.cacheDir.resolve("image_cache"))
+                    .maxSizePercent(0.02)
+                    .build()
+            }
+            .diskCachePolicy(CachePolicy.ENABLED).okHttpClient {
+                okHttpClient.apply {
+                    Dispatcher().apply { maxRequestsPerHost = maxRequests }
+                }
+            }.logger(DebugLogger())
 //            .fallback(ColorDrawable(Color.GRAY))
             .crossfade(true)
 //            .error(ColorDrawable(Color.GRAY))

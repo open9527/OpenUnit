@@ -40,10 +40,6 @@ class RecorderActivity : BaseActivity(R.layout.recorder_activity) {
                 override fun allow() {
                     startRecorder()
                 }
-
-                override fun deny() {
-
-                }
             })
 
 

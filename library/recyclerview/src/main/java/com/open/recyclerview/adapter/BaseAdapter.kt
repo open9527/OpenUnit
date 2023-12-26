@@ -38,6 +38,9 @@ open class BaseAdapter<T : BaseCell>(
         addAnimation(holder)
     }
 
+//    override fun submitList(list: List<T>?) {
+//        super.submitList(list?.let { ArrayList(it) })
+//    }
 
     fun addLifecycleOwner(owner: LifecycleOwner?) {
         owner?.lifecycle?.addObserver(this)
