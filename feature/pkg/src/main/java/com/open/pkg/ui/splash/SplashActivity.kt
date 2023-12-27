@@ -12,7 +12,6 @@ import com.open.pkg.app.PkgRouter
 import com.open.pkg.databinding.SplashActivityBinding
 import com.open.pkg.ui.main.MainActivity
 import com.open.serialization.JsonClient
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class SplashActivity : BaseActivity(R.layout.splash_activity) {
     private val binding: SplashActivityBinding by binding(this)
@@ -33,12 +32,14 @@ class SplashActivity : BaseActivity(R.layout.splash_activity) {
     }
 
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    private fun ontCountDown(total: Int) {
-        val countdownJob = CountDown.countDownCoroutines(total, {
+    private fun ontCountDown(duration: Int) {
+        val countdownJob = CountDown.countDownCoroutine(duration, 1, 1, {
+            LogUtils.d("倒计时变更: ${it}s")
             viewModel.valueCount.set(it.toString())
-            LogUtils.d("onTick: ${it}s后重发")
         }, {
+            LogUtils.d("倒计时开始")
+        }, {
+            LogUtils.d("倒计时结束")
             PkgRouter.navigation(
                 this,
                 Bundle().apply {
@@ -46,8 +47,8 @@ class SplashActivity : BaseActivity(R.layout.splash_activity) {
                 },
                 MainActivity::class.java
             )
-
         }, lifecycleScope)
+
     }
 
 

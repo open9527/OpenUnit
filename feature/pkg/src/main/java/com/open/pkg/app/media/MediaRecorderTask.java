@@ -83,7 +83,7 @@ public class MediaRecorderTask {
                     }
                 }
             }
-        }, 0, 1000);
+        }, 0, mPeriod);
     }
 
 
@@ -112,13 +112,17 @@ public class MediaRecorderTask {
             if (mRecorder != null) mRecorder.release();
             mRecorder = null;
         } catch (RuntimeException e) {
-            if (mRecorder != null)mRecorder.reset();//[8] You can reuse the object by going back
-            if (mRecorder != null)mRecorder.release(); //[9] Now the object cannot be reused
+            if (mRecorder != null) mRecorder.reset();//[8] You can reuse the object by going back
+            if (mRecorder != null) mRecorder.release(); //[9] Now the object cannot be reused
             mRecorder = null;
             isRecording = false;
             if (mFile.exists())
                 mFile.delete();
         }
+    }
+    private int mPeriod = 1000;
+    public void setPeriod(int period ){
+        mPeriod = period;
     }
 
     public int getAllTime() {
@@ -131,6 +135,7 @@ public class MediaRecorderTask {
     }
 
     private OnVolumeChangeListener mOnVolumeChangeListener;
+
 
     public void setOnVolumeChangeListener(OnVolumeChangeListener onVolumeChangeListener) {
         mOnVolumeChangeListener = onVolumeChangeListener;
