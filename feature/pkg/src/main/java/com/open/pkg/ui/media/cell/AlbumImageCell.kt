@@ -21,7 +21,7 @@ class AlbumImageCell(mediaBean: MediaBean,  private val listener: ((String) -> U
 
     init {
         valueData.set(mediaBean.bitmapThumbnail ?: mediaBean.uri)
-        valuePlaceholderRes.set(R.drawable.empty_image)
+        valuePlaceholderRes.set(R.drawable.empty_circle_layer_list)
         valueType.set(mediaBean.type)
     }
 

@@ -36,7 +36,7 @@
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/camera_ic" />
+            app:srcCompat="@drawable/float_camera_layer_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

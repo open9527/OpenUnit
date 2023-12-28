@@ -21,7 +21,7 @@ class MineUserInfoCell(private val launcher: ActivityResultLauncher<Intent>) : B
     val valueAvatarPlaceholderRes = ObservableInt()
 
     init {
-        valueAvatarPlaceholderRes.set(R.drawable.avatar_placeholder_ic)
+        valueAvatarPlaceholderRes.set(R.drawable.avatar_layer_list)
     }
 
     override fun getItemType(): Int = R.layout.mine_user_info_cell

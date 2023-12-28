@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/progress_bar_height"
             android:progress="@{vm.valueProgress}"
-            android:progressDrawable="@drawable/web_progress_bar"
+            android:progressDrawable="@drawable/web_progress_bar_layer_list"
             android:visibility="@{vm.valueProgressBar}"
             app:layout_constraintBottom_toTopOf="@+id/cl_menu" />
 

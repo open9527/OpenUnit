@@ -30,6 +30,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "OpenUnit"
 include(":app")
+include(":library:res")
 include(":library:core")
 include(":library:base")
 include(":library:dialog")

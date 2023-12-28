@@ -38,7 +38,7 @@
                 android:paddingHorizontal="@dimen/view_horizontal_padding"
                 android:text="@{vm.valueKeyword}"
                 android:textColor="@color/text_hint_color"
-                android:textCursorDrawable="@drawable/edit_text_cursor_bg"
+                android:textCursorDrawable="@drawable/edit_text_cursor_shape"
                 android:textSize="@dimen/content_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

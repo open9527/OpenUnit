@@ -11,17 +11,15 @@
             <corners android:radius="200dp" />
         </shape>
     </item>
-        <item
-            android:width="200dp"
-            android:height="200dp"
-            android:bottom="10dp"
-            android:end="10dp"
-            android:gravity="center"
-            android:left="10dp"
-            android:top="10dp"
-            tools:ignore="UnusedAttribute">
-            <bitmap
-                android:src="@drawable/camera_ic" />
-        </item>
+    <item
+        android:width="150dp"
+        android:height="150dp"
+        android:bottom="10dp"
+        android:drawable="@drawable/image_empty_ic"
+        android:end="10dp"
+        android:gravity="center"
+        android:left="10dp"
+        android:top="10dp"
+        tools:ignore="UnusedAttribute" />
 
 </layer-list>

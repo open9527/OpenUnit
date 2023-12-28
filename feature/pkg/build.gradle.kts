@@ -46,6 +46,7 @@ dependencies {
     api(libs.bundles.refresh)
     api(libs.banner)
     api(libs.bundles.exoplayer)
+    api(project(path = ":library:res"))
     api(project(path = ":library:core"))
     api(project(path = ":library:base"))
     api(project(path = ":library:dialog"))
