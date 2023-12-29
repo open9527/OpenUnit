@@ -24,9 +24,6 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment) {
 
     private val mainViewModel: MainViewModel by applicationViewModels()
 
-    private var fragmentList: MutableList<Fragment> = mutableListOf()
-    private var projectClassificationList: MutableList<ProjectClassificationVo> = mutableListOf()
-
     private val pageAdapter by lazy {
         ProjectFragmentPagerAdapter(childFragmentManager, lifecycle)
     }
@@ -46,7 +43,7 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment) {
             if (projectResponse.isSuccessful) {
                 projectResponse.data?.apply {
                     forEach { projectClassificationVo ->
-                        projectClassificationList.add(projectClassificationVo)
+                        viewModel.dataList.add(projectClassificationVo)
                     }
                     pageAdapter.setDataList(this)
                 }
@@ -56,7 +53,7 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment) {
                     offscreenPageLimit = 5
                 }
                 TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-                    tab.text = projectClassificationList[position].name
+                    tab.text = viewModel.dataList[position].name
                 }.attach()
             }
         }

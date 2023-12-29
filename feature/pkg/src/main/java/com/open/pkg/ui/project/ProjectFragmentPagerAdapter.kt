@@ -18,7 +18,7 @@ class ProjectFragmentPagerAdapter(fragmentManager: FragmentManager, lifecycle: L
         return ProjectContentFragment.newInstance(dataList[position])
     }
 
-    public fun setDataList(dataList: List<ProjectClassificationVo>) {
+    fun setDataList(dataList: List<ProjectClassificationVo>) {
         this.dataList = dataList
     }
 }
