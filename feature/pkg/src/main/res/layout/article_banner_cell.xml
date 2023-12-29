@@ -12,13 +12,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginVertical="@dimen/view_vertical_margin"
         android:layout_height="wrap_content">
 
         <com.zhpan.bannerview.BannerViewPager
             android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/view_0px"
+            android:layout_height="@dimen/space_zero"
             app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -13,9 +13,15 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/view_0px"
+            android:layout_height="@dimen/space_zero"
             app:layout_constraintBottom_toTopOf="@+id/tab_layout"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:background="@color/line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/tab_layout" />
 
         <!--
 
@@ -37,15 +43,16 @@ tabContentEnd	设置标签内容的末尾边距
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/tab_bottom_height"
-            android:background="@color/purple_500"
-            app:tabTextColor="@color/white80"
-            app:tabMode="fixed"
-            app:tabGravity="fill"
-            app:tabSelectedTextColor="@color/white"
+            android:layout_height="@dimen/space_view_bottom"
+            android:background="@color/primary_color"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:tabIndicatorHeight="@dimen/view_0px"
-            app:tabRippleColor="@color/purple_700"
+            app:tabGravity="fill"
+            app:tabIconTint="@color/panda"
+            app:tabIndicatorHeight="@dimen/space_zero"
+            app:tabMode="fixed"
+            app:tabRippleColor="@color/accent_color"
+            app:tabSelectedTextColor="@color/accent_color"
+            app:tabTextColor="@color/text_hint_color"
             app:tabUnboundedRipple="@android:color/transparent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

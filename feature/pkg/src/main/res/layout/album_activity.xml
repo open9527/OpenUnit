@@ -20,6 +20,7 @@
                 android:id="@+id/rv_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/space_zero"
                 android:overScrollMode="never" />
 
 
@@ -30,9 +31,9 @@
             android:id="@+id/fa_btn"
             bindShapeDrawableRadius="@{50}"
             bindShapeDrawableSolidColor="@{@color/accent_color}"
-            android:layout_width="@dimen/fa_btn_space"
-            android:layout_height="@dimen/fa_btn_space"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="16dp"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

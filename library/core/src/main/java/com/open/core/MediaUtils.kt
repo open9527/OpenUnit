@@ -73,21 +73,22 @@ object MediaUtils {
     }
 
 
-    // 更新图片文件到系统相册
-    //MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-    //MediaStore.Video.Media.EXTERNAL_CONTENT_URI
-//    MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+    // 更新文件到手机文件系统
+    //MediaStore.Images.Media.EXTERNAL_CONTENT_URI //Environment.DIRECTORY_PICTURES
+    //MediaStore.Video.Media.EXTERNAL_CONTENT_URI  //Environment.DIRECTORY_MOVIES
+    //MediaStore.Audio.Media.EXTERNAL_CONTENT_URI  //Environment.DIRECTORY_MUSIC
     suspend fun updateFileToGallery(
         context: Context,
         file: File,
-        contentUri: Uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        contentUri: Uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+        relativePath: String = Environment.DIRECTORY_PICTURES,
     ): Uri? {
         return suspendCancellableCoroutine { cont ->
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 val uri = ContentValues().run {
                     put(MediaStore.MediaColumns.DISPLAY_NAME, file.name)
                     put(MediaStore.MediaColumns.MIME_TYPE, getMimeType(file.path))
-                    put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DCIM)
+                    put(MediaStore.MediaColumns.RELATIVE_PATH, relativePath)
                     context.contentResolver.insert(
                         contentUri,
                         this

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.open.base.BaseFragment
 import com.open.core.LogUtils
+import com.open.core.ViewClickUtils.addClick
 import com.open.core.applicationViewModels
 import com.open.core.binding.binding
 import com.open.pkg.R
@@ -51,6 +52,15 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
             layoutManager = WrapContentLinearLayoutManager(context)
             adapter = rvAdapter
         }
+        binding.clSearch.addClick({
+            PkgRouter.navigation(
+                requireContext(),
+                Bundle().apply {
+                    putString(SearchActivity.BUNDLE_KEY, viewModel.valueContent.get())
+                },
+                SearchActivity::class.java
+            )
+        })
 
         binding.refresh.apply {
             setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
@@ -95,6 +105,9 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
                     },
                     SearchActivity::class.java
                 )
+            }
+            .addChangeListener { _, string, _ ->
+                viewModel.valueContent.set(string)
             }
             .addLifecycleOwner(viewLifecycleOwner)
     }

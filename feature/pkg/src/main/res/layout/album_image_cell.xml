@@ -14,14 +14,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_image"
             bindImageViewLoadPlaceholderRes="@{cell.valuePlaceholderRes}"
             bindImageViewLoadUrl="@{cell.valueData}"
+            bindImageViewLoadRound="@{true}"
+            bindImageViewLoadRoundRadius="@{10}"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/view_0px"
+            android:layout_height="@dimen/space_zero"
             android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -39,19 +44,18 @@
             android:textColor="@color/primary_color"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/cb_check"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="@dimen/space_padding"
+            android:layout_margin="8dp"
+            android:background="@drawable/checkbox_selector"
             android:button="@null"
             android:checked="@{cell.valueSelect}"
             android:clickable="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:gravity="center"
-            android:background="@drawable/checkbox_selector"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

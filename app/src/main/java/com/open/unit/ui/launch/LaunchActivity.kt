@@ -7,6 +7,7 @@ import com.open.compose.ui.ComposeActivity
 import com.open.core.LogUtils
 import com.open.core.ViewClickUtils.addClick
 import com.open.core.binding.binding
+import com.open.pkg.app.PkgConfig
 import com.open.pkg.app.PkgRouter
 import com.open.pkg.ui.main.MainActivity
 import com.open.pkg.ui.media.AlbumActivity
@@ -39,7 +40,7 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
             PkgRouter.navigation(
                 this,
                 Bundle().apply {
-                    putInt(BUNDLE_TOTAL_KEY, 5)
+                    putInt(BUNDLE_TOTAL_KEY, if (PkgConfig.isDebug()) 1 else 5)
                 },
                 SplashActivity::class.java
             )
@@ -85,10 +86,11 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
             Bundle().apply {
                 putInt(BUNDLE_TOTAL_KEY, 1)
             },
-          MainActivity::class.java
+            MainActivity::class.java
         )
     }
-   private fun navigationRecorderActivity() {
+
+    private fun navigationRecorderActivity() {
         PkgRouter.navigation(
             this,
             Bundle().apply {

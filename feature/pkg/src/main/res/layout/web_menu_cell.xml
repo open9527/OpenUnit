@@ -18,11 +18,11 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_menu_title"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/view_0px"
+            android:layout_height="@dimen/space_zero"
             android:gravity="center"
             android:text="@{cell.valueTitle}"
             android:textColor="@color/text_hint_color"
-            android:textSize="@dimen/content_text_size"
+            android:textSize="@dimen/text_size_content"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="menu" />

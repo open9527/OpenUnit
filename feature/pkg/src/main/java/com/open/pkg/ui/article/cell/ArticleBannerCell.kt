@@ -42,11 +42,11 @@ class ArticleBannerCell(
             adapter = bannerAdapter
             setScrollDuration(2000)
             setIndicatorSlideMode(IndicatorSlideMode.SMOOTH)
-            setRevealWidth(BannerUtils.dp2px(16f), BannerUtils.dp2px(16f))
+            setRevealWidth(BannerUtils.dp2px(8f), BannerUtils.dp2px(8f))
             setPageStyle(
-                PageStyle.MULTI_PAGE_SCALE, 0.85f
+                PageStyle.MULTI_PAGE_SCALE, 0.75f
             )
-            setIndicatorSliderColor(getColor(R.color.gray), getColor(R.color.pink))
+            setIndicatorSliderColor(getColor(R.color.panda), getColor(R.color.accent_color))
             registerLifecycleObserver(lifecycleOwner.lifecycle)
         }.create()
         mBannerPager.refreshData(bannerList)

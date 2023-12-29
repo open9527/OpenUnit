@@ -47,6 +47,7 @@ class SplashActivity : BaseActivity(R.layout.splash_activity) {
                 },
                 MainActivity::class.java
             )
+            finish()
         }, lifecycleScope)
 
     }

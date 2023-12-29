@@ -69,7 +69,7 @@ object PkgShare {
         val shareIntent = Intent(Intent.ACTION_SEND_MULTIPLE)
         shareIntent.setPackage(sharePackage)
         shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris)
-        shareIntent.type = shareType.toString()
+        shareIntent.type = shareType
         context.startActivity(Intent.createChooser(shareIntent, PKG_SHARE_TITLE))
     }
 

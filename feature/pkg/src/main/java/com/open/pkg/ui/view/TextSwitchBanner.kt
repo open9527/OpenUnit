@@ -27,6 +27,7 @@ class TextSwitchBanner(val context: Context) :
     private lateinit var textSwitcher: TextSwitcher
     private var textList: List<String> = listOf()
     private var iListener = ObservableField<((View, String, Int) -> Unit?)>()
+    private var iChangeListener = ObservableField<((View, String, Int) -> Unit?)>()
 
     override fun makeView(): View {
         return defaultTextView(context)
@@ -106,6 +107,10 @@ class TextSwitchBanner(val context: Context) :
         iListener.set(listener)
         return this
     }
+    fun addChangeListener(listener: (view: View, string: String, index: Int) -> Unit?): TextSwitchBanner {
+        iChangeListener.set(listener)
+        return this
+    }
 
     fun addLifecycleOwner(owner: LifecycleOwner?): TextSwitchBanner {
         owner?.lifecycle?.addObserver(this)
@@ -126,6 +131,9 @@ class TextSwitchBanner(val context: Context) :
     private fun nextView() {
         index = ++index % textList.size
         textSwitcher.setText(textList[index])
+        iChangeListener.get()?.let {
+            it(textSwitcher, textList[index], index)
+        }
     }
 
 

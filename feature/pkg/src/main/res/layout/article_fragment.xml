@@ -9,26 +9,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="@dimen/space_margin_layout"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_search"
-            bindShapeDrawableRadius="@{40}"
+            bindShapeDrawableRadius="@{48}"
             bindShapeDrawableSolidColor="@{@color/primary_color}"
-            bindShapeDrawableStrokeColor="@{@color/line_color}"
+            bindShapeDrawableStrokeColor="@{@color/accent_color}"
             bindShapeDrawableStrokeWidth="@{1}"
+            android:layout_margin="@dimen/space_margin_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/top_search_height"
-            android:layout_margin="@dimen/view_horizontal_margin">
+            android:layout_height="@dimen/space_view_top">
 
             <TextSwitcher
                 android:id="@+id/text_switcher"
-                android:layout_width="@dimen/view_0px"
-                android:layout_height="@dimen/view_0px"
+                android:layout_width="@dimen/space_zero"
+                android:layout_height="@dimen/space_zero"
+                android:layout_marginEnd="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_search"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_search"
+                android:layout_width="@dimen/icon_size_normal"
+                android:layout_height="@dimen/icon_size_normal"
+                android:layout_marginEnd="@dimen/space_margin_view"
+                android:tint="@color/accent_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/search_ic" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

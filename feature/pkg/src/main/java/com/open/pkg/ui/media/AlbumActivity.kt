@@ -1,6 +1,7 @@
 package com.open.pkg.ui.media
 
 import android.content.Intent
+import android.os.Environment
 import android.provider.MediaStore
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -9,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.open.base.BaseActivity
 import com.open.core.LogUtils
 import com.open.core.MediaUtils
-import com.open.core.SizeUtils
 import com.open.core.ViewClickUtils.addClick
 import com.open.core.binding.binding
 import com.open.core.toast
@@ -84,7 +84,9 @@ class AlbumActivity : BaseActivity(R.layout.album_activity) {
                     MediaUtils.updateFileToGallery(
                         this@AlbumActivity,
                         videoUri.second,
-                        MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                        MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                        Environment.DIRECTORY_MOVIES
+
                     )
                     MediaUtils.deleteByUri(videoUri.first)
                     delay(1000L)
@@ -102,13 +104,8 @@ class AlbumActivity : BaseActivity(R.layout.album_activity) {
         permissionManager = PermissionManager(this)
         binding.rvList.apply {
             layoutManager = WrapContentGridLayoutManager(context, 3)
-            addItemDecoration(
-                GridSpaceDecoration(
-                    SizeUtils.dp2px(context, 2f).toInt(),
-                )
-            )
+            addItemDecoration(GridSpaceDecoration(10))
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
-
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     when (newState) {
                         RecyclerView.SCROLL_STATE_DRAGGING -> binding.faBtn.hide()
@@ -116,7 +113,6 @@ class AlbumActivity : BaseActivity(R.layout.album_activity) {
                     }
                 }
             })
-
             adapter = rvAdapter
         }
 

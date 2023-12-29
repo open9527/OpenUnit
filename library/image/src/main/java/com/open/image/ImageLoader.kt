@@ -54,9 +54,13 @@ fun initCoil(context: Context, okHttpClient: OkHttpClient = OkHttpClient.Builder
                     Dispatcher().apply { maxRequestsPerHost = maxRequests }
                 }
             }.logger(DebugLogger())
-//            .fallback(ColorDrawable(Color.GRAY))
+            .fallback(ColorDrawable(Color.GRAY).apply {
+                alpha = 100
+            })
             .crossfade(true)
-//            .error(ColorDrawable(Color.GRAY))
+            .error(ColorDrawable(Color.GRAY).apply {
+                alpha = 100
+            })
             .build()
     )
 }

@@ -17,7 +17,7 @@
         <com.open.pkg.ui.view.BrowserView
             android:id="@+id/web_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/view_0px"
+            android:layout_height="@dimen/space_zero"
             app:layout_constraintBottom_toTopOf="@+id/progress_bar"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
             android:id="@+id/progress_bar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/progress_bar_height"
+            android:layout_height="4dp"
             android:progress="@{vm.valueProgress}"
             android:progressDrawable="@drawable/web_progress_bar_layer_list"
             android:visibility="@{vm.valueProgressBar}"
@@ -34,18 +34,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_menu"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/tab_bottom_height"
+            android:layout_height="60dp"
             android:background="@color/accent_color"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_back"
-                android:layout_width="@dimen/view_0px"
+                android:layout_width="@dimen/space_zero"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="@string/web_back"
                 android:textColor="@color/white"
-                android:textSize="@dimen/content_text_size"
+                android:textSize="@dimen/text_size_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tv_next"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,12 +54,12 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_next"
-                android:layout_width="@dimen/view_0px"
+                android:layout_width="@dimen/space_zero"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="@string/web_next"
                 android:textColor="@color/white"
-                android:textSize="@dimen/content_text_size"
+                android:textSize="@dimen/text_size_content"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_back"
                 app:layout_constraintEnd_toStartOf="@+id/tv_refresh"
                 app:layout_constraintStart_toEndOf="@+id/tv_back"
@@ -68,12 +68,12 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_refresh"
-                android:layout_width="@dimen/view_0px"
+                android:layout_width="@dimen/space_zero"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="@string/web_refresh"
                 android:textColor="@color/white"
-                android:textSize="@dimen/content_text_size"
+                android:textSize="@dimen/text_size_content"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_back"
                 app:layout_constraintEnd_toStartOf="@+id/tv_more"
                 app:layout_constraintStart_toEndOf="@+id/tv_next"
@@ -82,12 +82,12 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_more"
-                android:layout_width="@dimen/view_0px"
+                android:layout_width="@dimen/space_zero"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="@string/web_more"
                 android:textColor="@color/white"
-                android:textSize="@dimen/content_text_size"
+                android:textSize="@dimen/text_size_content"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_back"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_refresh"
