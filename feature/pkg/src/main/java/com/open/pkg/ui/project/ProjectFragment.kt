@@ -44,11 +44,13 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment) {
         WanApiImpl.requestProject().observe(viewLifecycleOwner) { projectResponse ->
             LogUtils.d("projectResponse:${JsonClient.toJson(projectResponse)}")
             if (projectResponse.isSuccessful) {
-                projectResponse.data?.forEach { projectClassificationVo ->
-                    fragmentList.add(ProjectContentFragment.newInstance(projectClassificationVo))
-                    projectClassificationList.add(projectClassificationVo)
+                projectResponse.data?.apply {
+                    forEach { projectClassificationVo ->
+                        projectClassificationList.add(projectClassificationVo)
+                    }
+                    pageAdapter.setDataList(this)
                 }
-                pageAdapter.setFragmentList(fragmentList)
+
                 binding.viewPager.apply {
                     adapter = pageAdapter
                     offscreenPageLimit = 5
