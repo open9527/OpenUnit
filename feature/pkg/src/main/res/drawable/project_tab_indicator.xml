@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--自适应宽度 需要不设置 size width -->
+    <!--配合属性tabIndicator 设置资源-->
+    <!--配合属性tabIndicatorColor 设置颜色-->
+    <!-- app:tabIndicatorColor="@color/color_xxx"-->
+    <!-- 等比间距
+      app:tabMinWidth="0dp"
+      app:tabMaxWidth="0dp"
+    -->
+    <!--
+    android:left="2dp"
+    android:right="2dp"
+    -->
+    <item android:gravity="center">
+        <shape>
+            <size android:height="24dp" />
+            <corners android:radius="24dp" />
+        </shape>
+    </item>
+
+</layer-list>

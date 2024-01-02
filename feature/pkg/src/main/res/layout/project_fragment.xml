@@ -13,14 +13,21 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/space_view_top"
             android:background="@color/accent_color"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorHeight="@dimen/space_zero"
+            app:tabContentStart="@dimen/space_margin_layout"
+            app:tabIndicator="@drawable/project_tab_indicator"
+            app:tabIndicatorColor="@color/primary_color"
+            app:tabIndicatorGravity="center"
+            app:tabPaddingStart="@dimen/space_padding_view"
+            app:tabPaddingEnd="@dimen/space_padding_view"
+            app:tabMinWidth="@dimen/space_zero"
+            app:tabMaxWidth="@dimen/space_zero"
             app:tabMode="auto"
             app:tabRippleColor="@color/accent_color"
-            app:tabSelectedTextColor="@color/primary_color"
-            app:tabTextColor="@color/text_hint_color"
+            app:tabSelectedTextColor="@color/accent_color"
+            app:tabTextColor="@color/primary_color"
             app:tabUnboundedRipple="@android:color/transparent" />
 
         <androidx.viewpager2.widget.ViewPager2

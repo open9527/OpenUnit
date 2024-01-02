@@ -1,8 +1,12 @@
 package com.open.pkg.ui.project
 
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.open.base.BaseFragment
 import com.open.core.LogUtils
@@ -52,12 +56,51 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment) {
                     adapter = pageAdapter
                     offscreenPageLimit = 5
                 }
+
+                binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                    override fun onTabSelected(tab: TabLayout.Tab?) {
+                        tab?.customView?.apply {
+                            findViewById<TextView>(R.id.tv_tab_title).apply {
+                                setTextColor(
+                                    ContextCompat.getColor(
+                                        requireContext(),
+                                        R.color.accent_color
+                                    )
+                                )
+                            }
+                        }
+
+                    }
+
+                    override fun onTabUnselected(tab: TabLayout.Tab?) {
+                        tab?.customView?.apply {
+                            findViewById<TextView>(R.id.tv_tab_title).apply {
+                                setTextColor(ContextCompat.getColor(  requireContext(), R.color.primary_color))
+                            }
+                        }
+                    }
+
+                    override fun onTabReselected(tab: TabLayout.Tab?) {
+
+                    }
+
+                })
+
                 TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+                    tab.setCustomView(R.layout.project_tab_item)
                     tab.text = viewModel.dataList[position].name
+                    tab.customView?.apply {
+                        findViewById<TextView>(R.id.tv_tab_title).apply {
+                            text = viewModel.dataList[position].name
+                            setTextColor(ContextCompat.getColor(requireContext(), R.color.primary_color))
+                        }
+                    }
+
                 }.attach()
             }
         }
     }
+
     companion object {
         private const val TAG: String = "ProjectFragment"
         private const val BUNDLE_KEY: String = "BUNDLE_KEY_PROJECT_FRAGMENT"

@@ -1,5 +1,7 @@
 package com.open.pkg.ui.main
 
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayout
@@ -34,14 +36,36 @@ class MainActivity : BaseActivity(R.layout.main_activity) {
         pageAdapter.setDataList(tabList)
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                tab?.icon?.apply {
-                    setTint(ContextCompat.getColor(this@MainActivity, R.color.accent_color))
+                tab?.customView?.apply {
+                    findViewById<ImageView>(R.id.iv_tab_icon).drawable.setTint(
+                        ContextCompat.getColor(
+                            this@MainActivity,
+                            R.color.accent_color
+                        )
+                    )
+                    findViewById<TextView>(R.id.tv_tab_title).apply {
+                        setTextColor(
+                            ContextCompat.getColor(
+                                this@MainActivity,
+                                R.color.accent_color
+                            )
+                        )
+                    }
                 }
+
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                tab?.icon?.apply {
-                    setTint(ContextCompat.getColor(this@MainActivity, R.color.panda))
+                tab?.customView?.apply {
+                    findViewById<ImageView>(R.id.iv_tab_icon).drawable.setTint(
+                        ContextCompat.getColor(
+                            this@MainActivity,
+                            R.color.panda
+                        )
+                    )
+                    findViewById<TextView>(R.id.tv_tab_title).apply {
+                        setTextColor(ContextCompat.getColor(this@MainActivity, R.color.panda))
+                    }
                 }
             }
 
@@ -51,10 +75,25 @@ class MainActivity : BaseActivity(R.layout.main_activity) {
 
         })
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.icon = ContextCompat.getDrawable(this, tabList[position].second)
-            tab.text = tabList[position].first
+            tab.setCustomView(R.layout.main_tab_item)
+            tab.customView?.apply {
+                findViewById<ImageView>(R.id.iv_tab_icon).apply {
+                    setImageDrawable(
+                        ContextCompat.getDrawable(
+                            this@MainActivity,
+                            tabList[position].second
+                        )
+                    )
+                }.drawable.setTint(ContextCompat.getColor(this@MainActivity, R.color.panda))
+                findViewById<TextView>(R.id.tv_tab_title).apply {
+                    text = tabList[position].first
+                    setTextColor(ContextCompat.getColor(this@MainActivity, R.color.panda))
+                }
+            }
+            if (0 == position) {
+                tab.select()
+            }
         }.attach()
-        binding.tabLayout.getTabAt(0)?.select()
     }
 
 }
