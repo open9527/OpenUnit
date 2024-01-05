@@ -15,7 +15,7 @@ import com.open.recyclerview.adapter.BaseAdapter
 import com.open.recyclerview.adapter.BaseCell
 import com.open.recyclerview.adapter.diffCallback
 import com.open.recyclerview.animations.ItemAnimation
-import com.open.recyclerview.layoutmanager.WrapContentLinearLayoutManager
+import com.open.recyclerview.layoutmanager.linear
 
 class MineFragment : BaseFragment(R.layout.mine_fragment) {
 
@@ -52,7 +52,7 @@ class MineFragment : BaseFragment(R.layout.mine_fragment) {
 
     override fun initView() {
         binding.rvList.apply {
-            layoutManager = WrapContentLinearLayoutManager(context)
+            linear(context)
             adapter = rvAdapter
         }
     }

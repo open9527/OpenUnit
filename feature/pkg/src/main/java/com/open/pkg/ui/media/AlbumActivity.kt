@@ -27,7 +27,7 @@ import com.open.recyclerview.adapter.BaseCell
 import com.open.recyclerview.adapter.diffCallback
 import com.open.recyclerview.animations.ItemAnimation
 import com.open.recyclerview.decoration.GridSpaceDecoration
-import com.open.recyclerview.layoutmanager.WrapContentGridLayoutManager
+import com.open.recyclerview.layoutmanager.grid
 import com.open.serialization.JsonClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -103,7 +103,7 @@ class AlbumActivity : BaseActivity(R.layout.album_activity) {
     override fun initView() {
         permissionManager = PermissionManager(this)
         binding.rvList.apply {
-            layoutManager = WrapContentGridLayoutManager(context, 3)
+            grid(context, 3)
             addItemDecoration(GridSpaceDecoration(10))
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {

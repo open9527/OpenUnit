@@ -9,12 +9,11 @@ import com.open.core.binding.binding
 import com.open.dialog.BaseDialogFragment
 import com.open.pkg.R
 import com.open.pkg.databinding.WebMenuDialogBinding
-import com.open.pkg.ui.view.TextSwitchBanner
 import com.open.recyclerview.adapter.BaseAdapter
 import com.open.recyclerview.adapter.BaseCell
 import com.open.recyclerview.adapter.diffCallback
 import com.open.recyclerview.animations.ItemAnimation
-import com.open.recyclerview.layoutmanager.WrapContentGridLayoutManager
+import com.open.recyclerview.layoutmanager.grid
 
 class WebMenuDialog : BaseDialogFragment() {
 
@@ -53,7 +52,7 @@ class WebMenuDialog : BaseDialogFragment() {
         binding.dialog = this
 
         binding.rvList.apply {
-            layoutManager = WrapContentGridLayoutManager(context, 4)
+            grid(context,4)
             adapter = rvAdapter
         }
         initData()

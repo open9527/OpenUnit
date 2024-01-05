@@ -7,6 +7,7 @@ import com.open.pkg.net.response.BaseResponse
 import com.open.pkg.net.vo.ArticleListData
 import com.open.pkg.net.vo.BannerVo
 import com.open.pkg.net.vo.HotKeyVo
+import com.open.pkg.net.vo.NavigationVo
 import com.open.pkg.net.vo.ProjectClassificationVo
 import com.open.pkg.net.vo.ProjectListData
 
@@ -39,6 +40,12 @@ object WanApiImpl {
         return RetrofitClient.retrofitClient<WanApi>().requestArticleList(
             HttpCacheManager.HttpCacheType.USE_CACHE_AFTER_FAILURE.name,
             page
+        )
+    }
+
+    fun requestNavi(): LiveData<BaseResponse.ApiResponse<List<NavigationVo>>> {
+        return RetrofitClient.retrofitClient<WanApi>().requestNavi(
+            HttpCacheManager.HttpCacheType.USE_CACHE_AFTER_FAILURE.name
         )
     }
 

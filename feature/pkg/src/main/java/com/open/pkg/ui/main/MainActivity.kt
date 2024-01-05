@@ -19,6 +19,7 @@ class MainActivity : BaseActivity(R.layout.main_activity) {
     private val tabList by lazy {
         listOf(
             Pair("文章", R.drawable.home_icon),
+            Pair("导航", R.drawable.navi_icon),
             Pair("项目", R.drawable.project_icon),
             Pair("我的", R.drawable.mine_icon)
         )
@@ -31,6 +32,7 @@ class MainActivity : BaseActivity(R.layout.main_activity) {
     override fun initView() {
         binding.viewPager.apply {
             isUserInputEnabled = false
+            offscreenPageLimit = tabList.size
             adapter = pageAdapter
         }
         pageAdapter.setDataList(tabList)

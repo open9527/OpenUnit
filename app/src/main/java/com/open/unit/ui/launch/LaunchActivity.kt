@@ -2,16 +2,19 @@ package com.open.unit.ui.launch
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import com.open.base.BaseActivity
 import com.open.compose.ui.ComposeActivity
 import com.open.core.LogUtils
 import com.open.core.ViewClickUtils.addClick
 import com.open.core.binding.binding
+import com.open.core.toast
 import com.open.pkg.app.PkgConfig
 import com.open.pkg.app.PkgRouter
 import com.open.pkg.ui.main.MainActivity
 import com.open.pkg.ui.media.AlbumActivity
 import com.open.pkg.ui.media.RecorderActivity
+import com.open.pkg.ui.mine.MineFragment
 import com.open.pkg.ui.splash.SplashActivity
 import com.open.router.RouterDelegate
 import com.open.unit.R
@@ -30,6 +33,17 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
     private val dataCache: MMKV by lazy {
         MMKV.mmkvWithID(ICON_CHANGE)
     }
+
+
+    private val albumLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == MineFragment.ALBUM_RESULT_CODE) {
+                val data = result.data?.extras?.getString(MineFragment.ALBUM_RESULT_URI, "")
+                data?.let {
+                    toast("选择图片路径:${it}")
+                }
+            }
+        }
 
 
     override fun initView() {
@@ -74,8 +88,9 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 //            switch(dataCache.decodeBool(ICON_CHANGE_KEY, true))
 //            navigationSplashActivity()
 //            navigationAlbumActivity()
-            navigationRecorderActivity()
+//            navigationRecorderActivity()
 //            navigationMainActivity()
+            selectAlbum()
             LogUtils.d(RouterDelegate.getRoutes())
         }, viewAlpha = true)
     }
@@ -126,6 +141,19 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
             LauncherIcon.switchIcon(LaunchActivity::class.java, LaunchNewActivity::class.java)
         }
         dataCache.encode(ICON_CHANGE_KEY, !change)
+    }
+
+
+    private fun selectAlbum() {
+        PkgRouter.navigation(
+            this,
+            Bundle().apply {
+                putString(AlbumActivity.QUERY_TYPE, AlbumActivity.QUERY_ALL)
+            },
+            AlbumActivity::class.java, albumLauncher
+        )
+
+
     }
 
 

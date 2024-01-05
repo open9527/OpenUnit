@@ -6,6 +6,7 @@ import com.open.pkg.net.response.BaseResponse
 import com.open.pkg.net.vo.ArticleListData
 import com.open.pkg.net.vo.BannerVo
 import com.open.pkg.net.vo.HotKeyVo
+import com.open.pkg.net.vo.NavigationVo
 import com.open.pkg.net.vo.ProjectClassificationVo
 import com.open.pkg.net.vo.ProjectListData
 import okhttp3.RequestBody
@@ -26,7 +27,7 @@ interface WanApi {
         private const val BANNER = "banner/json"
         private const val ARTICLE_LIST = "article/list/{page}/json"
         private const val SEARCH_ARTICLE_LIST = "article/query/{page}/json"
-
+        private const val NAVIGATION = "navi/json"
         private const val PROJECT = "project/tree/json"
         private const val PROJECT_LIST = "project/list/{page}/json"
     }
@@ -55,6 +56,11 @@ interface WanApi {
         @Header(HttpCacheManager.HTTP_CACHE_HEADER) cache: String = HttpCacheManager.HttpCacheType.NO_CACHE.name,
         @Path("page") page: Int = 0,
     ): LiveData<BaseResponse.ApiResponse<ArticleListData>>
+
+    @GET(NAVIGATION)
+    fun requestNavi(
+        @Header(HttpCacheManager.HTTP_CACHE_HEADER) cache: String = HttpCacheManager.HttpCacheType.NO_CACHE.name,
+    ): LiveData<BaseResponse.ApiResponse<List<NavigationVo>>>
 
     @GET(PROJECT)
     fun requestProject(

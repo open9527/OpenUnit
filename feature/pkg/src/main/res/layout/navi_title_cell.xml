@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cell"
+            type="com.open.pkg.ui.navi.cell.NaviTitleCell" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_view_top">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/space_margin_view"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="@{cell.valueTitle}"
+            android:textColor="@color/accent_color"
+            android:textSize="@dimen/text_size_title"
+            tools:text="@string/title_fragment_navigation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -6,6 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.open.pkg.ui.article.ArticleFragment
 import com.open.pkg.ui.mine.MineFragment
+import com.open.pkg.ui.navi.NaviFragment
 import com.open.pkg.ui.project.ProjectFragment
 
 class MainFragmentPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
@@ -23,10 +24,13 @@ class MainFragmentPagerAdapter(fragmentManager: FragmentManager, lifecycle: Life
             }
 
             1 -> {
+                NaviFragment.newInstance(dataList[position].first)
+            }
+            2 -> {
                 ProjectFragment.newInstance(dataList[position].first)
             }
 
-            2 -> {
+            3 -> {
                 MineFragment.newInstance(dataList[position].first)
             }
 

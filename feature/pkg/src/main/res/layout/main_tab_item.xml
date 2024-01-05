@@ -15,21 +15,22 @@
             android:id="@+id/iv_tab_icon"
             android:layout_width="@dimen/icon_size_normal"
             android:layout_height="@dimen/icon_size_normal"
-            tools:src="@color/primary_color"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@+id/tv_tab_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:src="@color/primary_color" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_tab_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            tools:text="@string/title_activity_main"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_tab_icon" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_tab_icon"
+            tools:text="@string/title_activity_main" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

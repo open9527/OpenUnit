@@ -1,7 +1,6 @@
 package com.open.pkg.ui.article
 
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.viewModels
 import com.open.base.BaseFragment
 import com.open.core.LogUtils
@@ -21,7 +20,7 @@ import com.open.recyclerview.adapter.BaseAdapter
 import com.open.recyclerview.adapter.BaseCell
 import com.open.recyclerview.adapter.diffCallback
 import com.open.recyclerview.animations.ItemAnimation
-import com.open.recyclerview.layoutmanager.WrapContentLinearLayoutManager
+import com.open.recyclerview.layoutmanager.linear
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
@@ -49,7 +48,7 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
 
     override fun initView() {
         binding.rvList.apply {
-            layoutManager = WrapContentLinearLayoutManager(context)
+            linear(context)
             adapter = rvAdapter
         }
         binding.clSearch.addClick({

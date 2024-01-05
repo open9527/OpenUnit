@@ -16,7 +16,7 @@ import com.open.recyclerview.adapter.BaseAdapter
 import com.open.recyclerview.adapter.BaseCell
 import com.open.recyclerview.adapter.diffCallback
 import com.open.recyclerview.animations.ItemAnimation
-import com.open.recyclerview.layoutmanager.WrapContentLinearLayoutManager
+import com.open.recyclerview.layoutmanager.linear
 import com.open.serialization.JsonClient
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
@@ -46,7 +46,7 @@ class ProjectContentFragment : BaseFragment(R.layout.project_content_fragment) {
 
     override fun initView() {
         binding.rvList.apply {
-            layoutManager = WrapContentLinearLayoutManager(context)
+            linear(context)
             adapter = rvAdapter
         }
 

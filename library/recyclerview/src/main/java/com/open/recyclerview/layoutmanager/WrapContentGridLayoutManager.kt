@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView.Recycler
 import java.lang.IndexOutOfBoundsException
 
 
-class WrapContentGridLayoutManager : GridLayoutManager {
+ class WrapContentGridLayoutManager : GridLayoutManager {
     constructor(
         context: Context?,
         attrs: AttributeSet?,

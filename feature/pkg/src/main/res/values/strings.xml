@@ -2,6 +2,7 @@
     <string name="title_activity_splash">splash</string>
     <string name="title_activity_main">main</string>
     <string name="title_fragment_article">article</string>
+    <string name="title_fragment_navigation">navigation</string>
     <string name="title_fragment_project">project</string>
     <string name="title_fragment_mine">mine</string>
 
