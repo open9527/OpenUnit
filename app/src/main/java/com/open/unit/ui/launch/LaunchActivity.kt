@@ -6,7 +6,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.open.base.BaseActivity
 import com.open.compose.ui.ComposeActivity
 import com.open.core.LogUtils
-import com.open.core.ViewClickUtils.addClick
 import com.open.core.binding.binding
 import com.open.core.toast
 import com.open.pkg.app.PkgConfig
@@ -47,53 +46,9 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
 
     override fun initView() {
-
         binding.click = ClickProxy()
-        binding.tvStartPkg.addClick({
-
-            PkgRouter.navigation(
-                this,
-                Bundle().apply {
-                    putInt(BUNDLE_TOTAL_KEY, if (PkgConfig.isDebug()) 1 else 5)
-                },
-                SplashActivity::class.java
-            )
-
-        }, viewAlpha = true)
-
-        binding.tvStartFlutter.addClick({
-            PkgRouter.navigation(
-                this,
-                Bundle().apply {
-                    putString("key", "value")
-                },
-                FlutterActivity::class.java,
-                EngineManager.getEngineIntent(EngineManager.FLUTTER_PAGE_ENGINE_ID, this)
-            )
-
-        }, viewAlpha = true)
-
-        binding.tvStartCompose.addClick({
-            PkgRouter.navigation(
-                this,
-                Bundle().apply {
-                    putString("key", "value")
-                },
-                ComposeActivity::class.java
-            )
-
-        }, viewAlpha = true)
-
-        binding.tvTest.addClick({
-//            switch(dataCache.decodeBool(ICON_CHANGE_KEY, true))
-//            navigationSplashActivity()
-//            navigationAlbumActivity()
-//            navigationRecorderActivity()
-//            navigationMainActivity()
-            selectAlbum()
-            LogUtils.d(RouterDelegate.getRoutes())
-        }, viewAlpha = true)
     }
+
 
     private fun navigationMainActivity() {
         PkgRouter.navigation(
@@ -156,10 +111,63 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
     }
 
+    private fun navigationCompose() {
+        PkgRouter.navigation(
+            this,
+            Bundle().apply {
+                putString("key", "value")
+            },
+            ComposeActivity::class.java
+        )
+    }
+
+    private fun navigationFlutter() {
+        PkgRouter.navigation(
+            this,
+            Bundle().apply {
+                putString("key", "value")
+            },
+            FlutterActivity::class.java,
+            EngineManager.getEngineIntent(EngineManager.FLUTTER_PAGE_ENGINE_ID, this)
+        )
+    }
+
+    private fun navigationPkg() {
+        PkgRouter.navigation(
+            this,
+            Bundle().apply {
+                putInt(BUNDLE_TOTAL_KEY, if (PkgConfig.isDebug()) 1 else 5)
+            },
+            SplashActivity::class.java
+        )
+    }
 
     inner class ClickProxy {
-        fun onStartPkg(): (View) -> Unit = {
+        fun onStartPkg(): (view: View) -> Unit = {
+            navigationPkg()
+        }
 
+        fun onStartFlutter(): (view: View) -> Unit = {
+            navigationFlutter()
+        }
+
+        fun onStartCompose(): (view: View) -> Unit = {
+            navigationCompose()
+        }
+
+
+        fun onStartTest(): (view: View) -> Unit = {
+            selectAlbum()
+        }
+
+        fun onTest(): (view: View) -> Unit = {
+            switch(dataCache.decodeBool(ICON_CHANGE_KEY, true))
+            navigationSplashActivity()
+            navigationAlbumActivity()
+            navigationRecorderActivity()
+            navigationMainActivity()
+            selectAlbum()
+            LogUtils.d(RouterDelegate.getRoutes())
         }
     }
 

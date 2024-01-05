@@ -1,16 +1,14 @@
 package com.open.core
 
-import android.content.Context
 
 object SizeUtils {
-
-    fun dp2px(context: Context, dp: Float): Float {
-        val scale = context.resources.displayMetrics.density
+    fun dp2px(dp: Int): Float {
+        val scale = ContextHolder.get().resources.displayMetrics.density
         return (dp * scale + 0.5f)
     }
 
-    fun px2dp(context: Context, px: Float): Float {
-        val scale = context.resources.displayMetrics.density
+    fun px2dp(px: Int): Float {
+        val scale = ContextHolder.get().resources.displayMetrics.density
         return (px / scale + 0.5f)
     }
 }

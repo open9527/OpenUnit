@@ -19,6 +19,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_start_pkg"
+            bindViewClickListener="@{click.onStartPkg()}"
             bindShapeDrawableOrientation="@{6}"
             bindShapeDrawableRadius="@{10}"
             bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
@@ -36,6 +37,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_start_flutter"
+            bindViewClickListener="@{click.onStartFlutter()}"
             bindShapeDrawableOrientation="@{6}"
             bindShapeDrawableRadius="@{10}"
             bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
@@ -53,6 +55,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_start_compose"
+            bindViewClickListener="@{click.onStartCompose()}"
             bindShapeDrawableOrientation="@{6}"
             bindShapeDrawableRadius="@{10}"
             bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
@@ -67,7 +70,17 @@
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@+id/tv_start_flutter"
             tools:background="@color/purple_200" />
+        <!--
+        bindViewClickAlpha="@{true}"
+                    bindViewClickAlphaDefault="@{0.8F}"
+                    bindViewClickDebounce="@{true}"
+                    bindViewClickDebounceDefault="@{500L}"
+                    bindViewClickListener="@{click.onStartTest()}"
+                    bindViewClickScale="@{true}"
+                    bindViewClickScaleDefault="@{0.9F}"
+                    bindViewClickScaleDuration="@{120L}"
 
+        -->
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_test"
@@ -76,6 +89,7 @@
             bindShapeDrawableSolidCenterColor="@{@color/purple_500}"
             bindShapeDrawableSolidEndColor="@{@color/purple_700}"
             bindShapeDrawableSolidStartColor="@{@color/purple_200}"
+            bindViewClickListener="@{click.onStartTest()}"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_margin="20dp"

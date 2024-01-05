@@ -8,55 +8,37 @@ object ViewClickBindingAdapter {
 
     @BindingAdapter(
         value = [
-            "bindClickViewListener",
-            "bindClickDebounce",
-            "bindClickDebounceDefault",
-            "bindClickViewScale",
-            "bindClickViewScaleDefault",
-            "bindClickViewScaleDuration",
-            "bindClickViewAlpha",
-            "bindClickViewAlphaDefault"
+            "bindViewClickListener",
+            "bindViewClickDebounce",
+            "bindViewClickDebounceDefault",
+            "bindViewClickScale",
+            "bindViewClickScaleDefault",
+            "bindViewClickScaleDuration",
+            "bindViewClickAlpha",
+            "bindViewClickAlphaDefault"
         ], requireAll = false
     )
     @JvmStatic
-    fun setBindViewClick(
-        view: View,
-        listener: (View) -> Unit,
-        debounce: Boolean = true,
-        debounceDefault: Long = 500L,
-        viewScale: Boolean = true,
-        scaleDefault: Float = 0.9f,
-        duration: Long = 120,
-        viewAlpha: Boolean = false,
-        alphaDefault: Float = 0.7f
+    fun View.setBindViewClick(
+        listener: (view: View) -> Unit,
+        debounce: Boolean? = true,
+        debounceDefault: Long? = 500L,
+        viewScale: Boolean? = true,
+        scaleDefault: Float? = 0.9f,
+        duration: Long? = 120L,
+        viewAlpha: Boolean? = false,
+        alphaDefault: Float? = 0.7f
     ) {
-        view.addClick(
-            listener,
-            debounce,
-            debounceDefault,
-            viewScale,
-            scaleDefault,
-            duration,
-            viewAlpha,
-            alphaDefault
+        addClick(
+            listener = listener,
+            debounce = debounce ?: true,
+            debounceDefault = debounceDefault ?: 500L,
+            viewScale = viewScale ?: true,
+            scaleDefault = scaleDefault ?: 0.9f,
+            duration = duration ?: 120L,
+            viewAlpha = viewAlpha ?: true,
+            alphaDefault = alphaDefault ?: 0.7f
         )
-    }
 
-//    @BindingAdapter(
-//        value = [
-//            "bindClickViewListener",
-//        ], requireAll = false
-//    )
-//    @JvmStatic
-//    fun setBindViewClick(
-//        view: View,
-//        listener: View.OnClickListener,
-//    ) {
-//
-//        val onClick: (View) -> Unit = {
-//
-//        }
-//
-//        view.setOnClickListener(onClick)
-//    }
+    }
 }

@@ -55,17 +55,17 @@ object ShapeBindingAdapter {
 
         //1.设置圆角
         if (radius > 0) {
-            drawable.cornerRadius = SizeUtils.dp2px(context, radius.toFloat())
+            drawable.cornerRadius = SizeUtils.dp2px(radius)
         } else {
             drawable.cornerRadii = floatArrayOf(
-                SizeUtils.dp2px(context, radiusLT.toFloat()),
-                SizeUtils.dp2px(context, radiusLT.toFloat()),
-                SizeUtils.dp2px(context, radiusRT.toFloat()),
-                SizeUtils.dp2px(context, radiusRT.toFloat()),
-                SizeUtils.dp2px(context, radiusRB.toFloat()),
-                SizeUtils.dp2px(context, radiusRB.toFloat()),
-                SizeUtils.dp2px(context, radiusLB.toFloat()),
-                SizeUtils.dp2px(context, radiusLB.toFloat()),
+                SizeUtils.dp2px(radiusLT),
+                SizeUtils.dp2px(radiusLT),
+                SizeUtils.dp2px(radiusRT),
+                SizeUtils.dp2px(radiusRT),
+                SizeUtils.dp2px(radiusRB),
+                SizeUtils.dp2px(radiusRB),
+                SizeUtils.dp2px(radiusLB),
+                SizeUtils.dp2px(radiusLB),
             )
         }
         //2.设置渐变方向
@@ -97,7 +97,7 @@ object ShapeBindingAdapter {
         //4.描边
         if (strokeColor != Color.TRANSPARENT) {
             drawable.setStroke(
-                SizeUtils.dp2px(context, strokeWidth.toFloat()).toInt(),
+                SizeUtils.dp2px(strokeWidth).toInt(),
                 strokeColor,
                 dashWith.toFloat(),
                 dashGap.toFloat()

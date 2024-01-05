@@ -13,7 +13,7 @@ object ViewClickUtils {
         debounceDefault: Long = 500L,
         viewScale: Boolean = true,
         scaleDefault: Float = 0.9f,
-        duration: Long = 120,
+        duration: Long = 120L,
         viewAlpha: Boolean = false,
         alphaDefault: Float = 0.7f
     ) {
@@ -23,8 +23,7 @@ object ViewClickUtils {
     }
 
 
-    @SuppressLint("ClickableViewAccessibility")
-    private fun View.debounceClick(
+   private fun View.debounceClick(
         listener: (View) -> Unit,
         debounce: Boolean,
         debounceDefault: Long = 500L,
@@ -46,10 +45,10 @@ object ViewClickUtils {
 
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun View.alphaScaleClick(
+    private  fun View.alphaScaleClick(
         viewScale: Boolean = false,
         scale: Float = 0.9f,
-        duration: Long = 120,
+        duration: Long = 120L,
         viewAlpha: Boolean = false,
         alpha: Float = 0.8f
     ) {

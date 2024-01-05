@@ -35,12 +35,12 @@ object ImageViewLoadBindingAdapter {
         placeholderDrawable: Drawable?,
         hasCircle: Boolean,
         hasRound: Boolean,
-        roundRadius: Float,
+        roundRadius: Int,
         transformation: Transformation?,
     ) {
         imageView?.load(data) {
             if (width != null && height != null) {
-                size(SizeUtils.dp2px(imageView.context,width.toFloat()).toInt(), SizeUtils.dp2px(imageView.context,height.toFloat()).toInt())
+                size(SizeUtils.dp2px(width).toInt(), SizeUtils.dp2px(height).toInt())
             }
             placeholderRes?.let {
                 placeholder(it)
@@ -56,7 +56,7 @@ object ImageViewLoadBindingAdapter {
                 transformations(CircleCropTransformation())
             }
             if (hasRound) {
-                transformations(RoundedCornersTransformation(SizeUtils.dp2px(imageView.context,roundRadius)))
+                transformations(RoundedCornersTransformation(SizeUtils.dp2px(roundRadius)))
             }
 
             if (transformation != null) {
