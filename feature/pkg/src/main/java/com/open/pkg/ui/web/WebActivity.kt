@@ -30,6 +30,13 @@ class WebActivity : BaseActivity(R.layout.web_activity) {
     @SuppressLint("WrongConstant")
     override fun initView() {
         binding.vm = viewModel
+        backPressed {
+            if (binding.webView.canGoBack()) {
+                binding.webView.goBack()
+            } else {
+                finish()
+            }
+        }
         intent.extras?.let { bundle ->
             initWebView(binding.webView, bundle.getString(WEB_URL, ""))
         }
@@ -127,15 +134,6 @@ class WebActivity : BaseActivity(R.layout.web_activity) {
 
         })
 
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if (binding.webView.canGoBack()) {
-                    binding.webView.goBack()
-                } else {
-                    finish()
-                }
-            }
-        })
     }
 
 

@@ -20,7 +20,8 @@ object ViewClickBindingAdapter {
     )
     @JvmStatic
     fun View.setBindViewClick(
-        listener: (view: View) -> Unit,
+                listener: (view:View?) -> Unit,
+//        listener: () -> Unit,
         debounce: Boolean? = true,
         debounceDefault: Long? = 500L,
         viewScale: Boolean? = true,

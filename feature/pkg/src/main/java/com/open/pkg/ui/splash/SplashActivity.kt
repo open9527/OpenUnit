@@ -1,6 +1,7 @@
 package com.open.pkg.ui.splash
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.open.base.BaseActivity
@@ -21,7 +22,9 @@ class SplashActivity : BaseActivity(R.layout.splash_activity) {
 
     override fun initView() {
         binding.vm = viewModel
+        backPressed {}
     }
+
 
     override fun initData() {
         intent.extras?.let { bundle ->
@@ -30,6 +33,8 @@ class SplashActivity : BaseActivity(R.layout.splash_activity) {
             LogUtils.d("bundleToJson:${JsonClient.toJson(PkgRouter.bundleToMap(bundle))}")
         }
     }
+
+
 
 
     private fun ontCountDown(duration: Int) {

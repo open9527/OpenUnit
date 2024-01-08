@@ -8,11 +8,16 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.open.base.BaseActivity
 import com.open.core.binding.binding
+import com.open.core.toast
 import com.open.pkg.R
 import com.open.pkg.databinding.MainActivityBinding
 
 
 class MainActivity : BaseActivity(R.layout.main_activity) {
+    private var exitTime: Long = 0
+    private var timeInterval: Long = 2000
+
+
     private val binding: MainActivityBinding by binding(this)
     private val viewModel: MainViewModel by viewModels()
 
@@ -30,6 +35,15 @@ class MainActivity : BaseActivity(R.layout.main_activity) {
     }
 
     override fun initView() {
+        backPressed {
+            if (System.currentTimeMillis() - exitTime >= timeInterval) {
+                toast("再按一次退出程序")
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish()
+//                exitProcess(0)
+            }
+        }
         binding.viewPager.apply {
             isUserInputEnabled = false
             offscreenPageLimit = tabList.size

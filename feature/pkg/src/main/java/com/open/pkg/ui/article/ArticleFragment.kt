@@ -82,6 +82,7 @@ class ArticleFragment : BaseFragment(R.layout.article_fragment) {
         request(page = 0)
     }
 
+
     private fun request(page: Int) {
         this.page = page
         if (0 == page) {

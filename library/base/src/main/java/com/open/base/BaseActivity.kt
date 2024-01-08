@@ -21,10 +21,10 @@ abstract class BaseActivity(@LayoutRes contentLayoutId: Int) : AppCompatActivity
     override fun initData() {
     }
 
-    private fun backPressed() {
+    fun backPressed(onBack: () -> Unit) {
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                finish()
+                onBack()
             }
         })
     }

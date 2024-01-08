@@ -8,7 +8,8 @@ import android.view.View
 object ViewClickUtils {
     @SuppressLint("ClickableViewAccessibility")
     fun View.addClick(
-        listener: (view: View) -> Unit,
+                listener: (view:View?) -> Unit,
+//        listener: () -> Unit,
         debounce: Boolean = true,
         debounceDefault: Long = 500L,
         viewScale: Boolean = true,
@@ -24,7 +25,8 @@ object ViewClickUtils {
 
 
    private fun View.debounceClick(
-        listener: (View) -> Unit,
+        listener: (view:View?) -> Unit,
+//        listener: () -> Unit,
         debounce: Boolean,
         debounceDefault: Long = 500L,
     ) {
@@ -34,11 +36,12 @@ object ViewClickUtils {
                 val tmpTime = System.currentTimeMillis()
                 if (tmpTime - lastTime > debounceDefault) {
                     lastTime = tmpTime
-                    listener.invoke(this)
+                    listener(this)
                 }
             }
         } else {
-            this.setOnClickListener(listener)
+//            this.setOnClickListener { listener(this) }
+            this.setOnClickListener (listener)
         }
 
     }
