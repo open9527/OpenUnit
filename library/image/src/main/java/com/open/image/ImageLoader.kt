@@ -66,7 +66,7 @@ fun initCoil(context: Context, okHttpClient: OkHttpClient = OkHttpClient.Builder
 }
 
 
-fun ImageView.loadCircleCrop(data: Any, placeholderId: Int = 0, errorId: Int = 0) {
+fun ImageView.loadCircleCrop(data: Any?, placeholderId: Int = 0, errorId: Int = 0) {
     this.load(data) {
         crossfade(true)
         placeholder(placeholderId)
@@ -75,12 +75,12 @@ fun ImageView.loadCircleCrop(data: Any, placeholderId: Int = 0, errorId: Int = 0
     }
 }
 
-fun ImageView.loadRoundedCorners(data: Any, radius: Float) {
+fun ImageView.loadRoundedCorners(data: Any?, radius: Float) {
     this.loadRoundedCorners(data, radius, radius, radius, radius, 0, 0)
 }
 
 fun ImageView.loadRoundedCorners(
-    data: Any,
+    data: Any?,
     topLeft: Float,
     topRight: Float,
     bottomLeft: Float,
@@ -90,7 +90,7 @@ fun ImageView.loadRoundedCorners(
 }
 
 fun ImageView.loadRoundedCorners(
-    data: Any,
+    data: Any?,
     topLeft: Float,
     topRight: Float,
     bottomLeft: Float,
@@ -114,7 +114,7 @@ fun ImageView.loadRoundedCorners(
 }
 
 fun Context.imageDownload(
-    data: Any,
+    data: Any?,
     onSuccess: (result: Drawable) -> Unit = {},
     onStart: (placeholder: Drawable?) -> Unit = {},
     onError: (error: Drawable?) -> Unit = {}

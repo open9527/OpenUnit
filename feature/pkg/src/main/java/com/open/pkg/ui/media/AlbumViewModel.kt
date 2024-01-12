@@ -1,5 +1,6 @@
 package com.open.pkg.ui.media
 
+import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,10 +12,14 @@ import com.open.pkg.ui.media.AlbumActivity.Companion.QUERY_IMAGE
 import com.open.pkg.ui.media.AlbumActivity.Companion.QUERY_VIDEO
 import com.open.pkg.ui.media.vo.AlbumBean
 import com.open.pkg.ui.media.vo.MediaBean
+import com.open.recyclerview.adapter.BaseCell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AlbumViewModel : ViewModel(), Runnable {
+
+     var cellList =ObservableArrayList<BaseCell>()
+
 
     val allAlbum = MutableLiveData<List<AlbumBean>>()
     val queryType = ObservableField(QUERY_ALL)

@@ -24,7 +24,8 @@ class RecorderActivity : BaseActivity(R.layout.recorder_activity) {
 
     private val viewModel: AlbumViewModel by viewModels()
 
-    private lateinit var permissionManager: PermissionManager
+    private val permissionManager = PermissionManager(this)
+
 
     private var countdownJob: Job? = null
 
@@ -43,8 +44,6 @@ class RecorderActivity : BaseActivity(R.layout.recorder_activity) {
         binding.tvText.text = "需要开启录音->结束录音->开始播放"
         initCircleProgress()
         initWaveView()
-
-        permissionManager = PermissionManager(this)
         binding.tvStartRecorder.addClick({
             permissionManager.requestRecordAudio(object : PermissionsCallback {
                 override fun allow() {
@@ -104,7 +103,7 @@ class RecorderActivity : BaseActivity(R.layout.recorder_activity) {
     @SuppressLint("SetTextI18n")
     private fun startCountDownRecorder(duration: Int) {
         var count = 0
-        countdownJob = CountDown.countDownCoroutine(duration, 1,0, {
+        countdownJob = CountDown.countDownCoroutine(duration, 1, 0, {
             LogUtils.d("倒计时变更: ${it}s")
             count++
             binding.circleView.setProgress(((count / 60f) * 100).toInt(), 100)

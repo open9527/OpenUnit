@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_image"
             bindImageViewLoadPlaceholderRes="@{cell.valuePlaceholderRes}"
@@ -50,8 +49,8 @@
             android:layout_height="30dp"
             android:layout_margin="8dp"
             android:background="@drawable/checkbox_selector"
-            android:button="@null"
             android:checked="@{cell.valueSelect}"
+            android:button="@null"
             android:clickable="false"
             android:focusable="false"
             android:focusableInTouchMode="false"

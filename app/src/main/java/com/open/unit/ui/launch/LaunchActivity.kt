@@ -103,7 +103,7 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
         PkgRouter.navigation(
             this,
             Bundle().apply {
-                putString(AlbumActivity.QUERY_TYPE, AlbumActivity.QUERY_ALL)
+                putString(AlbumActivity.QUERY_TYPE, AlbumActivity.QUERY_IMAGE)
             },
             AlbumActivity::class.java, albumLauncher
         )

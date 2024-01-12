@@ -23,7 +23,6 @@ import com.open.pkg.databinding.AlbumActivityBinding
 import com.open.pkg.ui.media.cell.AlbumImageCell
 import com.open.pkg.ui.mine.MineFragment
 import com.open.recyclerview.adapter.BaseAdapter
-import com.open.recyclerview.adapter.BaseCell
 import com.open.recyclerview.adapter.diffCallback
 import com.open.recyclerview.animations.ItemAnimation
 import com.open.recyclerview.decoration.GridSpaceDecoration
@@ -40,17 +39,16 @@ class AlbumActivity : BaseActivity(R.layout.album_activity) {
 
     private val viewModel: AlbumViewModel by viewModels()
 
-    private lateinit var permissionManager: PermissionManager
-
-    private var cellList: MutableList<BaseCell> = mutableListOf()
-
+    private val permissionManager by lazy {
+        PermissionManager(this)
+    }
 
     private val rvAdapter by lazy {
         BaseAdapter(diffCallback(), ItemAnimation.create().apply {
             duration(300)
             enabled(true)
             firstOnly(true)
-            animation(animationType = ItemAnimation.FADE_IN)
+            animation(animationType = ItemAnimation.SCALE_IN)
         })
     }
 
@@ -60,6 +58,7 @@ class AlbumActivity : BaseActivity(R.layout.album_activity) {
     private val videoUri by lazy {
         MediaUtils.createTempVideoUri()
     }
+
 
 
     private val takePictureLauncher =
@@ -101,7 +100,6 @@ class AlbumActivity : BaseActivity(R.layout.album_activity) {
 
 
     override fun initView() {
-        permissionManager = PermissionManager(this)
         binding.rvList.apply {
             grid(context, 3)
             addItemDecoration(GridSpaceDecoration(10))
@@ -154,10 +152,10 @@ class AlbumActivity : BaseActivity(R.layout.album_activity) {
             viewModel.queryType.set(bundle.getString(QUERY_TYPE, QUERY_ALL))
         }
         viewModel.mediaResult.observe(this) {
-            cellList.clear()
+            viewModel.cellList.clear()
             LogUtils.d("mediaResult: ${JsonClient.toJson(it)}")
             it?.forEach { mediaBean ->
-                cellList.add(AlbumImageCell(mediaBean) { string ->
+                viewModel.cellList.add(AlbumImageCell(mediaBean) { string ->
                     PkgRouter.navigationResult(this, MineFragment.ALBUM_RESULT_CODE,
                         Intent().apply {
                             putExtra(MineFragment.ALBUM_RESULT_URI, string)
@@ -165,7 +163,7 @@ class AlbumActivity : BaseActivity(R.layout.album_activity) {
                     finish()
                 })
             }
-            rvAdapter.submitList(cellList)
+            rvAdapter.submitList(viewModel.cellList)
 
         }
 
