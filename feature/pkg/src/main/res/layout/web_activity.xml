@@ -34,64 +34,72 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_menu"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/space_view_bottom"
             android:background="@color/accent_color"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_back"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
                 android:layout_width="@dimen/space_zero"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/view_size_standard"
+                android:contentDescription="@string/web_back"
                 android:gravity="center"
-                android:text="@string/web_back"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_content"
+                android:scaleType="centerCrop"
+                android:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tv_next"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/iv_next"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/arrows_left_ic" />
 
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_next"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_next"
                 android:layout_width="@dimen/space_zero"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/view_size_standard"
+                android:contentDescription="@string/web_next"
                 android:gravity="center"
-                android:text="@string/web_next"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_content"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_back"
-                app:layout_constraintEnd_toStartOf="@+id/tv_refresh"
-                app:layout_constraintStart_toEndOf="@+id/tv_back"
-                app:layout_constraintTop_toTopOf="@+id/tv_back" />
+                android:scaleType="centerCrop"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/iv_refresh"
+                app:layout_constraintStart_toEndOf="@+id/iv_back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/arrows_right_ic" />
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_refresh"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_refresh"
                 android:layout_width="@dimen/space_zero"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/view_size_standard"
+                android:contentDescription="@string/web_refresh"
                 android:gravity="center"
-                android:text="@string/web_refresh"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_content"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_back"
-                app:layout_constraintEnd_toStartOf="@+id/tv_more"
-                app:layout_constraintStart_toEndOf="@+id/tv_next"
-                app:layout_constraintTop_toTopOf="@+id/tv_back" />
+                android:scaleType="centerCrop"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/iv_more"
+                app:layout_constraintStart_toEndOf="@+id/iv_next"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/reset_ic" />
 
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_more"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_more"
                 android:layout_width="@dimen/space_zero"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/view_size_standard"
+                android:contentDescription="@string/web_more"
                 android:gravity="center"
-                android:text="@string/web_more"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_content"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_back"
+                android:scaleType="centerCrop"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tv_refresh"
-                app:layout_constraintTop_toTopOf="@+id/tv_back" />
+                app:layout_constraintStart_toEndOf="@+id/iv_refresh"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/more_ic" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

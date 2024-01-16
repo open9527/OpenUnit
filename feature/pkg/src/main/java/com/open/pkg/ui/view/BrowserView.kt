@@ -13,7 +13,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.open.core.LogUtils
-import com.open.pkg.app.PkgConfig
 import java.util.*
 
 

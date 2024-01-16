@@ -16,9 +16,12 @@
     <dimen name="text_size_desc">12sp</dimen>
     <dimen name="text_size_tips">10sp</dimen>
 
-    <dimen name="icon_size_normal">24dp</dimen>
-    <dimen name="icon_size_large">48dp</dimen>
-    <dimen name="icon_size_over">128dp</dimen>
 
+    <dimen name="view_size_small">12dp</dimen>
+    <dimen name="view_size_normal">24dp</dimen>
+    <dimen name="view_size_standard">36dp</dimen>
+    <dimen name="view_size_large">48dp</dimen>
+    <dimen name="view_size_over">96dp</dimen>
+    <dimen name="view_size_huge">128dp</dimen>
 
 </resources>

@@ -60,15 +60,15 @@ class WebMenuDialog : BaseDialogFragment() {
     }
 
     private fun initData() {
-        val menuTitles: MutableList<String> = mutableListOf(
-            "分享",
-            "刷新",
-            "夜间模式",
-            "浏览器打开",
-            "投诉",
-            "复制链接",
-            "听全文",
-            "退出"
+        val menuTitles: MutableList<Pair<String,Int>> = mutableListOf(
+            Pair("分享", com.open.res.R.drawable.share_ic),
+            Pair("刷新", com.open.res.R.drawable.reset_ic),
+            Pair("夜间模式", com.open.res.R.drawable.night_ic),
+            Pair("浏览器打开", com.open.res.R.drawable.browser_ic),
+            Pair("复制链接", com.open.res.R.drawable.copy_link_ic),
+            Pair("投诉", com.open.res.R.drawable.report_ic),
+            Pair("听全文", com.open.res.R.drawable.listen_ic),
+            Pair("退出", com.open.res.R.drawable.quit_ic),
         )
         val cells = mutableListOf<BaseCell>()
         menuTitles.forEach {

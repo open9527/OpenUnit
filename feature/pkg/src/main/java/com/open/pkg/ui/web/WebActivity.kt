@@ -41,7 +41,7 @@ class WebActivity : BaseActivity(R.layout.web_activity) {
             initWebView(binding.webView, bundle.getString(WEB_URL, ""))
         }
 
-        binding.tvBack.addClick({
+        binding.ivBack.addClick({
             if (binding.webView.canGoBack()) {
                 binding.webView.goBack()
             } else {
@@ -50,16 +50,16 @@ class WebActivity : BaseActivity(R.layout.web_activity) {
 
         })
 
-        binding.tvNext.addClick({
+        binding.ivNext.addClick({
             if (binding.webView.canGoForward()) {
                 binding.webView.goForward()
             }
         })
-        binding.tvRefresh.addClick({
+        binding.ivRefresh.addClick({
             binding.webView.reload()
         })
 
-        binding.tvMore.addClick({
+        binding.ivMore.addClick({
             WebMenuDialog.with().apply {
                 addListener { string ->
                     when (string) {
