@@ -19,7 +19,7 @@
             android:id="@+id/cl_search"
             bindShapeDrawableRadius="@{40}"
             bindShapeDrawableSolidColor="@{@color/primary_color}"
-            bindShapeDrawableStrokeColor="@{@color/accent_color}"
+            bindShapeDrawableStrokeColor="@{@color/line_color}"
             bindShapeDrawableStrokeWidth="@{1}"
             android:layout_width="match_parent"
             android:layout_height="@dimen/space_view_top"

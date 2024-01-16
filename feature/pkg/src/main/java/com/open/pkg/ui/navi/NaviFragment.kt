@@ -35,7 +35,7 @@ class NaviFragment : BaseFragment(R.layout.navi_fragment) {
             duration(300)
             enabled(true)
             firstOnly(false)
-            animation(animationType = ItemAnimation.FADE_IN)
+            animation(animationType = ItemAnimation.SCALE_IN)
         })
     }
 
