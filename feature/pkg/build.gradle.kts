@@ -13,7 +13,7 @@ android {
     defaultConfig {
         minSdk = 24
         buildConfigField("String", "HOST_URL", "\"https://www.wanandroid.com/\"")
-        buildConfigField("String", "ROUTER_HOST_URL", "\"pkg://\"")
+        buildConfigField("String", "ROUTER_HOST_URL", "\"page://\"")
     }
 
 

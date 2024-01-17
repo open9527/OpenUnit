@@ -1,5 +1,6 @@
 package com.open.unit.ui.launch
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -10,6 +11,7 @@ import com.open.core.binding.binding
 import com.open.core.toast
 import com.open.pkg.app.PkgConfig
 import com.open.pkg.app.PkgRouter
+import com.open.pkg.app.PkgShare
 import com.open.pkg.ui.main.MainActivity
 import com.open.pkg.ui.media.AlbumActivity
 import com.open.pkg.ui.media.RecorderActivity
@@ -39,7 +41,8 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
             if (result.resultCode == MineFragment.ALBUM_RESULT_CODE) {
                 val data = result.data?.extras?.getString(MineFragment.ALBUM_RESULT_URI, "")
                 data?.let {
-                    toast("选择图片路径:${it}")
+                    share(Uri.parse(it))
+                    toast("选择的资源路径:${it}")
                 }
             }
         }
@@ -47,6 +50,20 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
     override fun initView() {
         binding.click = ClickProxy()
+    }
+
+
+    private fun share(uri: Uri) {
+        PkgShare.shareMedia(this,
+            PkgShare.ShareType.SHARE_TYPE_IMAGE,
+//            PkgShare.ShareType.SHARE_TYPE_VIDEO,
+            uri)
+//        PkgShare.shareThirdPartyMedia(
+//            this,
+//            PkgShare.SharePackage.PACKAGE_WECHAT,
+//            PkgShare.ShareType.SHARE_TYPE_IMAGE,
+//            uri
+//        )
     }
 
 
@@ -75,7 +92,7 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
             Bundle().apply {
                 putString(AlbumActivity.QUERY_TYPE, AlbumActivity.QUERY_IMAGE)
             },
-            AlbumActivity::class.java
+            AlbumActivity::class.java, albumLauncher
         )
     }
 
@@ -157,7 +174,7 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
 
         fun onStartTest(): (view: View) -> Unit = {
-            selectAlbum()
+            navigationAlbumActivity()
         }
 
         fun onTest(): (view: View) -> Unit = {
@@ -166,7 +183,6 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
             navigationAlbumActivity()
             navigationRecorderActivity()
             navigationMainActivity()
-            selectAlbum()
             LogUtils.d(RouterDelegate.getRoutes())
         }
     }

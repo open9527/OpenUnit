@@ -27,7 +27,6 @@ class WebActivity : BaseActivity(R.layout.web_activity) {
 
     private val viewModel: WebViewModel by viewModels()
 
-    @SuppressLint("WrongConstant")
     override fun initView() {
         binding.vm = viewModel
         backPressed {

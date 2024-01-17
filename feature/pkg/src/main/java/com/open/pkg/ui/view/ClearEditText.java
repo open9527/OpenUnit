@@ -39,7 +39,6 @@ public class ClearEditText extends RegexEditText implements View.OnTouchListener
         super(context, attrs, defStyleAttr);
         //配置删除按钮
         mClearDrawable = DrawableCompat.wrap(Objects.requireNonNull(ContextCompat.getDrawable(context, R.drawable.search_clear_layer_list)));
-        mClearDrawable.setTint(ContextCompat.getColor(context,R.color.text_hint_color));
         mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
         setDrawableVisible(false);
         super.setOnTouchListener(this);

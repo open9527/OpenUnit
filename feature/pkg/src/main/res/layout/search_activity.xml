@@ -34,6 +34,7 @@
                 android:hint="@string/search_hint_text"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
+                android:drawableTint="@color/text_hint_color"
                 android:maxLines="1"
                 android:paddingHorizontal="10dp"
                 android:text="@{vm.valueKeyword}"

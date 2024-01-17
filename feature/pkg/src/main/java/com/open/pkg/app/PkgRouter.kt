@@ -15,7 +15,7 @@ import java.util.Locale
 
 
 object PkgRouter {
-    private const val PKG_HOST = "page://"
+    private  val PKG_HOST: String = PkgConfig.getRouterHostUrl()
     fun getPkgHost(): String = PKG_HOST
 
     fun initialize(context: Application) {
