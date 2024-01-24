@@ -174,7 +174,8 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
 
 
         fun onStartTest(): (view: View) -> Unit = {
-            navigationAlbumActivity()
+            navigationRecorderActivity()
+            LogUtils.d(RouterDelegate.getRoutes())
         }
 
         fun onTest(): (view: View) -> Unit = {

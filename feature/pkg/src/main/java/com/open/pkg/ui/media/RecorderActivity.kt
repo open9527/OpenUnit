@@ -1,8 +1,10 @@
 package com.open.pkg.ui.media
 
 import android.annotation.SuppressLint
+import android.graphics.SweepGradient
 import android.view.View
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.open.base.BaseActivity
 import com.open.core.CountDown
@@ -87,13 +89,23 @@ class RecorderActivity : BaseActivity(R.layout.recorder_activity) {
     }
 
     private fun initCircleProgress() {
-        binding.circleView.setProgress(0, 0)
+        binding.circleView.setProgress(0, 1000)
         binding.circleView.width = 20
         binding.circleView.setColor(R.color.window_background_color)
-
+//
+//
         binding.circleView.setProgressWidth(18)
-        binding.circleView.setProgressColor(R.color.accent_color)
+//        binding.circleView.setProgressColor(R.color.accent_color)
+        binding.circleView.setProgressColor(R.color.purple_200, R.color.purple_700)
+//        binding.circleView.setProgressColor(
+//            intArrayOf(
+//                R.color.purple_200,
+//                R.color.purple_500,
+//                R.color.purple_700
+//            )
+//        )
     }
+
 
     private fun initWaveView() {
         binding.waveView.waveColor = R.color.accent_color
@@ -106,7 +118,7 @@ class RecorderActivity : BaseActivity(R.layout.recorder_activity) {
         countdownJob = CountDown.countDownCoroutine(duration, 1, 0, {
             LogUtils.d("倒计时变更: ${it}s")
             count++
-            binding.circleView.setProgress(((count / 60f) * 100).toInt(), 100)
+            binding.circleView.setProgress(((count / 60f) * 100).toInt(), 1000)
             binding.tvCount.text = "${it}s"
         }, {
             LogUtils.d("倒计时开始: ${binding.waveView.dataList.size}")
@@ -123,7 +135,7 @@ class RecorderActivity : BaseActivity(R.layout.recorder_activity) {
         mediaRecorderTask.setPeriod(200)
         mediaRecorderTask.start(recorderUri.second)
         binding.waveView.visibility = View.VISIBLE
-        startCountDownRecorder(60)
+        startCountDownRecorder(59)
         mediaRecorderTask.setOnVolumeChangeListener {
 //            LogUtils.d("startRecorder: $it")
             binding.tvText.text = "正在录音,音量大小:${it}"

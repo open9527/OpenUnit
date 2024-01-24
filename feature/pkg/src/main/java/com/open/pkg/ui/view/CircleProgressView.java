@@ -164,10 +164,11 @@ public class CircleProgressView extends View {
      * 设置进度圆环颜色(支持渐变色)
      *
      * @param startColor 进度圆环开始颜色
-     * @param firstColor 进度圆环结束颜色
+     * @param endColor   进度圆环结束颜色
      */
-    public void setProgressColor(@ColorRes int startColor, @ColorRes int firstColor) {
-        mColorArray = new int[]{ContextCompat.getColor(getContext(), startColor), ContextCompat.getColor(getContext(), firstColor)};
+    public void setProgressColor(@ColorRes int startColor, @ColorRes int endColor) {
+        mProgressPaint.setColor(ContextCompat.getColor(getContext(), startColor));
+        mColorArray = new int[]{ContextCompat.getColor(getContext(), startColor), ContextCompat.getColor(getContext(), endColor)};
         mProgressPaint.setShader(new LinearGradient(0, 0, 0, getMeasuredWidth(), mColorArray, null, Shader.TileMode.MIRROR));
         invalidate();
     }
@@ -179,6 +180,7 @@ public class CircleProgressView extends View {
      */
     public void setProgressColor(@ColorRes int[] colorArray) {
         if (colorArray == null || colorArray.length < 2) return;
+        mProgressPaint.setColor(ContextCompat.getColor(getContext(), colorArray[0]));
         mColorArray = new int[colorArray.length];
         for (int index = 0; index < colorArray.length; index++)
             mColorArray[index] = ContextCompat.getColor(getContext(), colorArray[index]);
