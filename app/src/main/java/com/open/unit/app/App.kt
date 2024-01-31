@@ -14,7 +14,8 @@ class App : PkgApp() {
         initFlutter()
         PkgRouter.addList(
             cla = listOf(
-                SplashActivity::class.java, ComposeActivity::class.java,
+                SplashActivity::class.java,
+                ComposeActivity::class.java,
                 FlutterActivity::class.java
             )
         )

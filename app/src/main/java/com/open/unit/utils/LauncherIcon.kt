@@ -8,7 +8,7 @@ object LauncherIcon {
     /**
      * 1.配置icon的activity 直接继承SplashActivity,
      * 2.配置icon的activity要把 enabled 属性设为false(否则出现多个icon),配置指定icon属性
-     * 3.切换最佳时机是监听app切换到后台触发变更icon
+     * 3.切换最佳时机是监听app切换到后台触发变更icon(app会退出,再次打开是冷启动)
      */
     fun switchIcon(enabledCls: Class<*>, disabledCls: Class<*>) {
         val packageManager = ContextHolder.get().packageManager

@@ -189,7 +189,7 @@ open class LaunchActivity : BaseActivity(R.layout.activity_launch) {
     }
 
     companion object {
-        public const val BUNDLE_TOTAL_KEY = "bundle_total"
+        const val BUNDLE_TOTAL_KEY = "bundle_total"
 
         private const val ICON_CHANGE = "icon_change"
         private const val ICON_CHANGE_KEY = "icon_change_key"
