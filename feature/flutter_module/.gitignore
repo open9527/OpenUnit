@@ -1,7 +1,6 @@
 .DS_Store
 .dart_tool/
 
-.packages
 .pub/
 
 .idea/
@@ -38,17 +37,13 @@ Icon?
 .tags*
 
 build/
-.android/
-.ios/
-.flutter-plugins
-.flutter-plugins-dependencies
+#.android/
+#.ios/
+#.flutter-plugins
+#.flutter-plugins-dependencies
 
 # Symbolication related
 app.*.symbols
 
 # Obfuscation related
 app.*.map.json
-/test/widget_test.dart
-.analysis_options.yaml
-.metadata
-pubspec.lock
