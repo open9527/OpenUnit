@@ -37,8 +37,7 @@ class WebActivity : BaseActivity(R.layout.web_activity) {
             }
         }
         intent.extras?.let { bundle ->
-//            initWebView(binding.webView, bundle.getString(WEB_URL, ""))
-            initWebView(binding.webView, "https://mall-mobile.shmedia.tech/real.html?shop_id=31011201&site_id=310112&target=media&access_id=184&version=2023110101#/")
+            initWebView(binding.webView, bundle.getString(WEB_URL, ""))
         }
 
         binding.ivBack.addClick({
