@@ -40,6 +40,7 @@ coil = "2.5.0"
 coil-svg = "2.5.0"
 coil-gif = "2.5.0"
 coil-video = "2.5.0"
+#coil-compose = "3.0.3"
 
 #序列化
 kotlin-plugin-serialization = "1.5.0"
@@ -112,6 +113,7 @@ coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil-svg" }
 coil-gif = { group = "io.coil-kt", name = "coil-gif", version.ref = "coil-gif" }
 coil-video = { group = "io.coil-kt", name = "coil-video", version.ref = "coil-video" }
+#coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil-compose" }
 
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinx-serialization-protobuf" }
